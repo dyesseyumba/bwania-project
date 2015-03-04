@@ -1,0 +1,277 @@
+
+<div id="Br"> <!-- Bandeau -->
+
+    <div class="container" > <!-- Debut conteneur principal -->
+
+
+        <div class="row">
+            <div class="col-sm-6 col-md-4" >
+                <div id="textP">
+                    <h3>C'est quoi Bwania ? </h3>
+                    <p>Bwania est une plate forme de partage<br/>de document(savoir)ou cha peut y apprendre et s'autoformer.</p>
+                    <p>Il me l'etudiant ou l'elÃ¨ve au coeur d'une<br/>relation entre l'Ã©cole et l'entreprise.</p>
+                    <p>Il permet au formateurs (contributeurs de<br/>vendre leur document(savoire-faire).</p>
+                    <p id="ImgCervo"></p>      
+                </div>    
+            </div>  
+
+            <div class="col-md-8" id="Carousel"><!--- debut carousel  ------------>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="images/Images02.jpg" alt="images1" class="img-responsive">
+                            <div class="carousel-caption">
+                                <h1>...</h1>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/750x3504.jpg" alt="images1" class="img-responsive">
+                            <div class="carousel-caption">
+                                <h1>...</h1>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/Images03.jpg" alt="images1" class="img-responsive">
+                            <div class="carousel-caption">
+                                <h1>...</h1>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="images/images01.jpg" alt="images1" class="img-responsive">
+                            <div class="carousel-caption">
+                                <h1>Bwania Aprendre & Partager</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <span class="icon-prev"></span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <span class="icon-next"></span>
+                    </a>
+                </div>
+
+            </div> <br><br><!--- Fin carousel------------->
+        </div>
+
+    </div> <!-- Fin conteneur principal -->
+
+</div><!--- Fin Bandeau---------->
+
+
+<hr>
+<!-- Section -->
+<div class="section">
+
+    <div class="container">
+
+
+        <section>
+            <div class="row">
+
+                <div class="col-sm-4 col-md-8 ">
+
+                    <!-- Dernières publication-->
+                    <div class="col-md-6">
+
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active" style="background-color: #ffffff;color: #ff6d0b; ">
+                                <h4  class="list-group-item-heading">Dernières publications</h4>                        
+                            </a>
+                            <a href="#/docDetails/{{document.id}}" class="list-group-item" ng-repeat="document in documents">
+                                <h5 class="list-group-item-heading"><b><span class="text-primary" ng-bind="document.titre"></span></b></h5>
+                                <p class="list-group-item-text">
+                                    <b>Domaine</b> : <span ng-bind="document.domaine"></span>,<br>
+                                    <b>Discipline</b> : <span ng-bind="document.discipline"></span>
+                                </p>
+                            </a>                  
+                        </div>
+
+                    </div>
+                    <!-- Top de tÃ©lÃ©chargement-->
+                    <div class="col-md-6">
+
+                        <div class="list-group">
+                            <a href="" class="list-group-item active" style="background-color: #ffffff;color: #ff6d0b; ">
+                                <h4  class="list-group-item-heading">Les plus consultés</h4>                        
+                            </a>
+                            <a href="#/docDetails/{{document.id}}" class="list-group-item" ng-repeat="docCons in listDocCons">
+                                <h5 class="list-group-item-heading"><b><span class="text-primary" ng-bind="docCons.titre"></span></b></h5>
+                                <p class="list-group-item-text">
+                                    <b>Domaine</b> : <span ng-bind="docCons.domaine"></span>,<br>
+                                    <b>Discipline</b> : <span ng-bind="docCons.discipline"></span>,<br>
+                                </p>
+                            </a>
+                        </div>
+
+                    </div>
+                    <hr>
+
+                    <hr>
+                    <!-- Debut barre de document DEBUT --------------------------------------------------------------------------------------------------------->
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" style="height: 400px; width: 300px;">
+                            <img src="images/imgB4.jpg" alt="300x200" style="width: 300px; height: 200px;">
+                            <div class="caption">
+                                <a href="#/formation/college/Collège"> <h3 class="text-success text-center"><font><font>DUMENTATION COLLEGE</font></font></h3></a>
+
+                                <p><font><font class="">Nullam id dolor Identifiant NIBH ultricies vehicula ut Identifiant elit.</font></font></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" style="height: 400px; width: 300px;">
+                            <img src="images/imgB3.jpg" alt="300x200" style="width: 300px; height: 200px;">
+                            <div class="caption">
+
+                                <a href="#/formation/lycee/Lycée"><h3 class="text-info text-center"><font><font>DOCUMENTATION LYCEE</font></font></h3></a>
+
+                                <p><font><font>L'objectif du lycée est double : réussir l'examen du bac et préparer les études supérieures. </font></font></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" style="height: 400px; width: 300px;">
+                            <img src="images/imgB6.png" alt="300x200" style="width: 300px; height: 200px;">
+                            <div class="caption">
+                                <a href="#/formation/univ/Université"> <h3 class="text-danger text-center"><font><font>DOCUMENTION UNIVERSITE</font></font></h3> </a>              
+                                <p><font><font class="">Nullam id dolor Identifiant NIBH ultricies vehicula ut Identifiant elit.</font></font></p>
+
+                            </div>
+                        </div>
+                    </div><hr>
+                    <!-- Debut barre de document DEBUT --------------------------------------------------------------------------------------------------------->
+                    <div class="row"><hr></div>
+
+                    <hr>  
+
+
+                    <a href="#"><img src="images/crDesign.jpg" class="img-responsive"></a>
+
+                    <div>
+                        <h2 style="color: #ff6d0b;" class="page-header">Actualité</h2>
+                    </div>   
+                    <!-- <h4><a href="">Another Post</a></h4>
+                    <p class="lead">by <a href="#">Start Bootstrap</a></p>
+                    <hr>
+                    <p><i class="icon-time"></i> Posted on August 28, 2013 at 10:00 PM</p>-->
+                    <p><h4>Bienvenu(e) sur Bwania !</h4>
+                    Les élèves, les étudiants, les enseignants, les professionnels ne cessent jamais de se former et il y a toujours tant à apprendre. D’où la nécessité de de posséder des moyens adéquats pour poursuivre aisément sa formation. Bwania est une plateforme de formation et d’auto-formation née du concours Waridlab édition 2013. La vocation de Bwania est d’être un acteur présent dans l’éducation et la formation professionnelle.
+                    <span class="animate-hide" ng-show="newsDetail">Il a deux buts essentiels : 
+
+                        <ul>
+                            <li>Etre un outil pour l’éducation et la formation en donnant les moyens aux utilisateurs de créer une base documentaire riche en contenu local.</li>
+                            <li>Etre un pont entre l’école et l’entreprise.</li>
+                        </ul>           
+                        Nous avons constaté que beaucoup d’enseignant écrivait des contenus riches destinés à leurs élèves mais pour la plupart cas, ces contenu ne sont pas édités et risque de disparaitre. Alors qu’il existe des gens qui auraient beaucoup gagné en ayant accès à ces contenus. C’est pourquoi Bwania va regrouper les contenus locaux, ciblés, adaptés au programme de formations local et aux niveaux des utilisateurs afin de constituer une base documentaire.
+                    </p><p>
+                    Devenez membre de Bwania afin d’avoir la possibilité de poster des contenues de formation, d’en consulter et de vous faire remarquer par les entreprises. Avec les informations que vous entrez, en consultant les documents ou en publiant vous constituez un CV que les entreprises locales pourront utiliser pour vous recruter.<br>
+                    <br><b>L'équipe Bwania</b>
+                </p>
+            </span><a class="ng-hide" href="" ng-hide="newsDetail" ng-click="hideNewsDetail()"><span class="glyphicon glyphicon-chevron-right"></span> plus de détails</a><a class="ng-hide" href="" ng-show="newsDetail" ng-click="hideNewsDetail()"><span class="glyphicon glyphicon-chevron-down"></span> moins de détails</a>
+
+
+            <ul class="pager">
+                <li class="previous"><a href="#">&larr; Prev</a></li>
+                <li class="next"><a href="#">Suiv &rarr;</a></li>
+            </ul>
+
+        </div>
+        <!-- Side barre debut --------------------------------------------------------------------------------------------->
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">RECHERCHE</div>
+                <div class="panel-body">
+                    <form class="input-group" ng-submit="docSearch(docTitre)">
+                        <input type="text" class="form-control" placeholder="Cours,tuto,Exercices coriger ..." ng-model="docTitre">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" ></i></button>
+                        </span>
+                    </form><!-- /input-group -->
+                </div>
+            </div>
+
+            <div class="list-group">
+                <strong><a href="" class="list-group-item active">DOMAINES</a></strong>
+                <a href="#/formation/infoTech/Informatique & Technologies" class="list-group-item"> <i class="glyphicon glyphicon-print" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">2654</span>Informatique & Technologies</a>
+                <a href="#/formation/mathematiques/Mathématiques" class="list-group-item"> <i class="glyphicon glyphicon-book" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">489</span>Mathématiques</a>
+                <a href="#/formation/medecine/Médecine" class="list-group-item"> <i class="glyphicon glyphicon-plus" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">126</span>Médecine</a>
+                <a href="#/formation/banqueFinance/Banque & Finances" class="list-group-item"> <i class="glyphicon glyphicon-euro" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">156</span>Banque & Finances</a>
+                <a href="#/formation/histGeogr/Histoire & Géographie" class="list-group-item"> <i class="glyphicon glyphicon-globe" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">156</span>Histoire & Géographie</a>
+                <a href="#/formation/economieGestion/Economie & Gestion" class="list-group-item"> <i class="glyphicon glyphicon-stats" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">117</span>Economie & Gestion</a>
+                <a href="#/formation/langues/Langues" class="list-group-item"> <i class="glyphicon glyphicon-font" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">634</span>Langues</a>
+                <a href="#/formation/philoLit/Philosophie & Littérature" class="list-group-item"> <i class="glyphicon glyphicon-flag" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">83</span>Philosophie & Littérature</a>
+                <a href="#/formation/physiqueChimie/Physique & Chimie" class="list-group-item"> <i class="glyphicon glyphicon-flash" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">51</span>Physique & Chimie</a>
+                <a href="#/formation/trucsEtAstuces/Trucs & Astuces" class="list-group-item"> <i class="glyphicon glyphicon-cog" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">51</span>Trucs & Astuces</a>
+                <a href="#/formation/autre/Autre" class="list-group-item"> <i class="glyphicon glyphicon-th-large" style="color: #ff6d0b; width: 20px; height: 20px"></i> <span class="badge">51</span>Autres</a>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">CONTACT</div>
+                <div class="panel-body">
+                    <address>
+                        <strong style="color: #ff6d0b;">Bwania, Inc.</strong><br>
+                        795 Folsom Ave, Suite 600<br>
+                        Brazzaville Congo, CA 94107<br>
+                        <abbr title="Phone">P:</abbr> (+242) 04-427-14-88
+                    </address>
+
+                    <address>
+                        <strong style="color: #ff6d0b;">Email</strong><br>
+                        <a href="mailto:#">bwania_cg@gmail.com</a>
+                    </address>
+
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">SUIVEZ-NOUS SUR :</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <a href="http://www.facebook.com"><img class="img-responsive" src="images/facebook.png" alt="facebook" ></a>
+                        </div>
+                        <div class="col-lg-2">
+                            <a href="http://www.twitter.com"><img class="img-responsive" src="images/twitter.png" alt="twitter" ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=1414324985471775&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>-->
+
+</div>
+
+</div>
+<!-- Section -->
+
+<!-- Section2 -->
+
+
+
+

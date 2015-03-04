@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-center">Mes publications</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-8" >
+                <div class="alert alert-danger alert-dismissable animate-hide" ng-show="deleteFaild">
+                                <button type="button" class="close" ng-click="hidedeleteFaildAlert()">&times;</button>
+                                Une erreur s'est produite lors de l'enregistrment, veuillez recomencer ou contactez l'administrateur.
+                            </div>                
+                    <div class="documents">
+                        <div ng-repeat="document in documents" class="thumbnail document-listing" ng-init="docId = document.id">
+                            <a href="{{docUrl}}/{{document.id}}/file" class="thumb"><img class="documents" src="images/pdf_icon.png"></a>
+                            <a href="{{docUrl}}/{{document.id}}/file" class="text-primary"><b>{{document.titre}}</b></a>
+                            <a class="pull-right ng-hide" href="" ng-hide="otherDescripeion" ng-click="documentClick()"><h6>détails</h6></a>
+                            <a class="pull-right ng-hide" href="" ng-show="otherDescripeion" ng-click="documentClick()"><h6>masquer</h6></a>
+                            <p><b>Auteur</b> : {{document.utilisateur.prenom}} {{document.utilisateur.nom}}<br>
+                                <b>Domaine</b> : {{document.domaine}}, <b>Discipline</b> : {{document.discipline}}<br>
+                                <span class="animate-hide" ng-show="otherDescripeion">
+                                    <b>Description</b> : {{document.description}}<br>
+                                </span>                                 
+                                <a class="pull-right btn btn-default btn-md" href="{{docUrl}}/{{document.id}}/file" ><span class="glyphicon glyphicon-download-alt"></span> Télécharger
+                                </a>
+                                <a class="pull-right btn btn-default btn-md" href="" ng-click="supprimerDoc(docId, document)" ><span class="glyphicon glyphicon-remove"></span> Supprimer
+                                </a>
+                                <a class="pull-right btn btn-default btn-md" href="#/modifierundocument/{{document.id}}" ><span class="glyphicon glyphicon-edit"></span> Modifier
+                                </a>
+                                <b>Niveau</b> : {{document.niveau}}, <b>Date</b> : {{document.dateDePublication}}<br>
+                                <span class="animate-hide" ng-show="otherDescripeion">
+                                    <b>Mots clés</b> : {{document.motCle}}
+                                </span>
+                            </p> 
+                        </div>
+                         <div>
+                            <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" rotate="flase" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" num-pages="numPages" ng-change="selectedPage(currentPage)"></pagination>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                   
+                   <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Cours, tuto, Exercices corigés ..." ng-model="resultSearch">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="clickedBtnSearch(resultSearch, infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"><i class="glyphicon glyphicon-search" ></i></button>
+                        </span>
+                    </div>
+                        <br>
+                    <form class="thumbnail">
+                        <h4 class="text-left">Domaines</h4>
+                        <input type="checkbox" ng-model="infoTech" ng-true-value="Informatique & Technologies" ng-false-value="''" ng-change="docInfoClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Informatique & Technologies<br>
+                        <input type="checkbox" ng-model="mathematiques" ng-true-value="Mathématiques" ng-false-value="''" ng-change="docMathClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Mathématiques<br>
+                        <input type="checkbox" ng-model="medecine" ng-true-value="Médecine" ng-false-value="''" ng-change="docMedecineClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Médecine<br>
+                        <input type="checkbox" ng-model="physiqueChimie" ng-true-value="Physique & Chimie" ng-false-value="''" ng-change="docPhysiqueClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Physique & Chimie<br>
+                        <input type="checkbox" ng-model="banqueFinance" ng-true-value="Banque & Finances" ng-false-value="''" ng-change="docBanqueClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Banque & Finances<br>
+                        <input type="checkbox" ng-model="economieGestion" ng-true-value="Economie & Gestion" ng-false-value="''" ng-change="docEconomieClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Economie & Gestion<br>
+                        <input type="checkbox" ng-model="langues" ng-true-value="Langues" ng-false-value="''" ng-change="docLangueClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Langues<br>
+                        <input type="checkbox" ng-model="philoLit" ng-true-value="Philosophie & Littérature" ng-false-value="''" ng-change="docPhiloClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Philosophie & Littérature<br>
+                        <input type="checkbox"  ng-model="histGeogr" ng-true-value="Histoire & Géographie" ng-false-value="''" ng-change="docHistoireClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Histoire & Géographie<br>
+                        <input type="checkbox" ng-model="trucsEtAstuces" ng-true-value="Trucs & Astuces" ng-false-value="''" ng-change="docTrucClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Trucs & Astuces<br>
+                        <input type="checkbox" ng-model="autre" ng-true-value="Autre" ng-false-value="''" ng-change="docAutreClick(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)"> Autre<br>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

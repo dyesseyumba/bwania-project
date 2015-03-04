@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-center">Créer une page Etablissement</h3>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="submitEts(ets)">
+                    <div class="col-md-4">
+                        <!--Première colone-->
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="inputNom">Nom :</label>
+                                <input type="text" class="form-control" id="InputNom" placeholder="Entrer le nom"  required="" ng-model="ets.nom">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAdresse">Adresse :</label>
+                                <input type="text" class="form-control" id="InputAdresse" placeholder="Entrer l'adresse" ng-model="ets.adresse"  required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email :</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Entrer l'adresse" ng-model="ets.email"  required="">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputTel">Téléphone :</label>
+                                <input type="tel" class="form-control" id="inputTel" placeholder="Entrer l'adresse" ng-model="ets.telephone"  required="">
+                            </div> 
+                            <div class="form-group">
+                                <label >Type d'établissement :</label>
+                                <select class="form-control" required="" ng-model="ets.typeEtablissement">                            
+                                    <option value="Collège">Collège</option>
+                                    <option value="Lycée">Lycée</option>
+                                    <option value="Ecole Supérieure">Ecole Supérieure</option>
+                                    <option value="Institut Supérieure">Institut Supérieure</option>
+                                    <option value="Faculté">Faculté</option>                                            
+                                </select>
+                            </div>                                
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!--Deuxième colone-->
+
+                        <div class="form-group">
+                            <label for="inputDateDeCreation">Date de création :</label>                            
+                            <p class="input-group">                         
+                                <input type="text" class="form-control" id="InputDateDeCreation" is-open="opened" required="" placeholder="Entrer la date de Création" datepicker-popup="{{'dd/MM/yyyy'}}" max-date="dateMax" ng-model="ets.dateDeCreation" close-text="Fermer" current-text="Aujourd'hui" clear-text="Suppr."/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputSiteweb">Site Web :</label>
+                            <input type="text" class="form-control" id="InputSiteWeb" placeholder="Entrer votre site web" ng-model="ets.siteweb"  required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputAbout">Présentation de l'établissement :</label>                    
+                            <textarea type="text" class="form-control" rows="5" id="inputAbout" placeholder="Dites-nous plus sur vous" maxlength="4500" ng-model="ets.presentation"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <input type="submit" id="submit" value="Valider" class="btn btn-primary"/>
+                        </div>
+                        <div class="alert alert-success animate-hide" ng-show="showMsgInfo">
+                            <button type="button" class="close pull-right animate-hide" ng-click="hideAlert()">&times;</button>
+                            Document <strong><span ng-bind="messageInfo"></span></strong> Enregistré.                         
+                        </div>
+                        <p ng-show="submited" class="text-danger ng-hide">Une erreur s'est produite lors de l'enregistrement. Veuillez recomencer ou contacter votre administrateur !</p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-center">Liste des établissements</h3>
+
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-8" >    
+                <h6 ng-if="authenticated">Votre éspace établissement n'est pas encore activé, Activer votre établissemeb=nt en cliquant sur le boutons activer où cliquer sur le non de votre établissement pour avoir plus de détails.</h6>
+                 <form class="input-group" ng-submit="">
+                            <input type="text" class="form-control" placeholder="" ng-model="resultSearch">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ><i class="glyphicon glyphicon-search" ></i></button>
+                            </span>
+                        </form><br>
+                    <div class="documents" >
+                        <div ng-repeat="etablissement in etablissements" class="thumbnail document-listing" ng-init="etablissementId = etablissement.id">
+                            <a href="#/etablissement/{{etablissement.id}}" class="thumb"><img class="documents" src="images/ecoleImage.png">                                
+                            </a>
+
+                            <a href="#/etablissement/{{etablissement.id}}" class="text-primary"><b>{{etablissement.nom}}</b></a>
+                            <p><h6>Adresse : {{etablissement.adresse}}<br>
+                                Site web : <a href="{{etablissement.siteweb}}">{{etablissement.siteweb}}</a>
+                             <a class="pull-right btn btn-default btn-md" ng-click="activateSchool(etablissementId)" ng-if="authenticated"><span class="glyphicon glyphicon-check" ></span> Activer
+                                </a></h6>                               
+                            </p>                            
+                        </div>
+                                <p ng-show="activationFaild" class="text-danger ng-hide">Une erreur s'est produite lors de l'enregistrement. Veuillez recomencer ou contacter votre administrateur !</p>
+                            </div>
+                        <div>
+                            <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" rotate="flase" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" num-pages="numPages" ng-change="selectedPage(currentPage)"></pagination>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="row">
+                       
+                        
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
