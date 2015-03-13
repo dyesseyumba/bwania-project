@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3> Se connecter à son compte</h3></div>
+        <div class="panel-body ">
+
+            <div class="row">
+
+
+                <div class="col-xs-6 col-md-4">
+                    <div class="alert alert-warning alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        Vous devez vous connecter avant d'avoir accès à ce service
+                    </div>
+
+                    <form class="form-signin" ng-submit="submitLogin({email:user.email})"> 
+                        <div class="form-group">
+                            <label for="inputEmail">E-mail</label>
+                            <input class="form-control" type="text" id="inputEmail" autofocus="" required="" placeholder="Entrer l'email" ng-model="user.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword1">Mot de passe</label>
+                            <input type="password" class="form-control" id="inputPassword1" required="" placeholder="Entrer le mot de passe" ng-model="user.motDepasse">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                        <p ng-hide="submited" class="text-danger ng-hide">E-mail ou mot de passe incorect !</p>
+                        <p ng-hide="accountActivated" class="text-danger ng-hide">Votre compte n'est pas encore activé veuillez l'activer grâce au mail qui vous a été envoyer lors de votre inscription à Bwania !</p>
+                        <p><a href="#/resetpassword"> Mot de passe oublier ?</a><br/>
+                            <a href="#/signup"> Pas encore inscrit ?</a>
+                        </p>
+                    </form> 
+                </div>
+
+                <div class="col-xs-9 col-md-6 col-md-offset-2">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

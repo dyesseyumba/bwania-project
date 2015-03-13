@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading"><h3><p class="text-center">Ajouter un document</p></h3></div>
+        <div class="panel-body">            
+            <form role="form" ng-submit="send(document)">
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="inputTitre" >Titre</label>
+                            <input type="text" class="form-control" id="inputTitre" required="" placeholder="Titre" maxlength="40" ng-model="document.titre">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDomaine" >Domaine</label>
+                            <select class="form-control" required="" ng-model="document.domaine">
+                                <option value="Informatique & Technologies" >Informatique & Technologies</option>
+                                <option value="Mathématiques" >Mathématiques</option>
+                                <option value="Médecine" >Médecine</option>
+                                <option value="Physique & Chimie" >Physique & Chimie</option>
+                                <option value="Banque & Finances" >Banque & Finances</option>
+                                <option value="Economie & Gestion" >Economie & Gestion</option>
+                                <option value="Langues" >Langues</option>
+                                <option value="Philosophie & Littérature" >Philosophie & Littérature</option>
+                                <option value="Histoire & Géographie" >Histoire & Géographie</option>
+                                <option value="Trucs & Astuces" >Trucs & Astuces</option>
+                                <option value="Autre" >Autre</option>                            
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDiscipline" >Discipline</label>
+                            <input type="text" class="form-control" id="inputDiscipline" placeholder="Discipline" maxlength="40" ng-model="document.discipline">
+                        </div>
+                         <div class="form-group">
+                            <label for="inputStatut" >Statut</label>
+                            <div>
+                                <input type="radio" name="checkStatut" value="G" ng-model="document.statut" checked=""> Gratuit
+                                <input type="radio" name="checkStatut" value="P" ng-model="document.statut"> Payant
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription" >Description</label>
+                            <textarea class="form-control" required="" id="inputDescription" rows="5" placeholder="Description" maxlength="1600" ng-model="document.description"></textarea>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+
+                        <div class="form-group">
+                            <label for="inputNiveau" >Niveau</label>
+                            <select class="form-control" required="" ng-model="document.niveau">
+                                <option selected value="débutant" >Collège</option>
+                                <option value="intermédiaire" >Lycée</option>
+                                <option value="Avancé" >Université</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputNiveau" >Niveau de difficulté</label>
+                            <select class="form-control" required="" ng-model="document.niveauDifficulte">
+                                <option selected value="débutant" >débutant</option>
+                                <option value="intermédiaire" >intermédiaire</option>
+                                <option value="Avancé" >Avancé</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMotcle" >Mot Clé</label>
+                            <input type="text" class="form-control" id="inputMotcle" placeholder="Mot clé" ng-model="document.motCle">
+                        </div>                
+                        <div class="form-group">
+                            <label for="inputDatePub" >Date de Publication</label>                            
+                            <p class="input-group">                         
+                                <input type="text" class="form-control" id="inputDatePub" is-open="opened" required="" placeholder="Date de publication" datepicker-popup="{{'dd/MM/yyyy'}}" max-date="dateMax" ng-model="document.dateDePublication" close-text="Fermer" current-text="Aujourd'hui" clear-text="Suppr."/>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="open($event)"><span class="glyphicon glyphicon-calendar"></span></button>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label >Fichier</label>
+                            <input type="file" accept="application/pdf" required="" ng-file-select="onFileSelect($files)">
+                        </div>
+
+                        <progressbar class="progress-striped active" max="100" value="dynamic" type="info">
+                            <span ng-bind="dynamic"></span> %
+                        </progressbar>
+
+                        <div class="alert alert-success animate-hide" ng-hide="showMsgInfo">
+                            <button type="button" class="close pull-right animate-hide" ng-click="hideAlert()">&times;</button>
+                            Document <strong><span ng-bind="messageInfo"></span></strong> Enregistré.                         
+                        </div>
+
+                        <div class="alert alert-danger animate-hide animate-hide" ng-hide="showErrorInfo"> 
+                            <button type="button" class="close pull-right" ng-click="hideAlert()">&times;</button>
+                            Une erreur s'est produite lors de l'enregistrement, veuiller recomencer                            
+                        </div>
+
+                        <input type="submit" id="submit" value="Valider" class="btn btn-primary"/>
+
+                    </div>
+                </div>            
+
+            </form>
+        </div>
+    </div>
+
+
+
+</div>

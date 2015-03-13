@@ -1,0 +1,1 @@
+Ce répertoire contient les services communs à tous les modules
