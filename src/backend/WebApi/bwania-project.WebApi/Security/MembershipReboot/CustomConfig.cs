@@ -11,7 +11,7 @@ namespace Thinktecture.IdentityManager.Host
             Config = new CustomConfig();
             Config.PasswordHashingIterationCount = 10000;
             Config.RequireAccountVerification = false;
-            //config.EmailIsUsername = true;
+            Config.EmailIsUsername = true;
         }
     }
 }
