@@ -1,7 +1,10 @@
-﻿using bwania_project.WebApi;
+﻿using System.Web.Http;
+using bwania_project.WebApi;
 using Catel.Logging;
 using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Facebook;
+using Newtonsoft.Json.Serialization;
 using Owin;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Host;
@@ -18,6 +21,19 @@ namespace bwania_project.WebApi
             LogManager.AddDebugListener();
 #endif
             const string databaseConnectionName = "BwaniaIdServerDb";
+
+            app.Map("/api/{controller}/{id}", builder =>
+            {
+                var httpConfiguration = new HttpConfiguration();
+
+                UseJsonCamelCaseFormatter(httpConfiguration);
+
+                ConfigureRouting(httpConfiguration);
+
+                builder.UseCors(CorsOptions.AllowAll);
+
+                builder.UseWebApi(httpConfiguration);
+            });
 
             app.Map("/identity", builder =>
             {
@@ -48,6 +64,19 @@ namespace bwania_project.WebApi
                 AppSecret = "9d6ab75f921942e61fb43a9b1fc25c63"
             };
             app.UseFacebookAuthentication(fb);
+        }
+
+         private static void ConfigureRouting(HttpConfiguration httpConfiguration)
+        {
+            httpConfiguration.MapHttpAttributeRoutes();
+        }
+
+        private static void UseJsonCamelCaseFormatter(HttpConfiguration httpConfiguration)
+        {
+            httpConfiguration.Formatters.Remove(httpConfiguration.Formatters.XmlFormatter);
+            httpConfiguration.Formatters.Remove(httpConfiguration.Formatters.FormUrlEncodedFormatter);
+            httpConfiguration.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+                new CamelCasePropertyNamesContractResolver();
         }
     }
 }
