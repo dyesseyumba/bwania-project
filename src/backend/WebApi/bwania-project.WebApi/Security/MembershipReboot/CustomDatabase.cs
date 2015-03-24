@@ -1,4 +1,5 @@
-﻿using BrockAllen.MembershipReboot.Ef;
+﻿using System.Data.Entity;
+using BrockAllen.MembershipReboot.Ef;
 
 namespace Thinktecture.IdentityManager.Host
 {

@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bwania_project.WebApi</RootNamespace>
+    <RootNamespace>bwaniaProject.WebApi</RootNamespace>
     <AssemblyName>bwania-project.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
@@ -39,8 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BrockAllen.MembershipReboot">
-      <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.8.1.0\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
+    <Reference Include="BrockAllen.MembershipReboot, Version=8.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.8.2.1\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
     </Reference>
     <Reference Include="BrockAllen.MembershipReboot.Ef">
       <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.Ef.8.0.0\lib\net45\BrockAllen.MembershipReboot.Ef.dll</HintPath>
@@ -155,11 +156,19 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Thinktecture.IdentityModel.Core">
-      <HintPath>..\..\..\packages\Thinktecture.IdentityModel.Core.1.3.0\lib\net45\Thinktecture.IdentityModel.Core.dll</HintPath>
+    <Reference Include="Thinktecture.IdentityManager">
+      <HintPath>..\..\..\packages\Thinktecture.IdentityManager.1.0.0-beta3\lib\net45\Thinktecture.IdentityManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Thinktecture.IdentityManager.MembershipReboot">
+      <HintPath>..\..\..\packages\Thinktecture.IdentityManager.MembershipReboot.1.0.0-beta3\lib\net45\Thinktecture.IdentityManager.MembershipReboot.dll</HintPath>
+    </Reference>
+    <Reference Include="Thinktecture.IdentityModel.Core, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Thinktecture.IdentityModel.Core.1.4.0\lib\net45\Thinktecture.IdentityModel.Core.dll</HintPath>
     </Reference>
     <Reference Include="Thinktecture.IdentityServer3">
-      <HintPath>..\..\..\packages\Thinktecture.IdentityServer3.1.0.0\lib\net45\Thinktecture.IdentityServer3.dll</HintPath>
+      <HintPath>..\..\..\packages\Thinktecture.IdentityServer3.1.3.0\lib\net45\Thinktecture.IdentityServer3.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Thinktecture.IdentityServer3.MembershipReboot">
       <HintPath>..\..\..\packages\Thinktecture.IdentityServer3.MembershipReboot.1.0.0\lib\net45\Thinktecture.IdentityServer3.MembershipReboot.dll</HintPath>
@@ -169,8 +178,9 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\IdentityManager\CustomIdentityManagerService.cs" />
+    <Compile Include="Security\IdentityManager\MembershipRebootIdentityManagerServiceExtensions.cs" />
     <Compile Include="Security\IdentityServer\Clients.cs" />
     <Compile Include="Security\IdentityServer\CustomUserService.cs" />
     <Compile Include="Security\IdentityServer\Factory.cs" />
@@ -193,7 +203,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>

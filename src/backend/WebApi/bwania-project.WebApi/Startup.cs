@@ -1,17 +1,19 @@
 ﻿using System.Web.Http;
-using bwania_project.WebApi;
+using bwaniaProject.WebApi;
 using Catel.Logging;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Facebook;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using Thinktecture.IdentityManager.Configuration;
+using Thinktecture.IdentityManager.Host;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Host;
 
 [assembly: OwinStartup(typeof (Startup))]
 
-namespace bwania_project.WebApi
+namespace bwaniaProject.WebApi
 {
     public class Startup
     {
@@ -19,8 +21,13 @@ namespace bwania_project.WebApi
         {
 #if DEBUG
             LogManager.AddDebugListener();
+
+            var customDatabase = new CustomDatabase("BwaniaIdServerDb");
+
+            customDatabase.Database.CreateIfNotExists();
 #endif
             const string databaseConnectionName = "BwaniaIdServerDb";
+            
 
             app.Map("/api/{controller}/{id}", builder =>
             {
@@ -33,6 +40,17 @@ namespace bwania_project.WebApi
                 builder.UseCors(CorsOptions.AllowAll);
 
                 builder.UseWebApi(httpConfiguration);
+            });
+
+            app.Map("/admin", builder =>
+            {
+                var factory = new IdentityManagerServiceFactory();
+                factory.Configure(databaseConnectionName);
+
+                builder.UseIdentityManager(new IdentityManagerOptions
+                {
+                    Factory = factory
+                });
             });
 
             app.Map("/identity", builder =>
@@ -52,6 +70,8 @@ namespace bwania_project.WebApi
 
                 builder.UseIdentityServer(options);
             });
+
+            app.UseWelcomePage();
         }
 
         public static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)
