@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Business", "backend\Infrastructure\bwania-project.Infrastructure.Business\bwania-project.Infrastructure.Business.csproj", "{657ABCBF-C313-4269-918A-AFEEBCA383CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.dependensyResolution", "backend\DependencyResolution\bwania-projrct.dependensyResolution\bwania-project.dependensyResolution.csproj", "{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.dependencyResolution", "backend\DependencyResolution\bwania-projrct.dependensyResolution\bwania-project.dependencyResolution.csproj", "{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.WebApi", "backend\WebApi\bwania-project.WebApi\bwania-project.WebApi.csproj", "{AF678F0D-9DD7-4EB5-9034-037476EC4B96}"
 EndProject

@@ -1,5 +1,7 @@
 ﻿using System.Web.Http;
+using bwaniaProject.DependencyResolution;
 using bwaniaProject.WebApi;
+using Catel.IoC;
 using Catel.Logging;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
@@ -15,7 +17,7 @@ using Thinktecture.IdentityServer.Host;
 
 namespace bwaniaProject.WebApi
 {
-    public class Startup
+    public class Startup : ApiBootstrapper
     {
         public void Configuration(IAppBuilder app)
         {
@@ -23,9 +25,12 @@ namespace bwaniaProject.WebApi
             LogManager.AddDebugListener();
 
             var customDatabase = new CustomDatabase("BwaniaIdServerDb");
-
             customDatabase.Database.CreateIfNotExists();
 #endif
+
+            var serviceLocator = this.GetServiceLocator();
+            Initialize(serviceLocator);
+
             const string databaseConnectionName = "BwaniaIdServerDb";
             
 

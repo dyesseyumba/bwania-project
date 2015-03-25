@@ -7,8 +7,8 @@
     <ProjectGuid>{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bwania_projrct.dependensyResolution</RootNamespace>
-    <AssemblyName>bwania-projrct.dependensyResolution</AssemblyName>
+    <RootNamespace>bwaniaProject.DependencyResolution</RootNamespace>
+    <AssemblyName>bwania-project.dependencyResolution</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
