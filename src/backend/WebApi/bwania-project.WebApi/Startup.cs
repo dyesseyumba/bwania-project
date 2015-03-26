@@ -13,7 +13,7 @@ using Thinktecture.IdentityManager.Host;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Host;
 
-[assembly: OwinStartup(typeof (Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
 namespace bwaniaProject.WebApi
 {
@@ -32,7 +32,7 @@ namespace bwaniaProject.WebApi
             Initialize(serviceLocator);
 
             const string databaseConnectionName = "BwaniaIdServerDb";
-            
+
 
             app.Map("/api/{controller}/{id}", builder =>
             {
@@ -65,12 +65,17 @@ namespace bwaniaProject.WebApi
 
                 var options = new IdentityServerOptions
                 {
-                    IssuerUri = "https://idsrv3/embedded",
+                    IssuerUri = "http://idsrv3.com/embedded",
                     SiteName = "Bwania IdentityServer",
 
                     //SigningCertificate = Certificate.Get(),
                     Factory = idSvrFactory,
-                    CorsPolicy = CorsPolicy.AllowAll
+                    CorsPolicy = CorsPolicy.AllowAll,
+                    AuthenticationOptions = new AuthenticationOptions
+                    {
+                        IdentityProviders = ConfigureAdditionalIdentityProviders,
+                    },
+                    RequireSsl = false
                 };
 
                 builder.UseIdentityServer(options);
@@ -91,7 +96,7 @@ namespace bwaniaProject.WebApi
             app.UseFacebookAuthentication(fb);
         }
 
-         private static void ConfigureRouting(HttpConfiguration httpConfiguration)
+        private static void ConfigureRouting(HttpConfiguration httpConfiguration)
         {
             httpConfiguration.MapHttpAttributeRoutes();
         }

@@ -16,7 +16,7 @@ namespace Thinktecture.IdentityServer.Host
                     Enabled = true,
                     ClientId = "implicitclient",
                     ClientSecrets = new List<ClientSecret>{
-                        new ClientSecret("secret".Sha256())
+                        new ClientSecret("project_bwania_secret".Sha256())
                     },
                     Flow = Flows.Implicit,
                     
@@ -29,7 +29,7 @@ namespace Thinktecture.IdentityServer.Host
                     RedirectUris = new List<string>
                     {
                         // JavaScript client
-                        "http://localhost:22695/index.html"
+                        "http://localhost:22695/#login"
                     },
                     
                     ScopeRestrictions = new List<string>
