@@ -7,9 +7,7 @@ app.controller('docDetailsCtrl', ['$scope', '$cookieStore', 'UserFactory', '$rou
         $scope.comments = UserFactory.getCommentaire.query({id : $route.current.params.documentId});
 
         //Vérifiction du status d'authentification
-        if ($cookieStore.get('login_status') === true) {
-            $scope.authenticated = true;
-        }
+       
 
         var selectedDoc;
 
