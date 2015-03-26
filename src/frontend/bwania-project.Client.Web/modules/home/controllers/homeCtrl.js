@@ -4,9 +4,7 @@ app.controller('homeCtrl', ['$scope', 'UserFactory', '$cookieStore', '$location'
     function($scope, UserFactory, $cookieStore, $location) {
 
         //Vérifiction du status d'authentification
-        if ($cookieStore.get('login_status') === true) {
-            $scope.authenticated = true;
-        }
+        
 
         $scope.newsDetail = false;
 
