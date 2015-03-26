@@ -7,7 +7,7 @@ app.controller('CreerEtablissementCtrl', ['$scope', 'UserFactory', '$cookieStore
         $scope.submited = false;
         $scope.submited = false;
 
-        if ($cookieStore.get('login_status') === true) {
+        
             //Consommation du service de création d'un établissement
             $scope.submitEts = function(etablissement) {
                 UserFactory.addEtablissement.saveEts(etablissement,
@@ -31,12 +31,9 @@ app.controller('CreerEtablissementCtrl', ['$scope', 'UserFactory', '$cookieStore
 
                 $scope.opened = true;
             };
-        }
-        else {
-            $location.path('/redirectionlogin2');
-        }
-
-//Remove Alert
+       
+       
+       //Remove Alert
         $scope.hideAlert = function(){
              $scope.showMsgInfo=false;
              $scope.submited=false;
