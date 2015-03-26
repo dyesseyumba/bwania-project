@@ -58,8 +58,7 @@ app.controller('ModifierDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
         );
 
 
-        if ($cookieStore.get('login_status') === true) {
-        }
+       
 
 
         //Remove Alert
