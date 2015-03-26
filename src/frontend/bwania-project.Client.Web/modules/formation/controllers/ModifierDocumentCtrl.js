@@ -9,7 +9,7 @@ app.controller('ModifierDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
         var getDoc = userFactory.getOneDocById.get({documentId: $route.current.params.documentId},
         function() {
 
-            if (($cookieStore.get('login_status') === true) && ($cookieStore.get('user_email') === getDoc.utilisateur.email)) {
+             {
 
                 $scope.document = userFactory.getOneDocById.get({documentId: $route.current.params.documentId});
 
@@ -53,9 +53,7 @@ app.controller('ModifierDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
                     };
                 });
             }
-            else {
-                $location.path('/redirectionlogin');
-            }
+           
         }
         );
 
