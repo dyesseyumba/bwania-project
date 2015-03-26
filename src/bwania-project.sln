@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Api", "Web Api", "{211B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependency Resolution", "Dependency Resolution", "{FFF048F0-526B-4BB2-85D7-3CD98EE6D5C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Enities", "backend\Core\bwania-project.Core.Enities\bwania-project.Core.Enities.csproj", "{CA864EA3-6423-48BF-9352-666A0BCFB7AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Entities", "backend\Core\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj", "{CA864EA3-6423-48BF-9352-666A0BCFB7AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Data", "backend\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj", "{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}"
 EndProject

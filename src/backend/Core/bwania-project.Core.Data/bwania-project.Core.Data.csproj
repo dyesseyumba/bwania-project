@@ -7,7 +7,7 @@
     <ProjectGuid>{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bwania_project.Core.Data</RootNamespace>
+    <RootNamespace>bwaniaProject.Core.Data</RootNamespace>
     <AssemblyName>bwania-project.Core.Data</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

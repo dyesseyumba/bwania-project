@@ -71,6 +71,8 @@
     <Compile Include="Exceptions\DocumentNotFoundException.cs" />
     <Compile Include="Exceptions\QueryRequestException.cs" />
     <Compile Include="Exceptions\ViewRequestException.cs" />
+    <Compile Include="Extensions\DocumentResultExtensions.cs" />
+    <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,9 +86,9 @@
       <Project>{be52223f-79a3-42fa-8e1c-ff60b4da8e62}</Project>
       <Name>bwania-project.Core.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Core\bwania-project.Core.Enities\bwania-project.Core.Enities.csproj">
+    <ProjectReference Include="..\..\Core\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{ca864ea3-6423-48bf-9352-666a0bcfb7af}</Project>
-      <Name>bwania-project.Core.Enities</Name>
+      <Name>bwania-project.Core.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
