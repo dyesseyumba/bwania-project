@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using bwaniaProject.Core.Data;
-using bwaniaProject.Core.Entities;
+using bwaniaProject.Entities;
 using bwaniaProject.Infrastructure.Data.Exceptions;
 using bwaniaProject.Infrastructure.Data.Extensions;
 using Couchbase.Core;
@@ -9,7 +8,7 @@ using Couchbase.N1QL;
 using Couchbase.Views;
 using Newtonsoft.Json;
 
-namespace bwaniaProject.Infrastructure.Data
+namespace bwaniaProject.Data
 {
     public class RepositoryBase<T> : IRepository<T> where T : IEntity
     {

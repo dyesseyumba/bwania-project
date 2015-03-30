@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using bwaniaProject.Core.Data;
-using bwaniaProject.Core.Entities;
+using bwaniaProject.Data;
+using bwaniaProject.Entities;
 using bwaniaProject.Infrastructure.Data.Exceptions;
 using bwaniaProject.Infrastructure.Data.Extensions;
 using Couchbase.Core;

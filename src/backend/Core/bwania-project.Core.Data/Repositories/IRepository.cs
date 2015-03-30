@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using bwaniaProject.Core.Entities;
+using bwaniaProject.Entities;
 using Couchbase.N1QL;
 using Couchbase.Views;
 
-namespace bwaniaProject.Core.Data
+namespace bwaniaProject.Data
 {
     public interface IRepository<T> where T : IEntity
     {

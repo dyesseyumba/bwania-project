@@ -1,5 +1,4 @@
-﻿
-using bwaniaProject.Core.Entities;
+﻿using bwaniaProject.Entities;
 using Couchbase;
 
 namespace bwaniaProject.Infrastructure.Data.Extensions
