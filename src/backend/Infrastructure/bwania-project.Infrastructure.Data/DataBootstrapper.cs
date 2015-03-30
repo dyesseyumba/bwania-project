@@ -5,32 +5,33 @@ using bwaniaProject.Infrastructure.Data.Exceptions;
 using Catel;
 using Catel.ExceptionHandling;
 using Catel.IoC;
+using LightInject;
 
 namespace bwaniaProject.Infrastructure.Data
 {
-    public class DataBootstrapper : IServiceLocatorInitializer
+    public class DataBootstrapper
     {
         #region Methods
 
         /// <summary>
         ///     Initializes the specified service locator.
         /// </summary>
-        /// <param name="serviceLocator">The service locator.</param>
-        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceLocator" /> is <c>null</c>.</exception>
-        public void Initialize(IServiceLocator serviceLocator)
+        /// <param name="serviceContainer">The service locator.</param>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceContainer" /> is <c>null</c>.</exception>
+        public void Initialize(IServiceContainer serviceContainer)
         {
-            Argument.IsNotNull("serviceLocator", serviceLocator);
+            Argument.IsNotNull("serviceContainer", serviceContainer);
 
-            ConfigureExceptionPolicies(serviceLocator);
+            ConfigureExceptionPolicies(serviceContainer);
 
-            ConfigureDatabaseInstance(serviceLocator);
+            ConfigureDatabaseInstance(serviceContainer);
 
-            RegisterRepositories(serviceLocator);
+            RegisterRepositories(serviceContainer);
         }
 
-        protected void ConfigureExceptionPolicies(IServiceLocator serviceLocator)
+        protected void ConfigureExceptionPolicies(IServiceContainer serviceLocator)
         {
-            var exceptionService = serviceLocator.ResolveType<IExceptionService>();
+            var exceptionService = this.GetDependencyResolver().Resolve<IExceptionService>();
 
             exceptionService.Register<CouchbaseDataException>(exception =>
             {
@@ -57,12 +58,12 @@ namespace bwaniaProject.Infrastructure.Data
             });
         }
 
-        protected void ConfigureDatabaseInstance(IServiceLocator serviceLocator)
+        protected void ConfigureDatabaseInstance(IServiceContainer serviceLocator)
         {
             
         }
 
-        protected void RegisterRepositories(IServiceLocator serviceLocator)
+        protected void RegisterRepositories(IServiceContainer serviceLocator)
         {
             
         }

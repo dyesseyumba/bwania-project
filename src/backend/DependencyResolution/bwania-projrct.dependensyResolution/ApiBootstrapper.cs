@@ -1,20 +1,26 @@
 ﻿using Catel;
+using Catel.ExceptionHandling;
 using Catel.IoC;
+using LightInject;
 
 namespace bwaniaProject.DependencyResolution
 {
-    public class ApiBootstrapper : IServiceLocatorInitializer
+    public class ApiBootstrapper
     {
         #region Methods
 
         /// <summary>
         ///     Initializes the specified service locator.
         /// </summary>
-        /// <param name="serviceLocator">The service locator.</param>
-        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceLocator" /> is <c>null</c>.</exception>
-        public virtual void Initialize(IServiceLocator serviceLocator)
+        /// <param name="serviceContainer"></param>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceContainer" /> is <c>null</c>.</exception>
+        public virtual void Initialize(IServiceContainer serviceContainer)
         {
-            Argument.IsNotNull("serviceLocator", serviceLocator);
+            Argument.IsNotNull("serviceLocator", serviceContainer);
+
+            serviceContainer.Register<IExceptionService, ExceptionService>();
+
+            //TODO: call your others bootstrappers here
         }
 
         /// <summary>

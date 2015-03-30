@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using bwaniaProject.Core.Data;
 using bwaniaProject.Core.Entities;
 using bwaniaProject.Infrastructure.Data.Exceptions;
@@ -19,16 +20,16 @@ namespace bwaniaProject.Infrastructure.Data
         }
         #endregion
 
-        #region Methods
+        #region Properties
 
-        protected  IBucket Bucket { get; set; }
+        protected  IBucket Bucket { get; private set; }
         #endregion
 
         #region Methods
 
-        public void Save(T entity)
+        public async Task SaveAsync(T entity)
         {
-            var result = Bucket.Upsert(entity.Wrap());
+            var result = await Task.Run(() => Bucket.Upsert(entity.Wrap()));
             result.ThrowIfNotSuccess();
         }
 
