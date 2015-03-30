@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using bwaniaProject.Data.Exceptions;
+using bwaniaProject.Data.Extensions;
 using bwaniaProject.Entities;
-using bwaniaProject.Infrastructure.Data.Exceptions;
-using bwaniaProject.Infrastructure.Data.Extensions;
 using Couchbase.Core;
 using Couchbase.N1QL;
 using Couchbase.Views;

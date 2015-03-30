@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using bwaniaProject.Entities;
-using Couchbase.N1QL;
-using Couchbase.Views;
 
 namespace bwaniaProject.Data
 {
@@ -32,14 +30,14 @@ namespace bwaniaProject.Data
         /// </summary>
         /// <param name="queryRequest">The query request.</param>
         /// <returns></returns>
-        IEnumerable<T> Select(IQueryRequest queryRequest);
+        //IEnumerable<T> Select(IQueryRequest queryRequest);
 
         /// <summary>
         /// Selects documents the specified view query.
         /// </summary>
         /// <param name="viewQuery">The view query.</param>
         /// <returns></returns>
-        IEnumerable<T> Select(IViewQuery viewQuery);
+        //IEnumerable<T> Select(IViewQuery viewQuery);
 
         /// <summary>
         /// Finds the specified key.

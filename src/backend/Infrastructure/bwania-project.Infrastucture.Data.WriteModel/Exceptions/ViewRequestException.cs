@@ -2,7 +2,7 @@
 using System.Net;
 using System.Runtime.Serialization;
 
-namespace bwaniaProject.Infrastructure.Data.Exceptions
+namespace bwaniaProject.Data.Exceptions
 {
     public class ViewRequestException : Exception
     {

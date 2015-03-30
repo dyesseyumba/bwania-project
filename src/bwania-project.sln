@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Client.Web",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.ReadModel", "backend\Infrastructure\bwania-project.Infrastrcture.Data.ReadModel\bwania-project.Infrastructure.Data.ReadModel.csproj", "{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastucture.Data.WriteModel", "backend\Infrastructure\bwania-project.Infrastucture.Data.WriteModel\bwania-project.Infrastucture.Data.WriteModel.csproj", "{425E4725-3954-4236-AB15-F0C0708934FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.WriteModel", "backend\Infrastructure\bwania-project.Infrastucture.Data.WriteModel\bwania-project.Infrastructure.Data.WriteModel.csproj", "{425E4725-3954-4236-AB15-F0C0708934FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,9 @@
 ﻿using System;
-using bwaniaProject.Infrastructure.Data.Exceptions;
+using bwaniaProject.Data.Exceptions;
 using Couchbase;
 using Couchbase.IO;
 
-namespace bwaniaProject.Infrastructure.Data.Extensions
+namespace bwaniaProject.Data.Extensions
 {
     public static class DocumentResultExtensions
     {

@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Couchbase.N1QL;
 
-namespace bwaniaProject.Infrastructure.Data.Exceptions
+namespace bwaniaProject.Data.Exceptions
 {
     public class QueryRequestException : Exception
     {
