@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace bwaniaProject.Core.Entities
+namespace bwaniaProject.Entities
 {
     public interface IDocument : IEntity
     {

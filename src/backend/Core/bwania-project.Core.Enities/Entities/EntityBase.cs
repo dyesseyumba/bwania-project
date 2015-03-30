@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace bwaniaProject.Core.Entities
+namespace bwaniaProject.Entities
 {
     public class EntityBase : IEntity
     {

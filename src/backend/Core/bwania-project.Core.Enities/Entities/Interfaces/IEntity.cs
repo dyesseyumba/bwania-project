@@ -1,4 +1,4 @@
-﻿namespace bwaniaProject.Core.Entities
+﻿namespace bwaniaProject.Entities
 {
     public interface IEntity
     {
