@@ -3,6 +3,7 @@ using bwaniaProject.DependencyResolution;
 using bwaniaProject.WebApi;
 using Catel.IoC;
 using Catel.Logging;
+using LightInject;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Facebook;
@@ -28,7 +29,7 @@ namespace bwaniaProject.WebApi
             customDatabase.Database.CreateIfNotExists();
 #endif
 
-            var serviceLocator = this.GetServiceLocator();
+            var serviceLocator = new ServiceContainer();
             Initialize(serviceLocator);
 
             const string databaseConnectionName = "BwaniaIdServerDb";

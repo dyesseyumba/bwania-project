@@ -29,9 +29,9 @@ namespace bwaniaProject.Infrastructure.Data
             RegisterRepositories(serviceContainer);
         }
 
-        protected void ConfigureExceptionPolicies(IServiceContainer serviceLocator)
+        protected void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
         {
-            var exceptionService = this.GetDependencyResolver().Resolve<IExceptionService>();
+            var exceptionService = serviceContainer.GetInstance<IExceptionService>();
 
             exceptionService.Register<CouchbaseDataException>(exception =>
             {

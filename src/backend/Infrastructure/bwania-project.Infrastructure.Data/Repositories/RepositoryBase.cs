@@ -29,7 +29,7 @@ namespace bwaniaProject.Infrastructure.Data
 
         public async Task SaveAsync(T entity)
         {
-            var result = await Task.Run(() => Bucket.Upsert(entity.Wrap()));
+            var result = await Task.Run(() => Bucket.Upsert(entity.Wrap())).ConfigureAwait(false);
             result.ThrowIfNotSuccess();
         }
 

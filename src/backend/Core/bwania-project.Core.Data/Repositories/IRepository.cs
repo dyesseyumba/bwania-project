@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using bwaniaProject.Core.Entities;
 using Couchbase.N1QL;
 using Couchbase.Views;
@@ -11,7 +12,7 @@ namespace bwaniaProject.Core.Data
         /// Saves the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Save(T entity);
+        Task SaveAsync(T entity);
 
         /// <summary>
         /// Removes the specified entity.
