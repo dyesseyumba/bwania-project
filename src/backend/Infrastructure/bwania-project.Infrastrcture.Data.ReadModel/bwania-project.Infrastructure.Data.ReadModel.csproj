@@ -11,6 +11,7 @@
     <AssemblyName>bwania-project.Infrastrcture.Data.ReadModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>de30907a</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Catel.Core, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Catel.Core.4.1.0\lib\net45\Catel.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\..\..\..\lib\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
     </Reference>
@@ -42,6 +47,9 @@
     <Reference Include="Elasticsearch.Net">
       <HintPath>..\..\..\..\lib\Elasticsearch.Net.1.4.3\lib\net45\Elasticsearch.Net.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="LightInject">
+      <HintPath>..\..\..\..\lib\LightInject.3.0.2.6\lib\net45\LightInject.dll</HintPath>
     </Reference>
     <Reference Include="Nest">
       <HintPath>..\..\..\..\lib\NEST.1.4.3\lib\net45\Nest.dll</HintPath>

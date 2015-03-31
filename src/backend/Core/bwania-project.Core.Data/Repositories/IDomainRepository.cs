@@ -6,15 +6,17 @@ namespace bwaniaProject.Data
     public interface IDomainRepository<in T> where T : IEntity
     {
         /// <summary>
-        /// Saves the specified entity.
+        /// Saves the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns></returns>
         Task SaveAsync(T entity);
 
         /// <summary>
-        /// Removes the specified entity.
+        /// Removes the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        Task Remove(T entity);
+        /// <returns></returns>
+        Task RemoveAsync(T entity);
     }
 }
