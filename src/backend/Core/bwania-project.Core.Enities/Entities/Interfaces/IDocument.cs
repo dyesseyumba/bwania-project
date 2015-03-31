@@ -116,5 +116,7 @@ namespace bwaniaProject.Entities
         /// The "niveau difficulte".
         /// </value>
         string NiveauDifficulte { get; set; }
+
+        
     }
 }

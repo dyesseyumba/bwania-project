@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json;
 
 namespace bwaniaProject.Entities
 {
@@ -27,8 +26,7 @@ namespace bwaniaProject.Entities
         /// <value>
         /// The identifier.
         /// </value>
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        public string id { get; set; }
 
         /// <summary>
         /// Gets or sets the type.

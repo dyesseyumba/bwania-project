@@ -36,7 +36,7 @@ namespace bwaniaProject.Infrastructure.Data
         public void Remove(T entity)
         {
             var result = Bucket.Remove(entity.Wrap());
-            result.ThrowIfNotSuccess(entity.Id);
+            result.ThrowIfNotSuccess(entity.id);
         }
 
         public IEnumerable<T> Select(IQueryRequest queryRequest)

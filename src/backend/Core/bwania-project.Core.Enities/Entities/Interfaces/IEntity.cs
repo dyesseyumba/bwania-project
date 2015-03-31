@@ -8,7 +8,7 @@
         /// <value>
         /// The identifier.
         /// </value>
-        string Id { get; set; }
+        string id { get; set; }
 
         /// <summary>
         /// Gets or sets the type.
