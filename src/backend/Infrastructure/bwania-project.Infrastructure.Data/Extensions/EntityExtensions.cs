@@ -9,7 +9,7 @@ namespace bwaniaProject.Infrastructure.Data.Extensions
         {
             return new Document<T>
             {
-                Id = entity.Id,
+                Id = entity.id,
                 Cas = entity.Cas,
                 Content = entity
             };
@@ -19,7 +19,7 @@ namespace bwaniaProject.Infrastructure.Data.Extensions
         {
             var entity = document.Content;
             entity.Cas = document.Cas;
-            entity.Id = document.Id;
+            entity.id = document.Id;
             return entity;
         }
     }

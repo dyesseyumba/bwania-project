@@ -30,7 +30,7 @@ namespace bwaniaProject.Data
         public async Task RemoveAsync(T entity)
         {
             var result = await Task.Run(() => Bucket.Remove(entity.Wrap())).ConfigureAwait(false);
-            result.ThrowIfNotSuccess(entity.Id);
+            result.ThrowIfNotSuccess(entity.id);
         }
 
         #endregion

@@ -116,5 +116,13 @@ namespace bwaniaProject.Entities
         /// The "niveau difficulte".
         /// </value>
         string NiveauDifficulte { get; set; }
+
+        /// <summary>
+        /// Gets or sets the commentaire.
+        /// </summary>
+        /// <value>
+        /// The commentaire.
+        /// </value>
+        List<Commentaire> Commentaires { get; set; }
     }
 }

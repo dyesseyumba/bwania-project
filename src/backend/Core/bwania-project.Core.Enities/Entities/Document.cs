@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace bwaniaProject.Entities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Document : EntityBase, IDocument
     {
         /// <summary>
@@ -116,5 +119,13 @@ namespace bwaniaProject.Entities
         /// The "niveau difficulte".
         /// </value>
         public string NiveauDifficulte { get; set; }
+
+        /// <summary>
+        /// Gets or sets the commentaire.
+        /// </summary>
+        /// <value>
+        /// The commentaire.
+        /// </value>
+        public List<Commentaire> Commentaires { get; set; }
     }
 }
