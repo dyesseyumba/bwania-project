@@ -163,6 +163,7 @@
     <Content Include="shared\controllers\menuCtrl.js" />
     <Content Include="shared\directives\headerDirective.js" />
     <Content Include="shared\directives\headerTemplate.html" />
+    <Content Include="shared\services\authService.js" />
     <Content Include="shared\services\customServices.js" />
     <Content Include="styles\animations.css" />
     <Content Include="styles\app.css" />
@@ -210,7 +211,6 @@
   <ItemGroup>
     <Content Include="shared\directives\readme.md" />
     <Content Include="shared\filters\readme.md" />
-    <Content Include="shared\services\readme.md" />
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
