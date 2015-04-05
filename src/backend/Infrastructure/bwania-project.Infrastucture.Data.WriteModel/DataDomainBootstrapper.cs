@@ -26,7 +26,7 @@ namespace bwaniaProject.Infrastructure.Data
             RegisterRepositories(serviceContainer);
         }
 
-        protected void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
+        protected virtual void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
         {
             var exceptionService = serviceContainer.GetInstance<IExceptionService>();
 
