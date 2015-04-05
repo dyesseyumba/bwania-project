@@ -8,7 +8,7 @@ using LightInject;
 
 namespace bwaniaProject.Infrastructure.Data
 {
-    public class DataBootstrapper
+    public class DataDomainBootstrapper
     {
         #region Methods
 
@@ -22,8 +22,6 @@ namespace bwaniaProject.Infrastructure.Data
             Argument.IsNotNull("serviceContainer", serviceContainer);
 
             ConfigureExceptionPolicies(serviceContainer);
-
-            ConfigureDatabaseInstance(serviceContainer);
 
             RegisterRepositories(serviceContainer);
         }
@@ -57,14 +55,10 @@ namespace bwaniaProject.Infrastructure.Data
             });
         }
 
-        protected void ConfigureDatabaseInstance(IServiceContainer container)
-        {
-            
-        }
-
         protected void RegisterRepositories(IServiceContainer container)
         {
             container.Register<IDocumentDomainRepository, DocumentDomainRepository>();
+            container.Register<ICommentaireDomainRepository, CommentaireDomainRepository>();
         }
 
         #endregion

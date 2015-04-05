@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BucketNames.cs" />
-    <Compile Include="DataBootstrapper.cs" />
+    <Compile Include="DataDomainBootstrapper.cs" />
     <Compile Include="Exceptions\CouchbaseAuthenticationException.cs" />
     <Compile Include="Exceptions\CouchbaseClientException.cs" />
     <Compile Include="Exceptions\CouchbaseDataException.cs" />

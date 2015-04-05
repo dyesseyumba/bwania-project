@@ -11,7 +11,7 @@
     <AssemblyName>bwania-project.Infrastrcture.Data.ReadModel</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>de30907a</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>e9d825b9</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Anotar.Catel">
+      <HintPath>..\..\..\..\lib\Anotar.Catel.Fody.2.15.1\Lib\Anotar.Catel.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Catel.Core, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\lib\Catel.Core.4.1.0\lib\net45\Catel.Core.dll</HintPath>
@@ -69,6 +73,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataReadBootstrapper.cs" />
     <Compile Include="ElasticSearchIndexNames.cs" />
     <Compile Include="Exceptions\SearchRequestException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,7 +83,9 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj">
       <Project>{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}</Project>
@@ -90,6 +97,13 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\..\lib\Fody.1.27.1\build\Fody.targets" Condition="Exists('..\..\..\..\lib\Fody.1.27.1\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\..\lib\Fody.1.27.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\..\lib\Fody.1.27.1\build\Fody.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
