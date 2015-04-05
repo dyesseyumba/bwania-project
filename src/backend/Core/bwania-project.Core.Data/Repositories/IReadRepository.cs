@@ -1,7 +1,9 @@
-﻿using System.Threading.Tasks;
-using bwaniaProject.Entities;
+﻿using bwaniaProject.Entities;
 
 namespace bwaniaProject.Data
 {
-    public interface IReadRepository { }
+    public interface IReadRepository<in T> where T : IEntity
+    {
+        
+    }
 }
