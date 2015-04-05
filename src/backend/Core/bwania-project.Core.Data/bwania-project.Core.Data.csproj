@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ICommentaireDomainRepository.cs" />
+    <Compile Include="Repositories\ICommentReadRepository.cs" />
     <Compile Include="Repositories\IDocumentDomainRepository.cs" />
     <Compile Include="Repositories\IDocumentReadRepository.cs" />
     <Compile Include="Repositories\IDomainRepository.cs" />

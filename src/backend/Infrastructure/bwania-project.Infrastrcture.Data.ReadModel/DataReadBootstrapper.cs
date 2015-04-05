@@ -40,6 +40,7 @@ namespace bwaniaProject.Data
 
         protected void RegisterRepositories(IServiceContainer container)
         {
+            container.Register<ICommentReadRepository, CommentReadRepository>();
             container.Register<IDocumentReadRepository, DocumentReadRepository>();
         }
 

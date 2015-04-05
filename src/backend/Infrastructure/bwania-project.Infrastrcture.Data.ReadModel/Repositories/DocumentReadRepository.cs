@@ -6,11 +6,20 @@ namespace bwaniaProject.Data
 {
     public class DocumentReadRepository : ReadRepositoryBase, IDocumentReadRepository
     {
+        #region Constructors
         public DocumentReadRepository()
             : base(ElasticSearchIndexNames.DocumentBucketName)
         {
         }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// Gets the ten indexed document.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <returns></returns>
+        /// <exception cref="bwaniaProject.Data.Exceptions.SearchRequestException"></exception>
         public IEnumerable<Document> GetTenDocument(int nbPage)
         {
             var results = Client.Search<Document>(s => s
@@ -21,5 +30,6 @@ namespace bwaniaProject.Data
 
             throw new SearchRequestException(results.RequestInformation);
         }
+        #endregion
     }
 }
