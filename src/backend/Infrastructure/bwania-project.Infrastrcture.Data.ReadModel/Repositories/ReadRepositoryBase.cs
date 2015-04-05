@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Configuration;
-using bwaniaProject.Entities;
 using Catel;
 using Nest;
 
-namespace bwaniaProject.Data.Repositories
+namespace bwaniaProject.Data
 {
-    public class ReadRepositoryBase<T> : IReadRepository<T> where T : IEntity
+    public class ReadRepositoryBase
     {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReadRepositoryBase{T}"/> class.
+        /// Initializes a new instance of the <see cref="ReadRepositoryBase"/> class.
         /// </summary>
         /// <param name="indexName">Name of the index.</param>
         /// <exception cref="System.ArgumentNullException">The <paramref name="indexName" /> is <c>null</c>.</exception>
