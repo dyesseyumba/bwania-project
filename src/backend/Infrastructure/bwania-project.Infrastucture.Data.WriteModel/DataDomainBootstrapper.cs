@@ -17,7 +17,7 @@ namespace bwaniaProject.Infrastructure.Data
         /// </summary>
         /// <param name="serviceContainer">The service locator.</param>
         /// <exception cref="System.ArgumentNullException">The <paramref name="serviceContainer" /> is <c>null</c>.</exception>
-        public void Initialize(IServiceContainer serviceContainer)
+        public virtual void Initialize(IServiceContainer serviceContainer)
         {
             Argument.IsNotNull("serviceContainer", serviceContainer);
 

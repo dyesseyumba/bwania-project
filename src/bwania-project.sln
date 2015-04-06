@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.WriteModel", "backend\Infrastructure\bwania-project.Infrastucture.Data.WriteModel\bwania-project.Infrastructure.Data.WriteModel.csproj", "{425E4725-3954-4236-AB15-F0C0708934FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.Test", "backend\Tests\Infrastuctue\bwania-project.Infrastructure.Data.Test\bwania-project.Infrastructure.Data.Test.csproj", "{FC969BF6-1918-4769-BD1A-9F956596F0F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{425E4725-3954-4236-AB15-F0C0708934FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{425E4725-3954-4236-AB15-F0C0708934FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{425E4725-3954-4236-AB15-F0C0708934FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +101,6 @@ Global
 		{98906221-170A-474A-AA05-0378F8DB89AC} = {3230B93C-7C15-4CD7-9251-38128D9FFA5C}
 		{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{425E4725-3954-4236-AB15-F0C0708934FC} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
+		{FC969BF6-1918-4769-BD1A-9F956596F0F8} = {A1681EC1-CED5-4398-85B1-F1912D35E70A}
 	EndGlobalSection
 EndGlobal

@@ -10,13 +10,13 @@ namespace bwaniaProject.Data
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        Task SaveAsync(T entity);
+        Task<bool> SaveAsync(T entity);
 
         /// <summary>
         /// Removes the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        Task RemoveAsync(T entity);
+        Task<bool> RemoveAsync(T entity);
     }
 }

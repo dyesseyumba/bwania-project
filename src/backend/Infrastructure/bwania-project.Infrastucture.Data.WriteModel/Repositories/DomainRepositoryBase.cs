@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using bwaniaProject.Data.Extensions;
 using bwaniaProject.Entities;
+using Catel;
 using Couchbase.Core;
 
 namespace bwaniaProject.Data
@@ -21,16 +22,36 @@ namespace bwaniaProject.Data
 
         #region Methods
 
-        public async Task SaveAsync(T entity)
+        /// <summary>
+        /// Saves the asynchronous.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="entity" /> is <c>null</c>.</exception>
+        public async Task<bool> SaveAsync(T entity)
         {
+            Argument.IsNotNull("entity", entity);
+
             var result = await Task.Run(() => Bucket.Upsert(entity.Wrap())).ConfigureAwait(false);
             result.ThrowIfNotSuccess();
+
+            return result.Success;
         }
 
-        public async Task RemoveAsync(T entity)
+        /// <summary>
+        /// Removes the asynchronous.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="entity" /> is <c>null</c>.</exception>
+        public async Task<bool> RemoveAsync(T entity)
         {
+            Argument.IsNotNull("entity", entity);
+
             var result = await Task.Run(() => Bucket.Remove(entity.Wrap())).ConfigureAwait(false);
             result.ThrowIfNotSuccess(entity.id);
+
+            return result.Success;
         }
 
         #endregion
