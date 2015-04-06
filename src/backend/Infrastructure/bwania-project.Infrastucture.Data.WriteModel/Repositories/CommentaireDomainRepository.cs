@@ -7,7 +7,7 @@ namespace bwaniaProject.Data
     public class CommentaireDomainRepository : DomainRepositoryBase<Commentaire>, ICommentaireDomainRepository
     {
         public CommentaireDomainRepository()
-            : base(ClusterHelper.GetBucket(BucketNames.CommentaireBucketName))
+            : base(ClusterHelper.GetBucket(BucketNames.CommentBucketName))
         {
         }
     }

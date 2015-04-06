@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Entitie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Data", "backend\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj", "{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data", "backend\Infrastructure\bwania-project.Infrastructure.Data\bwania-project.Infrastructure.Data.csproj", "{F9540EB1-6609-4F47-A19E-019E57E3EAEA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Business", "backend\Infrastructure\bwania-project.Infrastructure.Business\bwania-project.Infrastructure.Business.csproj", "{657ABCBF-C313-4269-918A-AFEEBCA383CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.dependencyResolution", "backend\DependencyResolution\bwania-projrct.dependensyResolution\bwania-project.dependencyResolution.csproj", "{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}"
@@ -51,10 +49,6 @@ Global
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9540EB1-6609-4F47-A19E-019E57E3EAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9540EB1-6609-4F47-A19E-019E57E3EAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9540EB1-6609-4F47-A19E-019E57E3EAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9540EB1-6609-4F47-A19E-019E57E3EAEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -94,7 +88,6 @@ Global
 		{FFF048F0-526B-4BB2-85D7-3CD98EE6D5C7} = {F09942E6-0789-4191-8D52-DC7FEE36546C}
 		{CA864EA3-6423-48BF-9352-666A0BCFB7AF} = {28335DF3-FD70-4D81-8BFC-7FE762E112F7}
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62} = {28335DF3-FD70-4D81-8BFC-7FE762E112F7}
-		{F9540EB1-6609-4F47-A19E-019E57E3EAEA} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73} = {FFF048F0-526B-4BB2-85D7-3CD98EE6D5C7}
 		{AF678F0D-9DD7-4EB5-9034-037476EC4B96} = {211BB080-9A51-4218-8D5A-66418009EEF3}

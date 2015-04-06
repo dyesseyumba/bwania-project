@@ -68,10 +68,6 @@
       <Project>{657abcbf-c313-4269-918a-afeebca383ca}</Project>
       <Name>bwania-project.Infrastructure.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Data\bwania-project.Infrastructure.Data.csproj">
-      <Project>{f9540eb1-6609-4f47-a19e-019e57e3eaea}</Project>
-      <Name>bwania-project.Infrastructure.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Fody.1.27.1\build\Fody.targets" Condition="Exists('..\..\..\packages\Fody.1.27.1\build\Fody.targets')" />

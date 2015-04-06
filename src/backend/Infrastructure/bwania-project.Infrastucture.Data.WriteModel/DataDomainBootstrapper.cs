@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Data.SqlClient;
 using Anotar.Catel;
-using bwaniaProject.Infrastructure.Data.Exceptions;
+using bwaniaProject.Data;
+using bwaniaProject.Data.Exceptions;
 using Catel;
 using Catel.ExceptionHandling;
-using Catel.IoC;
 using LightInject;
 
 namespace bwaniaProject.Infrastructure.Data
 {
-    public class DataBootstrapper
+    public class DataDomainBootstrapper
     {
         #region Methods
 
@@ -24,12 +23,10 @@ namespace bwaniaProject.Infrastructure.Data
 
             ConfigureExceptionPolicies(serviceContainer);
 
-            ConfigureDatabaseInstance(serviceContainer);
-
             RegisterRepositories(serviceContainer);
         }
 
-        protected void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
+        protected virtual void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
         {
             var exceptionService = serviceContainer.GetInstance<IExceptionService>();
 
@@ -58,14 +55,10 @@ namespace bwaniaProject.Infrastructure.Data
             });
         }
 
-        protected void ConfigureDatabaseInstance(IServiceContainer serviceLocator)
+        protected void RegisterRepositories(IServiceContainer container)
         {
-            
-        }
-
-        protected void RegisterRepositories(IServiceContainer serviceLocator)
-        {
-            
+            container.Register<IDocumentDomainRepository, DocumentDomainRepository>();
+            container.Register<ICommentaireDomainRepository, CommentaireDomainRepository>();
         }
 
         #endregion

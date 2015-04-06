@@ -1,14 +1,13 @@
 ﻿using System;
 using Anotar.Catel;
-using bwaniaProject.Data;
 using bwaniaProject.Data.Exceptions;
 using Catel;
 using Catel.ExceptionHandling;
 using LightInject;
 
-namespace bwaniaProject.Infrastructure.Data
+namespace bwaniaProject.Data
 {
-    public class DataBootstrapper
+    public class DataReadBootstrapper
     {
         #region Methods
 
@@ -23,8 +22,6 @@ namespace bwaniaProject.Infrastructure.Data
 
             ConfigureExceptionPolicies(serviceContainer);
 
-            ConfigureDatabaseInstance(serviceContainer);
-
             RegisterRepositories(serviceContainer);
         }
 
@@ -32,41 +29,21 @@ namespace bwaniaProject.Infrastructure.Data
         {
             var exceptionService = serviceContainer.GetInstance<IExceptionService>();
 
-            exceptionService.Register<CouchbaseDataException>(exception =>
+            exceptionService.Register<SearchRequestException>(exception =>
             {
                 LogTo.Error(exception.Message);
                 throw new Exception(
                     "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
                     exception);
             });
-
-            exceptionService.Register<QueryRequestException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans lors de la requète. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
-
-            exceptionService.Register<ViewRequestException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
-        }
-
-        protected void ConfigureDatabaseInstance(IServiceContainer container)
-        {
-            
         }
 
         protected void RegisterRepositories(IServiceContainer container)
         {
-            container.Register<IDocumentDomainRepository, DocumentDomainRepository>();
+            container.Register<ICommentReadRepository, CommentReadRepository>();
+            container.Register<IDocumentReadRepository, DocumentReadRepository>();
         }
 
-        #endregion
+        #endregion 
     }
 }
