@@ -1,4 +1,10 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="RepositoryFactsBase.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>
+//  --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using bwaniaProject.Entities;
 using Catel;
@@ -9,13 +15,13 @@ using LightInject;
 
 namespace bwaniaProject.Data.Test.RepositoryFacts
 {
-    public class RepositoryFactsBase<TRepository, TEntity>
+    public class RepositoryDomainFactsBase<TRepository, TEntity>
         where TEntity : IEntity
-        where TRepository : IRepository<TEntity>
+        where TRepository : IDomainRepository<TEntity>
     {
         #region Constructors
 
-        public RepositoryFactsBase(TRepository repository)
+        public RepositoryDomainFactsBase(TRepository repository)
         {
             var container = new ServiceContainer();
 
@@ -23,33 +29,35 @@ namespace bwaniaProject.Data.Test.RepositoryFacts
             Repository = repository;
             ExceptionService = container.GetInstance<IExceptionService>();
         }
+
         #endregion
 
         #region Properties
 
         /// <summary>
-        /// Gets the bucket.
+        ///     Gets the bucket.
         /// </summary>
         /// <value>
-        /// The bucket.
+        ///     The bucket.
         /// </value>
         protected IBucket Bucket { get; private set; }
 
         /// <summary>
-        /// Gets the repository.
+        ///     Gets the repository.
         /// </summary>
         /// <value>
-        /// The repository.
+        ///     The repository.
         /// </value>
         protected TRepository Repository { get; private set; }
 
         /// <summary>
-        /// Gets the exception service.
+        ///     Gets the exception service.
         /// </summary>
         /// <value>
-        /// The exception service.
+        ///     The exception service.
         /// </value>
         protected IExceptionService ExceptionService { get; private set; }
+
         #endregion
 
         #region Methods
@@ -60,7 +68,7 @@ namespace bwaniaProject.Data.Test.RepositoryFacts
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns></returns>
         // ReSharper disable once CSharpWarnings::CS0693
-        protected TEntity BuildEntity<TEntity>() 
+        protected TEntity BuildEntity<TEntity>()
         {
             return Builder<TEntity>.CreateNew().Build();
         }
@@ -79,8 +87,6 @@ namespace bwaniaProject.Data.Test.RepositoryFacts
 
             return Builder<TEntity>.CreateListOfSize(size).Build();
         }
-
-        
 
         #endregion
     }

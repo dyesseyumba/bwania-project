@@ -1,19 +1,26 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="DataDomainTestsBootstrapper.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>
+//  --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using bwaniaProject.Data.Extensions;
 using bwaniaProject.Entities;
 using bwaniaProject.Infrastructure.Data;
 using Catel.ExceptionHandling;
-using Couchbase;
 using Couchbase.Core;
 using LightInject;
 using Moq;
 
 namespace bwaniaProject.Data.Test
 {
-    public class DataDomainTestsBootstrapper : DataDomainBootstrapper, ICompositionRoot 
+    public class DataDomainTestsBootstrapper : DataDomainBootstrapper, ICompositionRoot
     {
         #region Fields
+
         //private static readonly object Lock = new object();
+
         #endregion
 
         #region Methods
@@ -63,6 +70,5 @@ namespace bwaniaProject.Data.Test
         }
 
         #endregion
-        
     }
 }

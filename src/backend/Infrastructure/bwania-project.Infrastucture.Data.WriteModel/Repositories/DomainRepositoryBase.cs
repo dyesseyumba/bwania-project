@@ -1,4 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="DomainRepositoryBase.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>
+//  --------------------------------------------------------------------------------------------------------------------
+
+using System.Threading.Tasks;
 using bwaniaProject.Data.Extensions;
 using bwaniaProject.Entities;
 using Catel;
@@ -9,21 +15,24 @@ namespace bwaniaProject.Data
     public class DomainRepositoryBase<T> : IDomainRepository<T> where T : IEntity
     {
         #region Constructors
+
         public DomainRepositoryBase(IBucket bucket)
         {
             Bucket = bucket;
         }
+
         #endregion
 
         #region Properties
 
-        protected  IBucket Bucket { get; private set; }
+        protected IBucket Bucket { get; private set; }
+
         #endregion
 
         #region Methods
 
         /// <summary>
-        /// Saves the asynchronous.
+        ///     Saves the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
@@ -39,7 +48,7 @@ namespace bwaniaProject.Data
         }
 
         /// <summary>
-        /// Removes the asynchronous.
+        ///     Removes the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
