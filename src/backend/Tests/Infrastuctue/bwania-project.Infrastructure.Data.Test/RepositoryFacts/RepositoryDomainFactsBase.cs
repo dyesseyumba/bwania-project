@@ -6,7 +6,7 @@
 
 using System;
 using System.Collections.Generic;
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
 using Couchbase.Core;

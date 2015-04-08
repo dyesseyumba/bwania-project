@@ -4,7 +4,7 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 using FluentValidation;
 
 namespace BwaniaProject.Domain.Validators

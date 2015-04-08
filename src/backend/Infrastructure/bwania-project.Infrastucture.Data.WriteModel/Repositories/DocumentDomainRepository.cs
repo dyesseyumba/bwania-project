@@ -4,12 +4,13 @@
 //  </copyright>
 //  --------------------------------------------------------------------------------------------------------------------
 
-using bwaniaProject.Entities;
+
+using BwaniaProject.Entities;
 using Couchbase;
 
 namespace bwaniaProject.Data
 {
-    public class DocumentDomainRepository : DomainRepositoryBase<Document>, IDocumentDomainRepository
+    public class DocumentDomainRepository : DomainRepositoryBase<IDocument>, IDocumentDomainRepository
     {
         public DocumentDomainRepository()
             : base(ClusterHelper.GetBucket(BucketNames.DocumentBucketName))

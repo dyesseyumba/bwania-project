@@ -6,7 +6,7 @@
 
 using System.Threading.Tasks;
 using bwaniaProject.Data;
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 
 namespace BwaniaProject.Domain.Engines
 {

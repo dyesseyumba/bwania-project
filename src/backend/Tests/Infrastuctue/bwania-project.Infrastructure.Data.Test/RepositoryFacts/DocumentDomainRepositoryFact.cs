@@ -6,7 +6,7 @@
 
 using System;
 using System.Threading.Tasks;
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 using FluentAssertions;
 using MethodTimer;
 using Xunit;

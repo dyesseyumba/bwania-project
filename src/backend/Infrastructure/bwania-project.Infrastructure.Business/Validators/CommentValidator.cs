@@ -4,12 +4,12 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 using FluentValidation;
 
 namespace BwaniaProject.Domain.Validators
 {
-    public class CommentValidator : AbstractValidator<Commentaire>
+    public class CommentValidator : AbstractValidator<ICommentaire>
     {
          
     }

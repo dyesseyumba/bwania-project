@@ -6,8 +6,8 @@
 
 using System;
 using bwaniaProject.Data.Extensions;
-using bwaniaProject.Entities;
 using bwaniaProject.Infrastructure.Data;
+using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
 using Couchbase.Core;
 using LightInject;

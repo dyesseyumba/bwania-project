@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using bwaniaProject.Data.Exceptions;
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 
 namespace bwaniaProject.Data
 {

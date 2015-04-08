@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Entitie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Data", "backend\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj", "{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Business", "backend\Infrastructure\bwania-project.Infrastructure.Business\bwania-project.Infrastructure.Business.csproj", "{657ABCBF-C313-4269-918A-AFEEBCA383CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Domain.WriteModel", "backend\Infrastructure\bwania-project.Infrastructure.Business\bwania-project.Infrastructure.Domain.WriteModel.csproj", "{657ABCBF-C313-4269-918A-AFEEBCA383CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.dependencyResolution", "backend\DependencyResolution\bwania-projrct.dependensyResolution\bwania-project.dependencyResolution.csproj", "{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}"
 EndProject
@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.Test", "backend\Tests\Infrastuctue\bwania-project.Infrastructure.Data.Test\bwania-project.Infrastructure.Data.Test.csproj", "{FC969BF6-1918-4769-BD1A-9F956596F0F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Domain.WriteModel", "backend\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.WriteModel.csproj", "{2B917012-DFBA-438D-970B-5E97D80002E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Domain", "backend\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.csproj", "{2B917012-DFBA-438D-970B-5E97D80002E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

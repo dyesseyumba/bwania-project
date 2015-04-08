@@ -4,12 +4,17 @@
 //  </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using BwaniaProject.Domain.Engines;
+using BwaniaProject.Domain.Validation;
+using BwaniaProject.Domain.Validators;
+using BwaniaProject.Entities;
 using Catel;
+using FluentValidation;
 using LightInject;
 
 namespace BwaniaProject.Domain
 {
-    public class DomainBootstrapper
+    public class DomainWriteBootstrapper
     {
         /// <summary>
         /// Initializes the specified service container.
@@ -21,13 +26,22 @@ namespace BwaniaProject.Domain
 
         }
 
+        protected void RegisterValidationStuff(IServiceContainer container)
+        {
+            container.Register<IValidatorFactory, ValidatorFactory>();
+
+            container.Register<IValidator<ICommentaire>, CommentValidator>();
+            container.Register<IValidator<IDocument>, DocumentValidator>();
+        }
+
         /// <summary>
         /// Registers the engines.
         /// </summary>
         /// <param name="container">The container.</param>
         protected void RegisterEngines(IServiceContainer container)
         {
-            
+            container.Register<ICommentDomainEngine, CommentDomainEngine>();
+            container.Register<IDocumentDomainEngine, DocumentDomainEngine>();
         } 
     }
 }

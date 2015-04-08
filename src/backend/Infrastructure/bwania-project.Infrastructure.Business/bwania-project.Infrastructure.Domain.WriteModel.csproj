@@ -58,8 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainBootstrapper.cs" />
-    <Compile Include="EngineBase\DomainEngineBase.cs" />
+    <Compile Include="DomainWriteBootstrapper.cs" />
+    <Compile Include="Engine\CommentDomainEngine.cs" />
+    <Compile Include="Engine\DocumentDomainEngine.cs" />
+    <Compile Include="Engine\DomainEngineBase.cs" />
     <Compile Include="Factories\ValidatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validators\CommentValidator.cs" />
@@ -76,9 +78,9 @@
       <Project>{be52223f-79a3-42fa-8e1c-ff60b4da8e62}</Project>
       <Name>bwania-project.Core.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.WriteModel.csproj">
+    <ProjectReference Include="..\..\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.csproj">
       <Project>{2B917012-DFBA-438D-970B-5E97D80002E0}</Project>
-      <Name>bwania-project.Core.Domain.WriteModel</Name>
+      <Name>bwania-project.Core.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Core\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{ca864ea3-6423-48bf-9352-666a0bcfb7af}</Project>

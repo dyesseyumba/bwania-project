@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace bwaniaProject.Entities
+namespace BwaniaProject.Entities
 {
     public class EntityBase : IEntity
     {

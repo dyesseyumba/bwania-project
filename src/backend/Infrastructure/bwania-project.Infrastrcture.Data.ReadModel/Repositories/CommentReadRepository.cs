@@ -1,13 +1,20 @@
-﻿using System.Collections.Generic;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CommentReadRepository.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Collections.Generic;
 using bwaniaProject.Data.Exceptions;
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 
 namespace bwaniaProject.Data
 {
     public class CommentReadRepository : ReadRepositoryBase, ICommentReadRepository
     {
         #region Constructores
-        public CommentReadRepository() 
+
+        public CommentReadRepository()
             : base(ElasticSearchIndexNames.CommentIndexName)
         {
         }

@@ -4,12 +4,12 @@
 //  </copyright>
 //  --------------------------------------------------------------------------------------------------------------------
 
-using bwaniaProject.Entities;
+using BwaniaProject.Entities;
 using Couchbase;
 
 namespace bwaniaProject.Data
 {
-    public class CommentaireDomainRepository : DomainRepositoryBase<Commentaire>, ICommentaireDomainRepository
+    public class CommentaireDomainRepository : DomainRepositoryBase<ICommentaire>, ICommentaireDomainRepository
     {
         public CommentaireDomainRepository()
             : base(ClusterHelper.GetBucket(BucketNames.CommentBucketName))
