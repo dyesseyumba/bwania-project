@@ -8,12 +8,11 @@ using System;
 using System.Threading.Tasks;
 using bwaniaProject.Data;
 using bwaniaProject.Entities;
-using BwaniaProject.Domain.Engines;
 using Catel;
 using Catel.ExceptionHandling;
 using FluentValidation;
 
-namespace bwaniaProject.Infrastructure.Business.EngineBase
+namespace BwaniaProject.Domain.Engines
 {
     public class DomainEngineBase<TEntity, TRepository> : IDomainEngine<TEntity, TRepository>
         where TEntity : IEntity

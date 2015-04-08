@@ -7,7 +7,7 @@
 using Catel;
 using LightInject;
 
-namespace bwaniaProject.Infrastructure.Business
+namespace BwaniaProject.Domain
 {
     public class DomainBootstrapper
     {
