@@ -46,10 +46,21 @@
     <Compile Include="..\..\..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Engines\IDomainEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bwania-project.Core.Data\bwania-project.Core.Data.csproj">
+      <Project>{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}</Project>
+      <Name>bwania-project.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
+      <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>
+      <Name>bwania-project.Core.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

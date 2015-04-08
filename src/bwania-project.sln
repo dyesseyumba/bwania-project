@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Entitie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Data", "backend\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj", "{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Business", "backend\Core\bwania-project.Core.Business\bwania-project.Core.Business.csproj", "{2B917012-DFBA-438D-970B-5E97D80002E0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Business", "backend\Infrastructure\bwania-project.Infrastructure.Business\bwania-project.Infrastructure.Business.csproj", "{657ABCBF-C313-4269-918A-AFEEBCA383CA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.dependencyResolution", "backend\DependencyResolution\bwania-projrct.dependensyResolution\bwania-project.dependencyResolution.csproj", "{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}"
@@ -36,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.WriteModel", "backend\Infrastructure\bwania-project.Infrastucture.Data.WriteModel\bwania-project.Infrastructure.Data.WriteModel.csproj", "{425E4725-3954-4236-AB15-F0C0708934FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.Test", "backend\Tests\Infrastuctue\bwania-project.Infrastructure.Data.Test\bwania-project.Infrastructure.Data.Test.csproj", "{FC969BF6-1918-4769-BD1A-9F956596F0F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Core.Domain.WriteModel", "backend\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.WriteModel.csproj", "{2B917012-DFBA-438D-970B-5E97D80002E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,10 +51,6 @@ Global
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2B917012-DFBA-438D-970B-5E97D80002E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B917012-DFBA-438D-970B-5E97D80002E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B917012-DFBA-438D-970B-5E97D80002E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B917012-DFBA-438D-970B-5E97D80002E0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -83,6 +79,10 @@ Global
 		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC969BF6-1918-4769-BD1A-9F956596F0F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B917012-DFBA-438D-970B-5E97D80002E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B917012-DFBA-438D-970B-5E97D80002E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B917012-DFBA-438D-970B-5E97D80002E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B917012-DFBA-438D-970B-5E97D80002E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,7 +94,6 @@ Global
 		{FFF048F0-526B-4BB2-85D7-3CD98EE6D5C7} = {F09942E6-0789-4191-8D52-DC7FEE36546C}
 		{CA864EA3-6423-48BF-9352-666A0BCFB7AF} = {28335DF3-FD70-4D81-8BFC-7FE762E112F7}
 		{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62} = {28335DF3-FD70-4D81-8BFC-7FE762E112F7}
-		{2B917012-DFBA-438D-970B-5E97D80002E0} = {28335DF3-FD70-4D81-8BFC-7FE762E112F7}
 		{657ABCBF-C313-4269-918A-AFEEBCA383CA} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73} = {FFF048F0-526B-4BB2-85D7-3CD98EE6D5C7}
 		{AF678F0D-9DD7-4EB5-9034-037476EC4B96} = {211BB080-9A51-4218-8D5A-66418009EEF3}
@@ -102,5 +101,6 @@ Global
 		{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{425E4725-3954-4236-AB15-F0C0708934FC} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{FC969BF6-1918-4769-BD1A-9F956596F0F8} = {A1681EC1-CED5-4398-85B1-F1912D35E70A}
+		{2B917012-DFBA-438D-970B-5E97D80002E0} = {28335DF3-FD70-4D81-8BFC-7FE762E112F7}
 	EndGlobalSection
 EndGlobal

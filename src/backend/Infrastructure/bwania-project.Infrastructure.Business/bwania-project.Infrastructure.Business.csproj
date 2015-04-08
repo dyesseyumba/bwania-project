@@ -42,6 +42,10 @@
       <HintPath>..\..\..\..\lib\Catel.Core.4.1.0\lib\net45\Catel.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=5.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\FluentValidation.5.5.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
     <Reference Include="LightInject">
       <HintPath>..\..\..\..\lib\LightInject.3.0.2.6\lib\net45\LightInject.dll</HintPath>
     </Reference>
@@ -54,7 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DomainBootstrapper.cs" />
+    <Compile Include="EngineBase\DomainEngineBase.cs" />
+    <Compile Include="Factories\ValidatorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,13 +70,13 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\bwania-project.Core.Business\bwania-project.Core.Business.csproj">
-      <Project>{2b917012-dfba-438d-970b-5e97d80002e0}</Project>
-      <Name>bwania-project.Core.Business</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj">
       <Project>{be52223f-79a3-42fa-8e1c-ff60b4da8e62}</Project>
       <Name>bwania-project.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.WriteModel.csproj">
+      <Project>{2B917012-DFBA-438D-970B-5E97D80002E0}</Project>
+      <Name>bwania-project.Core.Domain.WriteModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Core\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{ca864ea3-6423-48bf-9352-666a0bcfb7af}</Project>

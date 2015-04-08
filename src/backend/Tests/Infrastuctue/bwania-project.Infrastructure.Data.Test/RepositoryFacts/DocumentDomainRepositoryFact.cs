@@ -31,9 +31,9 @@ namespace bwaniaProject.Data.Test.RepositoryFacts
 
             [Fact]
             [Time]
-            public void ShouldReturnsArgumentNullExceptionForNullAsEntity()
+            public async void ShouldReturnsArgumentNullExceptionForNullAsEntity()
             {
-                var repository = new DocumentDomainRepository();
+                //var t = async () => 
 
                 Repository.SaveAsync(null).ShouldThrow<ArgumentNullException>();
             }

@@ -12,7 +12,7 @@ namespace bwaniaProject.Data.Test
 {
     public static class TaskExt
     {
-        public static void ShouldThrow<TException>(this Task task) where TException : Exception
+        public static async void ShouldThrow<TException>(this Task task) where TException : Exception
         {
             Func<Task> func = () => task;
             func.ShouldThrow<TException>();
