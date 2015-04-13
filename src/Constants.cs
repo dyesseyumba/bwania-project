@@ -12,6 +12,12 @@ namespace BwaniaProject
 
         public const string DocumentBucketName = "BwaniaDocument";
 
-        private const string DocumentIndexName = "bwania-document";
+        public const string DocumentIndexName = "bwania-document";
+    }
+
+    public static class RouteNames
+    {
+        public const string RoutePrefix = "api";
+        public const string IdSuffix = "{id:long}";
     }
 }

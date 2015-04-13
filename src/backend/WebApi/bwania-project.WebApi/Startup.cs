@@ -1,8 +1,12 @@
-﻿using System.Web.Http;
-using BwaniaProject.WebApi;
-using BwaniaProject;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="Startup.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Web.Http;
 using BwaniaProject.DependencyResolution;
-using Catel.IoC;
+using BwaniaProject.WebApi;
 using Catel.Logging;
 using LightInject;
 using Microsoft.Owin;
@@ -15,7 +19,7 @@ using Thinktecture.IdentityManager.Host;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Host;
 
-[assembly: OwinStartup(typeof(Startup))]
+[assembly: OwinStartup(typeof (Startup))]
 
 namespace BwaniaProject.WebApi
 {
@@ -30,17 +34,20 @@ namespace BwaniaProject.WebApi
             customDatabase.Database.CreateIfNotExists();
 #endif
 
-            var serviceLocator = new ServiceContainer();
-            Initialize(serviceLocator);
+            var serviceContainer = new ServiceContainer();
+            serviceContainer.RegisterApiControllers();
+            Initialize(serviceContainer);
 
             const string databaseConnectionName = Constants.DatabaseConnectionName;
 
 
-            app.Map("/api/{controller}/{id}", builder =>
+            app.Map("/" + RouteNames.RoutePrefix, builder =>
             {
                 var httpConfiguration = new HttpConfiguration();
 
                 UseJsonCamelCaseFormatter(httpConfiguration);
+
+                serviceContainer.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
 
                 ConfigureRouting(httpConfiguration);
 
@@ -75,7 +82,7 @@ namespace BwaniaProject.WebApi
                     CorsPolicy = CorsPolicy.AllowAll,
                     AuthenticationOptions = new AuthenticationOptions
                     {
-                        IdentityProviders = ConfigureAdditionalIdentityProviders,
+                        IdentityProviders = ConfigureAdditionalIdentityProviders
                     },
                     RequireSsl = false
                 };
