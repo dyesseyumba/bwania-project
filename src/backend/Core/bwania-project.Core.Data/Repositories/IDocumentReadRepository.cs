@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BwaniaProject.Entities;
 
 namespace BwaniaProject.Data
@@ -16,6 +17,6 @@ namespace BwaniaProject.Data
         /// </summary>
         /// <param name="nbPage">The nb page.</param>
         /// <returns></returns>
-        IEnumerable<IDocument> GetTenDocument(int nbPage);
+        Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage);
     }
 }

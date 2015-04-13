@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BwaniaProject.Data;
 using BwaniaProject.Entities;
 
@@ -12,6 +13,6 @@ namespace BwaniaProject.Domain.Engines
 {
     public interface IDocumentReadEngine : IReadEngine<IDocumentReadRepository>
     {
-        IEnumerable<IDocument> GetTenDocument(int nbPage);
+        Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage);
     }
 }

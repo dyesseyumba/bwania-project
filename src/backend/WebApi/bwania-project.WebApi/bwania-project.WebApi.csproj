@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bwaniaProject.WebApi</RootNamespace>
+    <RootNamespace>BwaniaProject.WebApi</RootNamespace>
     <AssemblyName>bwania-project.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
@@ -173,6 +173,7 @@
     <Compile Include="..\..\..\Constants.cs">
       <Link>Constants.cs</Link>
     </Compile>
+    <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IdentityManager\CustomIdentityManagerService.cs" />
     <Compile Include="Security\IdentityManager\MembershipRebootIdentityManagerServiceExtensions.cs" />
@@ -198,7 +199,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
