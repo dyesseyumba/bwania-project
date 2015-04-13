@@ -73,11 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Constants.cs">
+      <Link>Constants.cs</Link>
+    </Compile>
     <Compile Include="DataReadBootstrapper.cs" />
-    <Compile Include="ElasticSearchIndexNames.cs" />
     <Compile Include="Exceptions\SearchRequestException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\CommentReadRepository.cs" />
     <Compile Include="Repositories\DocumentReadRepository.cs" />
     <Compile Include="Repositories\ReadRepositoryBase.cs" />
   </ItemGroup>

@@ -58,7 +58,6 @@ namespace bwaniaProject.Infrastructure.Data
         protected void RegisterRepositories(IServiceContainer container)
         {
             container.Register<IDocumentDomainRepository, DocumentDomainRepository>();
-            container.Register<ICommentaireDomainRepository, CommentaireDomainRepository>();
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using bwaniaProject.Data.Exceptions;
+using BwaniaProject;
 using BwaniaProject.Entities;
 
 namespace bwaniaProject.Data
@@ -8,7 +9,7 @@ namespace bwaniaProject.Data
     {
         #region Constructors
         public DocumentReadRepository()
-            : base(ElasticSearchIndexNames.DocumentBucketName)
+            : base(Constants.DocumentBucketName)
         {
         }
         #endregion

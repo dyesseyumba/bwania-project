@@ -53,7 +53,6 @@ namespace bwaniaProject.Data.Test
         protected void RegisterRepositories(IServiceRegistry container)
         {
             container.Register<IDocumentDomainRepository, DocumentDomainRepository>();
-            container.Register<ICommentaireDomainRepository, CommentaireDomainRepository>();
         }
 
         private void MockBucket(IServiceRegistry serviceRegistry)

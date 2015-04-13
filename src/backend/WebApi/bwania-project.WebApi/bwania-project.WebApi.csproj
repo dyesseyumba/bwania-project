@@ -202,12 +202,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
-      <Project>{ca864ea3-6423-48bf-9352-666a0bcfb7af}</Project>
-      <Name>bwania-project.Core.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\DependencyResolution\bwania-projrct.dependensyResolution\bwania-project.dependencyResolution.csproj">
-      <Project>{9b7715db-604b-4e0f-a560-e7e2ebba4a73}</Project>
+      <Project>{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}</Project>
       <Name>bwania-project.dependencyResolution</Name>
     </ProjectReference>
   </ItemGroup>

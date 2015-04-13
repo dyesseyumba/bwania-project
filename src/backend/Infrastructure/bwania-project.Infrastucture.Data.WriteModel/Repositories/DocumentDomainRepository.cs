@@ -5,6 +5,7 @@
 //  --------------------------------------------------------------------------------------------------------------------
 
 
+using BwaniaProject;
 using BwaniaProject.Entities;
 using Couchbase;
 
@@ -13,7 +14,7 @@ namespace bwaniaProject.Data
     public class DocumentDomainRepository : DomainRepositoryBase<IDocument>, IDocumentDomainRepository
     {
         public DocumentDomainRepository()
-            : base(ClusterHelper.GetBucket(BucketNames.DocumentBucketName))
+            : base(ClusterHelper.GetBucket(Constants.DocumentBucketName))
         {
         }
     }

@@ -51,21 +51,19 @@
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ICommentaireDomainRepository.cs" />
-    <Compile Include="Repositories\ICommentReadRepository.cs" />
     <Compile Include="Repositories\IDocumentDomainRepository.cs" />
     <Compile Include="Repositories\IDocumentReadRepository.cs" />
     <Compile Include="Repositories\IDomainRepository.cs" />
     <Compile Include="Repositories\IReadRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>
       <Name>bwania-project.Core.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

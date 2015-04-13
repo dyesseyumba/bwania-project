@@ -9,5 +9,9 @@ namespace BwaniaProject
     public static class Constants
     {
         public const string DatabaseConnectionName = "BwaniaIdServerDb";
+
+        public const string DocumentBucketName = "BwaniaDocument";
+
+        private const string DocumentIndexName = "bwania-document";
     }
 }

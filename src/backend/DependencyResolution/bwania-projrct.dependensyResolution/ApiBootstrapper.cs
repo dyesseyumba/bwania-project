@@ -1,22 +1,20 @@
-﻿using bwaniaProject.Data;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="ApiBootstrapper.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using bwaniaProject.Data;
 using bwaniaProject.Infrastructure.Data;
 using BwaniaProject.Domain;
 using Catel;
 using Catel.ExceptionHandling;
-using Catel.IoC;
 using LightInject;
 
 namespace bwaniaProject.DependencyResolution
 {
     public class ApiBootstrapper
     {
-        #region Fields
-
-        private readonly DataDomainBootstrapper _dataDomainBootstrapper = new DataDomainBootstrapper();
-        private readonly DataReadBootstrapper _dataReadBootstrapper = new DataReadBootstrapper();
-        private readonly DomainWriteBootstrapper _domainWriteBootstrapper = new DomainWriteBootstrapper();
-
-        #endregion
         #region Methods
 
         /// <summary>
@@ -34,6 +32,14 @@ namespace bwaniaProject.DependencyResolution
             _dataReadBootstrapper.Initialize(serviceContainer);
             _domainWriteBootstrapper.Initialize(serviceContainer);
         }
+
+        #endregion
+
+        #region Fields
+
+        private readonly DataDomainBootstrapper _dataDomainBootstrapper = new DataDomainBootstrapper();
+        private readonly DataReadBootstrapper _dataReadBootstrapper = new DataReadBootstrapper();
+        private readonly DomainWriteBootstrapper _domainWriteBootstrapper = new DomainWriteBootstrapper();
 
         #endregion
     }

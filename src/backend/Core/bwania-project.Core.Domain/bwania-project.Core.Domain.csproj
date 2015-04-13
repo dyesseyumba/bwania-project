@@ -46,7 +46,6 @@
     <Compile Include="..\..\..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Engines\ICommentDomainEngine.cs" />
     <Compile Include="Engines\IDocumentDomainEngine.cs" />
     <Compile Include="Engines\IDomainEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
