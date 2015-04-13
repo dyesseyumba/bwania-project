@@ -4,21 +4,21 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}</ProjectGuid>
+    <ProjectGuid>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bwaniaProject.Data</RootNamespace>
-    <AssemblyName>bwania-project.Core.Data</AssemblyName>
+    <RootNamespace>BwaniaProject.Domain.Entities</RootNamespace>
+    <AssemblyName>bwania-project.Core.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>bd371d82</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>1a4f44c0</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Data\</OutputPath>
+    <OutputPath>..\..\..\..\output\Server\Core.Entities\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET45 SERVER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,17 +27,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Data\</OutputPath>
+    <OutputPath>..\..\..\..\output\Server\Core.Entities\</OutputPath>
     <DefineConstants>TRACE;NET45 SERVER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\lib\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,19 +46,13 @@
     <Compile Include="..\..\..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Entities\Commentaire.cs" />
+    <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\EntityBase.cs" />
+    <Compile Include="Entities\Interfaces\ICommentaire.cs" />
+    <Compile Include="Entities\Interfaces\IDocument.cs" />
+    <Compile Include="Entities\Interfaces\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ICommentaireDomainRepository.cs" />
-    <Compile Include="Repositories\ICommentReadRepository.cs" />
-    <Compile Include="Repositories\IDocumentDomainRepository.cs" />
-    <Compile Include="Repositories\IDocumentReadRepository.cs" />
-    <Compile Include="Repositories\IDomainRepository.cs" />
-    <Compile Include="Repositories\IReadRepository.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
-      <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>
-      <Name>bwania-project.Core.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

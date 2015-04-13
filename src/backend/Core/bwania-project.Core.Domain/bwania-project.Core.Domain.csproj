@@ -4,22 +4,22 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}</ProjectGuid>
+    <ProjectGuid>{2B917012-DFBA-438D-970B-5E97D80002E0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bwaniaProject.Data</RootNamespace>
-    <AssemblyName>bwania-project.Core.Data</AssemblyName>
+    <RootNamespace>BwaniaProject.Domain</RootNamespace>
+    <AssemblyName>bwania-project.Core.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>bd371d82</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>848d7dac</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Data\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NET45 SERVER</DefineConstants>
+    <OutputPath>..\..\..\..\output\Server\Core.Domain\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET45 SERVER DOMAIN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -27,17 +27,13 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Data\</OutputPath>
-    <DefineConstants>TRACE;NET45 SERVER</DefineConstants>
+    <OutputPath>..\..\..\..\output\Server\Core.Domain\</OutputPath>
+    <DefineConstants>TRACE;NET45 SERVER DOMAIN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\lib\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,22 +46,23 @@
     <Compile Include="..\..\..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Engines\ICommentDomainEngine.cs" />
+    <Compile Include="Engines\IDocumentDomainEngine.cs" />
+    <Compile Include="Engines\IDomainEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ICommentaireDomainRepository.cs" />
-    <Compile Include="Repositories\ICommentReadRepository.cs" />
-    <Compile Include="Repositories\IDocumentDomainRepository.cs" />
-    <Compile Include="Repositories\IDocumentReadRepository.cs" />
-    <Compile Include="Repositories\IDomainRepository.cs" />
-    <Compile Include="Repositories\IReadRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bwania-project.Core.Data\bwania-project.Core.Data.csproj">
+      <Project>{BE52223F-79A3-42FA-8E1C-FF60B4DA8E62}</Project>
+      <Name>bwania-project.Core.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>
       <Name>bwania-project.Core.Entities</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

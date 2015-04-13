@@ -10,6 +10,6 @@ using System.Reflection;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("bwania-project.Core.Data")]
+[assembly: AssemblyTitle("bwania-project.Core.Domain")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyProduct("bwania-project.Core.Data")]
+[assembly: AssemblyProduct("bwania-project.Core.Domain")]
