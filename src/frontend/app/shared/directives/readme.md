@@ -1,1 +1,0 @@
-Ce répertoire contient les directives communes à tous les modules

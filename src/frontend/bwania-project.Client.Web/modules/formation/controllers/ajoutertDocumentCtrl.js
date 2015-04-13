@@ -6,7 +6,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
         $scope.showErrorInfo=true;
 
 
-        if ($cookieStore.get('login_status') === true) {
+        
 
             var locals = {};
             var getUser = userFactory.getConnectedUser.get({email: $cookieStore.get('user_email')}, 
@@ -58,10 +58,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
                 });
             };
 
-        }
-        else {
-            $location.path('/redirectionlogin2');
-        }
+       
 
          //Remove Alert
         $scope.hideAlert = function(){

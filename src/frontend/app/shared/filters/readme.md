@@ -1,1 +1,0 @@
-Ce répertoire contient les filtres communs à tous les modules

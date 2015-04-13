@@ -5,11 +5,7 @@ app.controller('etablissementsCtrl', ['$scope', 'UserFactory', '$location', '$co
         //Masquer les méssages d'érreures
     $scope.activationFaild = false;
         //Vérifie si l'utilisateur est connecté ou pas
-        if ($cookieStore.get('login_status') === true) {
-            $scope.authenticated = true;
-        } else {
-            $scope.authenticated = false;
-        }
+        
 
         var getUser = UserFactory.getConnectedUser.get({email: $cookieStore.get('user_email')},
         //Vérifie si l'utilisateur à acyiver son éspace établissement scolaire ou non.
