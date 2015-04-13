@@ -7,10 +7,15 @@
 using System.Collections.Generic;
 using BwaniaProject.Entities;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public interface IDocumentReadRepository : IReadRepository
     {
-        IEnumerable<Document> GetTenDocument(int nbPage);
+        /// <summary>
+        /// Gets the ten document.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <returns></returns>
+        IEnumerable<IDocument> GetTenDocument(int nbPage);
     }
 }

@@ -13,7 +13,7 @@ using Couchbase.Core;
 using FizzWare.NBuilder;
 using LightInject;
 
-namespace bwaniaProject.Data.Test.RepositoryFacts
+namespace BwaniaProject.Data.Test.RepositoryFacts
 {
     public class RepositoryDomainFactsBase<TRepository, TEntity>
         where TEntity : IEntity

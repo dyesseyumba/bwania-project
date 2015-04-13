@@ -3,7 +3,7 @@ using System.Configuration;
 using Catel;
 using Nest;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public class ReadRepositoryBase
     {

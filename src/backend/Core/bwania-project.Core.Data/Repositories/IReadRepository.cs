@@ -1,6 +1,6 @@
 ﻿
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public interface IReadRepository
     {

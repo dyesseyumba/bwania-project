@@ -4,7 +4,7 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using bwaniaProject.Data;
+using BwaniaProject.Data;
 using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
 using FluentValidation;

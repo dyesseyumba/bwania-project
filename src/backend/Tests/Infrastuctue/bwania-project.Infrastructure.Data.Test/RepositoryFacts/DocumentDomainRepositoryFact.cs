@@ -11,7 +11,7 @@ using FluentAssertions;
 using MethodTimer;
 using Xunit;
 
-namespace bwaniaProject.Data.Test.RepositoryFacts
+namespace BwaniaProject.Data.Test.RepositoryFacts
 {
     public class DocumentDomainRepositoryFact
     {

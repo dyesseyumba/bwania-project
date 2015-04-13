@@ -5,12 +5,12 @@
 //  --------------------------------------------------------------------------------------------------------------------
 
 using System.Threading.Tasks;
-using bwaniaProject.Data.Extensions;
+using BwaniaProject.Data.Extensions;
 using BwaniaProject.Entities;
 using Catel;
 using Couchbase.Core;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public class DomainRepositoryBase<T> : IDomainRepository<T> where T : IEntity
     {

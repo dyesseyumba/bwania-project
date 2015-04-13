@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Couchbase;
 
-namespace bwaniaProject.Data.Exceptions
+namespace BwaniaProject.Data.Exceptions
 {
    public class CouchbaseServerException : CouchbaseDataException
     {

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Couchbase;
 using Couchbase.IO;
 
-namespace bwaniaProject.Data.Exceptions
+namespace BwaniaProject.Data.Exceptions
 {
     public class CouchbaseDataException : Exception
     {

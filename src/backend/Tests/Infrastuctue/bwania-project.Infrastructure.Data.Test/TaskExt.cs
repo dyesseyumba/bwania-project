@@ -8,7 +8,7 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 
-namespace bwaniaProject.Data.Test
+namespace BwaniaProject.Data.Test
 {
     public static class TaskExt
     {

@@ -5,15 +5,15 @@
 //  --------------------------------------------------------------------------------------------------------------------
 
 using System;
-using bwaniaProject.Data.Extensions;
-using bwaniaProject.Infrastructure.Data;
+using BwaniaProject.Data.Extensions;
 using BwaniaProject.Entities;
+using BwaniaProject.Infrastructure.Data;
 using Catel.ExceptionHandling;
 using Couchbase.Core;
 using LightInject;
 using Moq;
 
-namespace bwaniaProject.Data.Test
+namespace BwaniaProject.Data.Test
 {
     public class DataDomainTestsBootstrapper : DataDomainBootstrapper, ICompositionRoot
     {

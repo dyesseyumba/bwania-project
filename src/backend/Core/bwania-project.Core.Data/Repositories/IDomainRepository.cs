@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BwaniaProject.Entities;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public interface IDomainRepository<in T> where T : IEntity
     {

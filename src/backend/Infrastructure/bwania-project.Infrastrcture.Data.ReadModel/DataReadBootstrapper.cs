@@ -1,11 +1,11 @@
 ﻿using System;
 using Anotar.Catel;
-using bwaniaProject.Data.Exceptions;
+using BwaniaProject.Data.Exceptions;
 using Catel;
 using Catel.ExceptionHandling;
 using LightInject;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public class DataReadBootstrapper
     {
