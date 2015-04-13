@@ -8,6 +8,11 @@ namespace BwaniaProject.Entities
     /// </summary>
     public class Document : EntityBase, IDocument
     {
+        public Document()
+        {
+            Commentaires = new List<ICommentaire>();
+        }
+
         /// <summary>
         /// Gets or sets the titre.
         /// </summary>
@@ -126,6 +131,6 @@ namespace BwaniaProject.Entities
         /// <value>
         /// The commentaire.
         /// </value>
-        public List<Commentaire> Commentaires { get; set; }
+        public List<ICommentaire> Commentaires { get; set; }
     }
 }

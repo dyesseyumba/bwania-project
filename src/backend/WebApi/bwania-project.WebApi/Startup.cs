@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using bwaniaProject.DependencyResolution;
 using bwaniaProject.WebApi;
+using BwaniaProject;
 using Catel.IoC;
 using Catel.Logging;
 using LightInject;
@@ -25,14 +26,14 @@ namespace bwaniaProject.WebApi
 #if DEBUG
             LogManager.AddDebugListener();
 
-            var customDatabase = new CustomDatabase("BwaniaIdServerDb");
+            var customDatabase = new CustomDatabase(Constants.DatabaseConnectionName);
             customDatabase.Database.CreateIfNotExists();
 #endif
 
             var serviceLocator = new ServiceContainer();
             Initialize(serviceLocator);
 
-            const string databaseConnectionName = "BwaniaIdServerDb";
+            const string databaseConnectionName = Constants.DatabaseConnectionName;
 
 
             app.Map("/api/{controller}/{id}", builder =>

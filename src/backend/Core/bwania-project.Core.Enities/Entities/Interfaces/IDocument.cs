@@ -123,6 +123,6 @@ namespace BwaniaProject.Entities
         /// <value>
         /// The commentaire.
         /// </value>
-        List<Commentaire> Commentaires { get; set; }
+        List<ICommentaire> Commentaires { get; set; }
     }
 }
