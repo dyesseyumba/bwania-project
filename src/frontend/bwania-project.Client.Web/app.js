@@ -59,3 +59,18 @@ var app = angular.module('bwania', ['ngRoute', 'ngCookies', 'bwaniaAnimations', 
 $('.carousel').carousel({
     interval: 5000
 });
+
+var serviceBase = 'http://localhost:26264/';
+
+app.constant('ngAuthSettings', {
+    apiServiceBaseUri: serviceBase,
+    clientId: 'ngAuthApp'
+});
+
+//app.config(function ($httpProvider) {
+//    $httpProvider.interceptors.push('authInterceptorService');
+//});
+
+//app.run(['authService', function (authService) {
+//    authService.fillAuthData();
+//}]);

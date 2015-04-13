@@ -7,9 +7,7 @@ app.controller('docDetailsCtrl', ['$scope', '$cookieStore', 'UserFactory', '$rou
         $scope.comments = UserFactory.getCommentaire.query({id : $route.current.params.documentId});
 
         //Vérifiction du status d'authentification
-        if ($cookieStore.get('login_status') === true) {
-            $scope.authenticated = true;
-        }
+       
 
         var selectedDoc;
 
@@ -30,7 +28,7 @@ app.controller('docDetailsCtrl', ['$scope', '$cookieStore', 'UserFactory', '$rou
         //Mise à jour du document par l'événement ng-submit=updateDoc(document)
         $scope.setRate = function(rate) {
 
-            if ($cookieStore.get('login_status') === true) {
+            
 
                 var getDocument = UserFactory.getOneDocById.get({documentId: $route.current.params.documentId},
                 function() {
@@ -75,17 +73,15 @@ app.controller('docDetailsCtrl', ['$scope', '$cookieStore', 'UserFactory', '$rou
                 });
 
 
-            }
-            else {
-                $location.path('/redirectionlogin');
-            }
+            
+           
         };
 
         /*
          * Commentaire
          */
         $scope.SetComment = function(designation) {
-            if ($cookieStore.get('login_status') === true) {
+            
 
                 //Prendre les information sur l'utilisateur
 
@@ -103,10 +99,7 @@ app.controller('docDetailsCtrl', ['$scope', '$cookieStore', 'UserFactory', '$rou
                             $scope.comments = UserFactory.getCommentaire.query({id : $route.current.params.documentId});
                         });
                 });
-            }
-            else {
-                $location.path('/redirectionlogin');
-            }
+            
         }
 
         $scope.docUrl = UserFactory.docUrl;

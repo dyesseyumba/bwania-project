@@ -1,5 +1,3 @@
-'use strict';
-
 var customServices = angular.module('customServices', ['ngResource']);
 
 var urlMain = 'http://localhost:8080/bwania-services/rest/';
