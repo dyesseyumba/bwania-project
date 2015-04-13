@@ -19,5 +19,10 @@ namespace BwaniaProject
     {
         public const string RoutePrefix = "api";
         public const string IdSuffix = "{id:long}";
+
+        public static class Document
+        {
+            public const string GetTen = "gettendocuments/" + IdSuffix;
+        }
     }
 }
