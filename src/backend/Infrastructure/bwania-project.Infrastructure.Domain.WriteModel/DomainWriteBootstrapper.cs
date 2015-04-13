@@ -40,7 +40,6 @@ namespace BwaniaProject.Domain
         /// <param name="container">The container.</param>
         protected void RegisterEngines(IServiceContainer container)
         {
-            container.Register<ICommentDomainEngine, CommentDomainEngine>();
             container.Register<IDocumentDomainEngine, DocumentDomainEngine>();
         } 
     }

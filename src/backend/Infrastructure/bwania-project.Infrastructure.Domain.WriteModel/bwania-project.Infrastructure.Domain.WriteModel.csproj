@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DomainWriteBootstrapper.cs" />
-    <Compile Include="Engine\CommentDomainEngine.cs" />
     <Compile Include="Engine\DocumentDomainEngine.cs" />
     <Compile Include="Engine\DomainEngineBase.cs" />
     <Compile Include="Factories\ValidatorFactory.cs" />

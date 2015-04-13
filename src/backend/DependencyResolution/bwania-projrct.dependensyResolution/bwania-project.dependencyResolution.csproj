@@ -68,7 +68,7 @@
       <Project>{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A}</Project>
       <Name>bwania-project.Infrastructure.Data.ReadModel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Business\bwania-project.Infrastructure.Domain.WriteModel.csproj">
+    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Domain.WriteModel\bwania-project.Infrastructure.Domain.WriteModel.csproj">
       <Project>{657abcbf-c313-4269-918a-afeebca383ca}</Project>
       <Name>bwania-project.Infrastructure.Domain.WriteModel</Name>
     </ProjectReference>
