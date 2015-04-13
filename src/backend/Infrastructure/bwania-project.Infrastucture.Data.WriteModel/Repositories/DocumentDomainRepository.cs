@@ -9,7 +9,7 @@ using BwaniaProject;
 using BwaniaProject.Entities;
 using Couchbase;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public class DocumentDomainRepository : DomainRepositoryBase<IDocument>, IDocumentDomainRepository
     {

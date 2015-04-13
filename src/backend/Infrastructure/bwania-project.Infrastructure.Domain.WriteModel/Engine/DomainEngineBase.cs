@@ -6,7 +6,7 @@
 
 using System;
 using System.Threading.Tasks;
-using bwaniaProject.Data;
+using BwaniaProject.Data;
 using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;

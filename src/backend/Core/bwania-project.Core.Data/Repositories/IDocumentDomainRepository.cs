@@ -6,7 +6,7 @@
 
 using BwaniaProject.Entities;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public interface IDocumentDomainRepository : IDomainRepository<IDocument>
     {

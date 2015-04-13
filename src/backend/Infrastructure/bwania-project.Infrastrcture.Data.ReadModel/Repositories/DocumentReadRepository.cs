@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using bwaniaProject.Data.Exceptions;
-using BwaniaProject;
+using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Entities;
 
-namespace bwaniaProject.Data
+namespace BwaniaProject.Data
 {
     public class DocumentReadRepository : ReadRepositoryBase, IDocumentReadRepository
     {
@@ -20,8 +19,8 @@ namespace bwaniaProject.Data
         /// </summary>
         /// <param name="nbPage">The nb page.</param>
         /// <returns></returns>
-        /// <exception cref="bwaniaProject.Data.Exceptions.SearchRequestException"></exception>
-        public IEnumerable<Document> GetTenDocument(int nbPage)
+        /// <exception cref="SearchRequestException"></exception>
+        public IEnumerable<IDocument> GetTenDocument(int nbPage)
         {
             var results = Client.Search<Document>(s => s
                 .From(nbPage)

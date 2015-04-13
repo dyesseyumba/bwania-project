@@ -7,7 +7,7 @@
 using BwaniaProject.Entities;
 using Couchbase;
 
-namespace bwaniaProject.Data.Extensions
+namespace BwaniaProject.Data.Extensions
 {
     public static class EntityExtensions
     {

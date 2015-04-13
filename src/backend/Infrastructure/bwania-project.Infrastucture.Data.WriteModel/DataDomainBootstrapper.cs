@@ -1,12 +1,12 @@
 ﻿using System;
 using Anotar.Catel;
-using bwaniaProject.Data;
-using bwaniaProject.Data.Exceptions;
+using BwaniaProject.Data;
+using BwaniaProject.Data.Exceptions;
 using Catel;
 using Catel.ExceptionHandling;
 using LightInject;
 
-namespace bwaniaProject.Infrastructure.Data
+namespace BwaniaProject.Infrastructure.Data
 {
     public class DataDomainBootstrapper
     {

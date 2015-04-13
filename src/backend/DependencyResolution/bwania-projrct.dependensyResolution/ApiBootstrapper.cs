@@ -4,14 +4,14 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using bwaniaProject.Data;
-using bwaniaProject.Infrastructure.Data;
+using BwaniaProject.Data;
 using BwaniaProject.Domain;
+using BwaniaProject.Infrastructure.Data;
 using Catel;
 using Catel.ExceptionHandling;
 using LightInject;
 
-namespace bwaniaProject.DependencyResolution
+namespace BwaniaProject.DependencyResolution
 {
     public class ApiBootstrapper
     {

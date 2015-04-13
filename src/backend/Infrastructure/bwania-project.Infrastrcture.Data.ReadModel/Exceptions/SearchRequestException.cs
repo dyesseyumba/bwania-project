@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using Elasticsearch.Net;
 
-namespace bwaniaProject.Data.Exceptions
+namespace BwaniaProject.Data.Exceptions
 {
     public class SearchRequestException : Exception
     {

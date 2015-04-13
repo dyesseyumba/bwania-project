@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
-using bwaniaProject.DependencyResolution;
-using bwaniaProject.WebApi;
+using BwaniaProject.WebApi;
 using BwaniaProject;
+using BwaniaProject.DependencyResolution;
 using Catel.IoC;
 using Catel.Logging;
 using LightInject;
@@ -17,7 +17,7 @@ using Thinktecture.IdentityServer.Host;
 
 [assembly: OwinStartup(typeof(Startup))]
 
-namespace bwaniaProject.WebApi
+namespace BwaniaProject.WebApi
 {
     public class Startup : ApiBootstrapper
     {
