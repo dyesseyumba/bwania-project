@@ -6,21 +6,22 @@
 
 using System.Threading.Tasks;
 using System.Web.Http;
-using BwaniaProject.Domain.Engines;
+using BwaniaProject.Data;
+using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
 
 namespace BwaniaProject.WebApi.Controllers
 {
-    public class DocumentController : ApiControllerBase<IDocumentReadEngine>
+    public class DocumentController : ApiControllerBase<IDocumentReadRepository>
     {
         #region Constructor
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentController"/> class.
         /// </summary>
-        /// <param name="engine">The engine.</param>
+        /// <param name="repository">The repository.</param>
         /// <param name="exceptionService">The exception service.</param>
-        public DocumentController(IDocumentReadEngine engine, IExceptionService exceptionService) 
-            : base(engine, exceptionService)
+        public DocumentController(IDocumentReadRepository repository, IExceptionService exceptionService) 
+            : base(repository, exceptionService)
         {
         }
         #endregion
@@ -30,7 +31,7 @@ namespace BwaniaProject.WebApi.Controllers
         public async Task<IHttpActionResult> GetTen(int nbPage)
         {
             var documents = await ExceptionService.ProcessAsync(()
-                => Engine.GetTenDocumentAsync(nbPage)).ConfigureAwait(true);
+                => Repository.GetTenDocumentAsync(nbPage));
 
             return Ok(documents);
         }

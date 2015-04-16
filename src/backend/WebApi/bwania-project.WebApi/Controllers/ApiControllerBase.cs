@@ -11,23 +11,23 @@ using Catel.ExceptionHandling;
 
 namespace BwaniaProject.WebApi.Controllers
 {
-    public class ApiControllerBase<TEngine> : ApiController where TEngine : class
+    public class ApiControllerBase<TRepository> : ApiController where TRepository : class
     {
         #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiControllerBase{TEngine}" /> class.
         /// </summary>
-        /// <param name="engine">The engine.</param>
+        /// <param name="repository">The engine.</param>
         /// <param name="exceptionService">The exception service.</param>
-        /// <exception cref="ArgumentNullException">The <paramref name="engine" /> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentNullException">The <paramref name="repository" /> is <c>null</c>.</exception>
         /// <exception cref="ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
-        public ApiControllerBase(TEngine engine, IExceptionService exceptionService)
+        public ApiControllerBase(TRepository repository, IExceptionService exceptionService)
         {
-            Argument.IsNotNull("engine", engine);
+            Argument.IsNotNull("engine", repository);
             Argument.IsNotNull("exceptionService", exceptionService);
 
-            Engine = engine;
+            Repository = repository;
             ExceptionService = exceptionService;
         }
 
@@ -36,12 +36,12 @@ namespace BwaniaProject.WebApi.Controllers
         #region Properties
 
         /// <summary>
-        ///     Gets the engine.
+        /// Gets the repository.
         /// </summary>
         /// <value>
-        ///     The engine.
+        /// The repository.
         /// </value>
-        protected TEngine Engine { get; private set; }
+        protected TRepository Repository { get; private set; }
 
         /// <summary>
         /// Gets the exception service.
