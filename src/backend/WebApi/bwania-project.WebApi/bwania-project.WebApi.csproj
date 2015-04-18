@@ -175,7 +175,6 @@
     </Compile>
     <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
-    <Compile Include="Controllers\Test1Controller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\IdentityManager\CustomIdentityManagerService.cs" />
     <Compile Include="Security\IdentityManager\MembershipRebootIdentityManagerServiceExtensions.cs" />
@@ -207,6 +206,10 @@
     <ProjectReference Include="..\..\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj">
       <Project>{be52223f-79a3-42fa-8e1c-ff60b4da8e62}</Project>
       <Name>bwania-project.Core.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\bwania-project.Core.Domain\bwania-project.Core.Domain.csproj">
+      <Project>{2B917012-DFBA-438D-970B-5E97D80002E0}</Project>
+      <Name>bwania-project.Core.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Core\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>

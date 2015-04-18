@@ -15,6 +15,14 @@ namespace BwaniaProject.DependencyResolution
 {
     public class ApiBootstrapper
     {
+        #region Fields
+
+        private readonly DataDomainBootstrapper _dataDomainBootstrapper = new DataDomainBootstrapper();
+        private readonly DataReadBootstrapper _dataReadBootstrapper = new DataReadBootstrapper();
+        private readonly DomainWriteBootstrapper _domainWriteBootstrapper = new DomainWriteBootstrapper();
+
+        #endregion
+
         #region Methods
 
         /// <summary>
@@ -29,17 +37,9 @@ namespace BwaniaProject.DependencyResolution
             serviceContainer.Register<IExceptionService, ExceptionService>();
 
             _dataDomainBootstrapper.Initialize(serviceContainer);
-            _dataReadBootstrapper.Initialize(serviceContainer);
             _domainWriteBootstrapper.Initialize(serviceContainer);
+            _dataReadBootstrapper.Initialize(serviceContainer);
         }
-
-        #endregion
-
-        #region Fields
-
-        private readonly DataDomainBootstrapper _dataDomainBootstrapper = new DataDomainBootstrapper();
-        private readonly DataReadBootstrapper _dataReadBootstrapper = new DataReadBootstrapper();
-        private readonly DomainWriteBootstrapper _domainWriteBootstrapper = new DomainWriteBootstrapper();
 
         #endregion
     }

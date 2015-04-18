@@ -24,13 +24,14 @@ namespace BwaniaProject.Domain
         {
             Argument.IsNotNull("serviceContainer", serviceContainer);
 
+            //RegisterValidationStuff(serviceContainer);
+            RegisterEngines(serviceContainer);
         }
 
         protected void RegisterValidationStuff(IServiceContainer container)
         {
             container.Register<IValidatorFactory, ValidatorFactory>();
 
-            container.Register<IValidator<ICommentaire>, CommentValidator>();
             container.Register<IValidator<IDocument>, DocumentValidator>();
         }
 

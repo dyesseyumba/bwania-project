@@ -29,16 +29,16 @@ namespace BwaniaProject.Domain.Engines
         /// <exception cref="ArgumentNullException">The <paramref name="repository" /> is <c>null</c>.</exception>
         /// <exception cref="ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
         /// <exception cref="ArgumentNullException">The <paramref name="validatorFactory" /> is <c>null</c>.</exception>
-        public DomainEngineBase(TRepository repository, IExceptionService exceptionService,
-            IValidatorFactory validatorFactory)
+        public DomainEngineBase(TRepository repository, IExceptionService exceptionService)
+            //,IValidatorFactory validatorFactory)
         {
             Argument.IsNotNull("repository", repository);
             Argument.IsNotNull("exceptionService", exceptionService);
-            Argument.IsNotNull("validatorFactory", validatorFactory);
+            //Argument.IsNotNull("validatorFactory", validatorFactory);
 
             Repository = repository;
             ExceptionService = exceptionService;
-            Validator = validatorFactory.GetValidator<TEntity>();
+            //Validator = validatorFactory.GetValidator<TEntity>();
         }
         #endregion
 
@@ -67,7 +67,7 @@ namespace BwaniaProject.Domain.Engines
         /// <value>
         /// The validator.
         /// </value>
-        public IValidator<TEntity> Validator { get; private set; }
+        //public IValidator<TEntity> Validator { get; private set; }
 
         #endregion
 
@@ -76,7 +76,7 @@ namespace BwaniaProject.Domain.Engines
         {
             Argument.IsNotNull("entity", entity);
 
-            await Validator.ValidateAndThrowAsync(entity).ConfigureAwait(false);
+            //await Validator.ValidateAndThrowAsync(entity).ConfigureAwait(false);
 
             return await ExceptionService.Process(() => Repository.SaveAsync(entity).ConfigureAwait(false));
         }
@@ -85,7 +85,7 @@ namespace BwaniaProject.Domain.Engines
         {
             Argument.IsNotNull("entity", entity);
 
-            await Validator.ValidateAndThrowAsync(entity).ConfigureAwait(false);
+            //await Validator.ValidateAndThrowAsync(entity).ConfigureAwait(false);
 
             return await ExceptionService.Process(() => Repository.RemoveAsync(entity).ConfigureAwait(false));
         }

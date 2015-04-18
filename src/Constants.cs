@@ -22,7 +22,13 @@ namespace BwaniaProject
 
         public static class Document
         {
-            public const string GetTen = "gettendocuments/" + IdSuffix;
+            public const string GetTen = "documents_getall/" + IdSuffix;
+
+            public const string Insert = "document/create";
+
+            public const string Update = "document/edit";
+
+            public const string Delete = "document/delete";
         }
     }
 }

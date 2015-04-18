@@ -26,6 +26,10 @@ namespace BwaniaProject.Infrastructure.Data
             RegisterRepositories(serviceContainer);
         }
 
+        /// <summary>
+        /// Configures the exception policies.
+        /// </summary>
+        /// <param name="serviceContainer">The service container.</param>
         protected virtual void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
         {
             var exceptionService = serviceContainer.GetInstance<IExceptionService>();
@@ -55,6 +59,10 @@ namespace BwaniaProject.Infrastructure.Data
             });
         }
 
+        /// <summary>
+        /// Registers the repositories.
+        /// </summary>
+        /// <param name="container">The container.</param>
         protected void RegisterRepositories(IServiceContainer container)
         {
             container.Register<IDocumentDomainRepository, DocumentDomainRepository>();

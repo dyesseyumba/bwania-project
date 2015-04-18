@@ -13,9 +13,12 @@ namespace BwaniaProject.Domain.Engines
 {
     public class DocumentDomainEngine : DomainEngineBase<IDocument, IDocumentDomainRepository>, IDocumentDomainEngine
     {
-        public DocumentDomainEngine(IDocumentDomainRepository repository, IExceptionService exceptionService, 
-            IValidatorFactory validatorFactory)
-            : base(repository, exceptionService, validatorFactory)
+        //public DocumentDomainEngine(IDocumentDomainRepository repository, IExceptionService exceptionService, 
+        //    IValidatorFactory validatorFactory)
+        //    : base(repository, exceptionService, validatorFactory)
+        //{
+        //}
+        public DocumentDomainEngine(IDocumentDomainRepository repository, IExceptionService exceptionService) : base(repository, exceptionService)
         {
         }
     }
