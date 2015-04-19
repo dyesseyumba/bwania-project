@@ -1,6 +1,6 @@
 var customServices = angular.module('customServices', ['ngResource']);
 
-var urlMain = 'http://localhost:8080/bwania-services/rest/';
+var urlMain = 'http://localhost:27573/api/';
 
 customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore', '$upload', function ($resource, $location, $cookieStore, $upload) {
 
@@ -112,13 +112,13 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
 
 
 
-        /****************************consomming Jax-RS DocumentResource*************************************/
+        /****************************consuming Controller Document*************************************/
 
         //Charger tous les documents
-        var docResourceGet = $resource(urlMain + 'documents/page/:pageIndex');
+        var docResourceGet = $resource(urlMain + 'documents/:pageIndex');
 
         //Uploadre les informations d'un documents
-        var docResource = $resource(urlMain + 'documents/bwaniaAuthReq');
+        var docResource = $resource(urlMain + 'document/create');
 
         //Uploader un documents
         var docUpload = function (file, successCallBack, progressDownload) {

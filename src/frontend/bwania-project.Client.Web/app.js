@@ -60,7 +60,7 @@ $('.carousel').carousel({
     interval: 5000
 });
 
-var serviceBase = 'http://localhost:26264/';
+var serviceBase = 'http://localhost:27573/';
 
 app.constant('ngAuthSettings', {
     apiServiceBaseUri: serviceBase,

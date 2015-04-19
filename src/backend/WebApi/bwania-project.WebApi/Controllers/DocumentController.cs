@@ -4,11 +4,13 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Threading.Tasks;
 using System.Web.Http;
 using BwaniaProject.Data;
 using BwaniaProject.Domain.Engines;
 using BwaniaProject.Entities;
+using Catel;
 using Catel.ExceptionHandling;
 
 namespace BwaniaProject.WebApi.Controllers
@@ -42,6 +44,9 @@ namespace BwaniaProject.WebApi.Controllers
         [Route(RouteNames.Document.Insert), HttpPost]
         public async Task<IHttpActionResult> Post(Document document)
         {
+            Argument.IsNotNull("document", document);
+
+            document.id = string.Format("document-{0}", Guid.NewGuid());
             var result = await ExceptionService.Process(() => Engine.SaveAsync(document));
 
             return Created(RouteNames.Document.Insert, result);
