@@ -5,7 +5,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using BwaniaProject.Data;
 using BwaniaProject.Domain.Engines;
@@ -46,11 +48,31 @@ namespace BwaniaProject.WebApi.Controllers
         {
             Argument.IsNotNull("document", document);
 
+            var file = HttpContext.Current.Request.Files[0];
+            byte[] fileRecord = null;
+
+            if (Infile(file))
+            {
+                var fileStream = file.InputStream;
+                fileRecord = new byte[file.ContentLength];
+                fileStream.Read(fileRecord, 0, file.ContentLength);
+            }
+
             document.id = string.Format("document-{0}", Guid.NewGuid());
-            var result = await ExceptionService.Process(() => Engine.SaveAsync(document));
+            document.Fichier = fileRecord;
+            var result = await ExceptionService.Process(() => Engine.SaveAsync(document).ConfigureAwait(false));
 
             return Created(RouteNames.Document.Insert, result);
         }
+        #endregion
+
+        #region Methods
+
+        public bool Infile(HttpPostedFile file)
+        {
+            return file != null && file.ContentLength > 0;
+        }
+
         #endregion
     }
 }
