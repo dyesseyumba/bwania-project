@@ -1,11 +1,11 @@
 'use strict';
 
-app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$cookieStore',
-    function ($scope, $upload, userFactory, $cookieStore) {
+app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', 'uuid2', '$cookieStore',
+    function ($scope, $upload, userFactory, uuid, $cookieStore) {
         $scope.showMsgInfo = true;
         $scope.showErrorInfo = true;
 
-
+        var documentId = "";
 
 
         var locals = $scope.Document = {
@@ -37,17 +37,17 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
 
         $scope.send = function (document) {
 
-            locals.Titre = document.Titre,
-            locals.Domaine = document.Domaine,
-            locals.Discipline = document.Discipline,
-            locals.Niveau = document.Niveau,
-            locals.MotCle = document.MotCle,
-            locals.DateDePublication = document.DateDePublication,
+            locals.Titre = document.Titre;
+            locals.Domaine = document.Domaine;
+            locals.Discipline = document.Discipline;
+            locals.Niveau = document.Niveau;
+            locals.MotCle = document.MotCle;
+            locals.DateDePublication = document.DateDePublication;
             locals.DateModification = new Date();
-            locals.Description = document.Description,
+            locals.Description = document.Description;
+            locals.id = documentId;
 
             userFactory.docResource.save(locals, function () {
-                $scope.messageInfo = $scope.document.Fichier;
                 $scope.showMsgInfo = false;
                 $scope.showErrorInfo = true;
                 $scope.document = {};
@@ -60,11 +60,13 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
         };
 
         $scope.onFileSelect = function (files) {
+            documentId = "document-" + uuid.newguid;
             //$scope.document.Fichier = $files[0].name;
-            userFactory.docUpload(files[0], function () {
+            userFactory.docUpload(files[0], documentId, function () {
+                $scope.messageInfo = $files[0].name;
                 //$scope.document.pathStockageCrypte = data;
-                $scope.showMsgInfo = false;
-                $scope.showErrorInfo = true;
+                //$scope.showMsgInfo = false;
+                //$scope.showErrorInfo = true;
             }, function (loaded, total) {
                 var value = parseInt(100.0 * loaded / total);
                 $scope.dynamic = value;

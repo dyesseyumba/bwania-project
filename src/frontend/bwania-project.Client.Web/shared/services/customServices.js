@@ -121,10 +121,11 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
         var docResource = $resource(urlMain + 'document/create');
 
         //Uploader un documents
-        var docUpload = function (file, successCallBack, progressDownload) {
+        var docUpload = function (file, documentId, successCallBack, progressDownload) {
             $upload.upload({
                 method: 'POST',
                 url: urlMain + 'document/upload',
+                data: {documentId: documentId},
                 file: file
             }).progress(function (evt) {
                 progressDownload(evt.loaded, evt.total);

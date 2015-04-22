@@ -6,9 +6,11 @@
 
 using System;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Results;
 using BwaniaProject.Data;
 using BwaniaProject.Domain.Engines;
 using BwaniaProject.Entities;
@@ -20,11 +22,6 @@ namespace BwaniaProject.WebApi.Controllers
     public class DocumentController 
         : ApiControllerBase<IDocumentReadRepository, IDocumentDomainEngine>
     {
-        #region Fields
-
-        private string _documentId;
-        #endregion
-
         #region Constructor
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentController"/> class.
@@ -51,25 +48,25 @@ namespace BwaniaProject.WebApi.Controllers
         [Route(RouteNames.Document.Upload), HttpPost]
         public async Task<IHttpActionResult> Upload()
         {
-            _documentId = string.Format("document-{0}", Guid.NewGuid());
-
-            var document = new Document{ id = _documentId };
-
+            var document = new Document();
             var file = HttpContext.Current.Request.Files[0];
-            byte[] fileRecord = null;
 
-            if (Infile(file))
-            {
-                var fileStream = file.InputStream;
-                fileRecord = new byte[file.ContentLength];
-                fileStream.Read(fileRecord, 0, file.ContentLength);
-            }
+            if (!Infile(file)) return BadRequest("No file has been uploaded");
 
+            var documentId = HttpContext.Current.Request.Files["documentId"];
+            if (documentId != null)
+                document.id = documentId.ToString();
+
+            var fileStream = file.InputStream;
+            var fileRecord = new byte[file.ContentLength];
+
+            fileStream.Read(fileRecord, 0, file.ContentLength);
 
             document.Fichier = fileRecord;
+
             var result = await ExceptionService.Process(() => Engine.SaveAsync(document).ConfigureAwait(false));
 
-            return Created(RouteNames.Document.Insert, true);
+            return Created(RouteNames.Document.Insert, result);
         }
 
         [Route(RouteNames.Document.Insert), HttpPost]
@@ -77,18 +74,6 @@ namespace BwaniaProject.WebApi.Controllers
         {
             Argument.IsNotNull("document", document);
 
-            var file = HttpContext.Current.Request.Files[0];
-            byte[] fileRecord = null;
-
-            if (Infile(file))
-            {
-                var fileStream = file.InputStream;
-                fileRecord = new byte[file.ContentLength];
-                fileStream.Read(fileRecord, 0, file.ContentLength);
-            }
-
-            document.id = string.Format("document-{0}", Guid.NewGuid());
-            document.Fichier = fileRecord;
             var result = await ExceptionService.Process(() => Engine.SaveAsync(document).ConfigureAwait(false));
 
             return Created(RouteNames.Document.Insert, result);
