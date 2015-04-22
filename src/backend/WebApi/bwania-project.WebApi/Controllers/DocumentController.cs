@@ -20,6 +20,11 @@ namespace BwaniaProject.WebApi.Controllers
     public class DocumentController 
         : ApiControllerBase<IDocumentReadRepository, IDocumentDomainEngine>
     {
+        #region Fields
+
+        private string _documentId;
+        #endregion
+
         #region Constructor
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentController"/> class.
@@ -41,6 +46,30 @@ namespace BwaniaProject.WebApi.Controllers
                 => Repository.GetTenDocumentAsync(nbPage));
 
             return Ok(documents);
+        }
+
+        [Route(RouteNames.Document.Upload), HttpPost]
+        public async Task<IHttpActionResult> Upload()
+        {
+            _documentId = string.Format("document-{0}", Guid.NewGuid());
+
+            var document = new Document{ id = _documentId };
+
+            var file = HttpContext.Current.Request.Files[0];
+            byte[] fileRecord = null;
+
+            if (Infile(file))
+            {
+                var fileStream = file.InputStream;
+                fileRecord = new byte[file.ContentLength];
+                fileStream.Read(fileRecord, 0, file.ContentLength);
+            }
+
+
+            document.Fichier = fileRecord;
+            var result = await ExceptionService.Process(() => Engine.SaveAsync(document).ConfigureAwait(false));
+
+            return Created(RouteNames.Document.Insert, true);
         }
 
         [Route(RouteNames.Document.Insert), HttpPost]

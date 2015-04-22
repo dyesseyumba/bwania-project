@@ -8,14 +8,14 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
 
 
 
-        var locals = $scope.document = {
-            Titre: $scope.titre,
-            Domaine: $scope.domaine,
-            Discipline: $scope.discipline,
-            Diveau: $scope.niveau,
-            MotCle: $scope.motCle,
-            DateDePublication: $scope.dateDePublication,
-            Description: $scope.description
+        var locals = $scope.Document = {
+            Titre: $scope.Titre,
+            Domaine: $scope.Domaine,
+            Discipline: $scope.Discipline,
+            Diveau: $scope.Niveau,
+            MotCle: $scope.MotCle,
+            DateDePublication: $scope.DateDePublication,
+            Description: $scope.Description
         }
 
 
@@ -59,10 +59,12 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
 
         };
 
-        $scope.onFileSelect = function ($files) {
-            $scope.document.Fichier = $files[0].name;
-            userFactory.docUpload($files[0], function (data) {
-                $scope.document.pathStockageCrypte = data;
+        $scope.onFileSelect = function (files) {
+            //$scope.document.Fichier = $files[0].name;
+            userFactory.docUpload(files[0], function () {
+                //$scope.document.pathStockageCrypte = data;
+                $scope.showMsgInfo = false;
+                $scope.showErrorInfo = true;
             }, function (loaded, total) {
                 var value = parseInt(100.0 * loaded / total);
                 $scope.dynamic = value;

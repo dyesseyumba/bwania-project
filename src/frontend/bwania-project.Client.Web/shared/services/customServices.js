@@ -124,7 +124,7 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
         var docUpload = function (file, successCallBack, progressDownload) {
             $upload.upload({
                 method: 'POST',
-                url: urlMain + 'documents/bwaniaAuthReq/upload',
+                url: urlMain + 'document/upload',
                 file: file
             }).progress(function (evt) {
                 progressDownload(evt.loaded, evt.total);
