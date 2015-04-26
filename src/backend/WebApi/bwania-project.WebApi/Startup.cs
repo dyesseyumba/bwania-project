@@ -6,6 +6,7 @@
 
 using System.Web.Http;
 using BwaniaProject.Web.Api;
+using CacheCow.Server;
 using Catel.Logging;
 using IdentityManager.Configuration;
 using LightInject;
@@ -45,10 +46,10 @@ namespace BwaniaProject.Web.Api
                 var httpConfiguration = new HttpConfiguration();
 
                 UseJsonCamelCaseFormatter(httpConfiguration);
+                ConfigureRouting(httpConfiguration);
+                ConfigureCaching(httpConfiguration);
 
                 this.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
-
-                ConfigureRouting(httpConfiguration);
 
                 builder.UseCors(CorsOptions.AllowAll);
 
@@ -92,7 +93,12 @@ namespace BwaniaProject.Web.Api
             app.UseWelcomePage();
         }
 
-        public static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)
+        private static void ConfigureCaching(HttpConfiguration httpConfiguration)
+        {
+            httpConfiguration.MessageHandlers.Add(new CachingHandler(httpConfiguration));
+        }
+
+        private static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)
         {
             var facebookAuthenticationOptions = new FacebookAuthenticationOptions
             {
