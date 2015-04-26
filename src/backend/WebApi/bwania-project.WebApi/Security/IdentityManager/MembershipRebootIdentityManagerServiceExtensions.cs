@@ -4,6 +4,9 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using IdentityManager;
+using IdentityManager.Configuration;
+
 namespace Thinktecture.IdentityManager.Host
 {
     public static class MembershipRebootIdentityManagerServiceExtensions

@@ -4,6 +4,11 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using BrockAllen.MembershipReboot;
+using BrockAllen.MembershipReboot.Ef;
+using BrockAllen.MembershipReboot.Relational;
+
 namespace Thinktecture.IdentityManager.Host
 {
     public class CustomUser : RelationalUserAccount

@@ -4,6 +4,9 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using BrockAllen.MembershipReboot;
+using BrockAllen.MembershipReboot.Ef;
+
 namespace Thinktecture.IdentityManager.Host
 {
     public class CustomGroup : RelationalGroup

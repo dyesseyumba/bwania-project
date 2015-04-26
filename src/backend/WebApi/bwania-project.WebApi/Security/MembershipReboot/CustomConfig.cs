@@ -4,6 +4,8 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using BrockAllen.MembershipReboot;
+
 namespace Thinktecture.IdentityManager.Host
 {
     public class CustomConfig : MembershipRebootConfiguration<CustomUser>
@@ -12,10 +14,12 @@ namespace Thinktecture.IdentityManager.Host
 
         static CustomConfig()
         {
-            Config = new CustomConfig();
-            Config.PasswordHashingIterationCount = 10000;
-            Config.RequireAccountVerification = false;
-            Config.EmailIsUsername = true;
+            Config = new CustomConfig
+            {
+                PasswordHashingIterationCount = 10000,
+                RequireAccountVerification = false,
+                EmailIsUsername = true
+            };
         }
     }
 }

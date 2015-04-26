@@ -5,6 +5,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using Thinktecture.IdentityManager.Host;
+using Thinktecture.IdentityServer.Core.Configuration;
+using Thinktecture.IdentityServer.Core.Services;
+using Thinktecture.IdentityServer.MembershipReboot;
 
 namespace Thinktecture.IdentityServer.Host
 {

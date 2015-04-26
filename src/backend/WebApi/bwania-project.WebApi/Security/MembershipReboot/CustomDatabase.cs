@@ -4,6 +4,8 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using BrockAllen.MembershipReboot.Ef;
+
 namespace Thinktecture.IdentityManager.Host
 {
     public class CustomDatabase : MembershipRebootDbContext<CustomUser, CustomGroup>

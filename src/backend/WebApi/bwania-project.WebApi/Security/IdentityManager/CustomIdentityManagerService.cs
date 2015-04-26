@@ -4,6 +4,8 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using IdentityManager.MembershipReboot;
+
 namespace Thinktecture.IdentityManager.Host
 {
     public class CustomIdentityManagerService : MembershipRebootIdentityManagerService<CustomUser, CustomGroup>

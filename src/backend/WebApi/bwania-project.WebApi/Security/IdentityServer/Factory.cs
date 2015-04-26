@@ -4,6 +4,10 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using Thinktecture.IdentityServer.Core.Configuration;
+using Thinktecture.IdentityServer.Core.Services;
+using Thinktecture.IdentityServer.Core.Services.InMemory;
+
 namespace Thinktecture.IdentityServer.Host
 {
     public class Factory
