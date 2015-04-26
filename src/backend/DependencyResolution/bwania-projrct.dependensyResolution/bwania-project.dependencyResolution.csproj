@@ -64,17 +64,9 @@
     <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastrcture.Data.ReadModel\bwania-project.Infrastructure.Data.ReadModel.csproj">
-      <Project>{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A}</Project>
-      <Name>bwania-project.Infrastructure.Data.ReadModel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Domain.WriteModel\bwania-project.Infrastructure.Domain.WriteModel.csproj">
       <Project>{657abcbf-c313-4269-918a-afeebca383ca}</Project>
       <Name>bwania-project.Infrastructure.Domain.WriteModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastucture.Data.WriteModel\bwania-project.Infrastructure.Data.WriteModel.csproj">
-      <Project>{425E4725-3954-4236-AB15-F0C0708934FC}</Project>
-      <Name>bwania-project.Infrastructure.Data.WriteModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

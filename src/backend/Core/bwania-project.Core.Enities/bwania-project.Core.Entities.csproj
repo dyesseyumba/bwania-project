@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Entities\</OutputPath>
+    <OutputPath>..\..\..\..\output\Core\Core.Entities\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET45 SERVER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Entities\</OutputPath>
+    <OutputPath>..\..\..\..\output\Core\Core.Entities\</OutputPath>
     <DefineConstants>TRACE;NET45 SERVER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
