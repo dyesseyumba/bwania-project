@@ -5,42 +5,34 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System;
+using Anotar.Catel;
+using bwaniaProject;
+using bwaniaProject.Data;
 using BwaniaProject.Data;
 using BwaniaProject.Data.Exceptions;
+using Catel.ExceptionHandling;
+using LightInject;
 
-namespace BwaniaProject.DependencyResolution
+namespace BwaniaProject
 {
-    public class ApiBootstrapper
+    public class ApiBootstrapper : ServiceContainer
     {
-        #region Fields
+        public ApiBootstrapper()
+        {
+            RegisterFrom<SharedBootstrapper>();
+            RegisterFrom<DataBootstrapper>();
+            RegisterFrom<DataReadBootstrapper>();
+            RegisterFrom<DataDomainBootstrapper>();
+            RegisterFrom<DataDomainBootstrapper>();
 
-        private readonly DataDomainBootstrapper _dataDomainBootstrapper = new DataDomainBootstrapper();
-        private readonly DataReadBootstrapper _dataReadBootstrapper = new DataReadBootstrapper();
-        private readonly DomainWriteBootstrapper _domainWriteBootstrapper = new DomainWriteBootstrapper();
-
-        #endregion
+            ConfigureExceptionPolicies();
+        }
 
         #region Methods
 
-        /// <summary>
-        ///     Initializes the specified service container.
-        /// </summary>
-        /// <param name="serviceContainer"></param>
-        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceContainer" /> is <c>null</c>.</exception>
-        public virtual void Initialize(IServiceContainer serviceContainer)
+        protected void ConfigureExceptionPolicies()
         {
-            Argument.IsNotNull("serviceLocator", serviceContainer);
-
-            serviceContainer.Register<IExceptionService, ExceptionService>();
-
-            _dataDomainBootstrapper.Initialize(serviceContainer);
-            _domainWriteBootstrapper.Initialize(serviceContainer);
-            _dataReadBootstrapper.Initialize(serviceContainer);
-        }
-
-        protected void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
-        {
-            var exceptionService = serviceContainer.GetInstance<IExceptionService>();
+            var exceptionService = GetInstance<IExceptionService>();
 
             ConfigureDataExceptionPolicies(exceptionService);
         }
