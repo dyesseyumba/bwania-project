@@ -1,8 +1,8 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 //  <copyright file="DomainRepositoryBase.cs" company="Bwania development team">
 //    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
-//  </copyright>
-//  --------------------------------------------------------------------------------------------------------------------
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
 
 using System.Threading.Tasks;
 using BwaniaProject.Data.Extensions;
@@ -10,7 +10,7 @@ using BwaniaProject.Entities;
 using Catel;
 using Couchbase.Core;
 
-namespace BwaniaProject.Data
+namespace BwaniaProject.Data.Repositories
 {
     public class DomainRepositoryBase<T> : IDomainRepository<T> where T : IEntity
     {

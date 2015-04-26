@@ -1,16 +1,15 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-//  <copyright file="CommentValidator.cs" company="Bwania development team">
+//  <copyright file="IBootstrapper.cs" company="Bwania development team">
 //    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using BwaniaProject.Entities;
-using FluentValidation;
+using LightInject;
 
-namespace BwaniaProject.Domain.Validators
+namespace bwaniaProject
 {
-    public class CommentValidator : AbstractValidator<ICommentaire>
+    public interface IBootstrapper : ICompositionRoot
     {
-         
+        void Compose<TBootstrapper>(IServiceRegistry serviceRegistry) where TBootstrapper : IBootstrapper, new();
     }
 }

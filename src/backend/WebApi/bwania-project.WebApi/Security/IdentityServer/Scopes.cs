@@ -1,5 +1,10 @@
-﻿using System.Collections.Generic;
-using Thinktecture.IdentityServer.Core.Models;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="Scopes.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Collections.Generic;
 
 namespace Thinktecture.IdentityServer.Host
 {
@@ -18,14 +23,14 @@ namespace Thinktecture.IdentityServer.Host
                     Name = "read",
                     DisplayName = "Read data",
                     Type = ScopeType.Resource,
-                    Emphasize = false,
+                    Emphasize = false
                 },
                 new Scope
                 {
                     Name = "write",
                     DisplayName = "Write data",
                     Type = ScopeType.Resource,
-                    Emphasize = true,
+                    Emphasize = true
                 },
                 new Scope
                 {
@@ -34,7 +39,7 @@ namespace Thinktecture.IdentityServer.Host
                     Type = ScopeType.Resource,
                     Emphasize = true
                 }
-             };
+            };
         }
     }
 }

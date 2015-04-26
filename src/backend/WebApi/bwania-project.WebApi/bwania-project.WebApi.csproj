@@ -41,7 +41,7 @@
   <ItemGroup>
     <Reference Include="BrockAllen.MembershipReboot, Version=8.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.8.2.1\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
+      <HintPath>..\..\..\..\lib\BrockAllen.MembershipReboot.8.2.1\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
     </Reference>
     <Reference Include="BrockAllen.MembershipReboot.Ef">
       <HintPath>..\..\..\packages\BrockAllen.MembershipReboot.Ef.8.0.0\lib\net45\BrockAllen.MembershipReboot.Ef.dll</HintPath>

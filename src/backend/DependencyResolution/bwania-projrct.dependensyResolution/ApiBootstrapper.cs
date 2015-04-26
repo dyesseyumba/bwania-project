@@ -4,12 +4,9 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using BwaniaProject.Data;
-using BwaniaProject.Domain;
-using BwaniaProject.Infrastructure.Data;
-using Catel;
-using Catel.ExceptionHandling;
-using LightInject;
+using BwaniaProject.Data.Exceptions;
 
 namespace BwaniaProject.DependencyResolution
 {
@@ -39,6 +36,48 @@ namespace BwaniaProject.DependencyResolution
             _dataDomainBootstrapper.Initialize(serviceContainer);
             _domainWriteBootstrapper.Initialize(serviceContainer);
             _dataReadBootstrapper.Initialize(serviceContainer);
+        }
+
+        protected void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
+        {
+            var exceptionService = serviceContainer.GetInstance<IExceptionService>();
+
+            ConfigureDataExceptionPolicies(exceptionService);
+        }
+
+        private static void ConfigureDataExceptionPolicies(IExceptionService exceptionService)
+        {
+            exceptionService.Register<SearchRequestException>(exception =>
+            {
+                LogTo.Error(exception.Message);
+                throw new Exception(
+                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
+                    exception);
+            });
+
+            exceptionService.Register<CouchbaseDataException>(exception =>
+            {
+                LogTo.Error(exception.Message);
+                throw new Exception(
+                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
+                    exception);
+            });
+
+            exceptionService.Register<QueryRequestException>(exception =>
+            {
+                LogTo.Error(exception.Message);
+                throw new Exception(
+                    "Une erreur est survenue dans lors de la requète. Si le problème persiste, contactez l'administrateur.",
+                    exception);
+            });
+
+            exceptionService.Register<ViewRequestException>(exception =>
+            {
+                LogTo.Error(exception.Message);
+                throw new Exception(
+                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
+                    exception);
+            });
         }
 
         #endregion

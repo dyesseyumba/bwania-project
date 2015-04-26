@@ -4,19 +4,9 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Web.Http;
 using BwaniaProject.DependencyResolution;
 using BwaniaProject.WebApi;
-using Catel.Logging;
-using LightInject;
-using Microsoft.Owin;
-using Microsoft.Owin.Cors;
-using Microsoft.Owin.Security.Facebook;
-using Newtonsoft.Json.Serialization;
-using Owin;
-using Thinktecture.IdentityManager.Configuration;
 using Thinktecture.IdentityManager.Host;
-using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Host;
 
 [assembly: OwinStartup(typeof (Startup))]

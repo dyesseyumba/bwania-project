@@ -1,11 +1,18 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CouchbaseDataException.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Runtime.Serialization;
+using bwaniaProject.Data;
 using Couchbase;
 using Couchbase.IO;
 
 namespace BwaniaProject.Data.Exceptions
 {
-    public class CouchbaseDataException : Exception
+    public class CouchbaseDataException : DataException
     {
         public CouchbaseDataException()
         {
@@ -53,7 +60,6 @@ namespace BwaniaProject.Data.Exceptions
         }
 
         public ResponseStatus Status { get; set; }
-
         public string Key { get; set; }
     }
 }

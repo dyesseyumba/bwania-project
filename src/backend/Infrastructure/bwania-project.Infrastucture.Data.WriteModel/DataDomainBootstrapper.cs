@@ -1,73 +1,36 @@
-﻿using System;
-using Anotar.Catel;
-using BwaniaProject.Data;
-using BwaniaProject.Data.Exceptions;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="DataDomainBootstrapper.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using bwaniaProject;
+using BwaniaProject.Data.Repositories;
 using Catel;
-using Catel.ExceptionHandling;
 using LightInject;
 
-namespace BwaniaProject.Infrastructure.Data
+namespace BwaniaProject.Data
 {
-    public class DataDomainBootstrapper
+    public class DataDomainBootstrapper : BootstrapperBase
     {
         #region Methods
 
         /// <summary>
-        ///     Initializes the specified service locator.
+        ///     Registers the repositories.
         /// </summary>
-        /// <param name="serviceContainer">The service locator.</param>
-        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceContainer" /> is <c>null</c>.</exception>
-        public virtual void Initialize(IServiceContainer serviceContainer)
+        /// <param name="serviceRegistry">The service registry.</param>
+        protected void RegisterRepositories(IServiceRegistry serviceRegistry)
         {
-            Argument.IsNotNull("serviceContainer", serviceContainer);
-
-            ConfigureExceptionPolicies(serviceContainer);
-
-            RegisterRepositories(serviceContainer);
-        }
-
-        /// <summary>
-        /// Configures the exception policies.
-        /// </summary>
-        /// <param name="serviceContainer">The service container.</param>
-        protected virtual void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
-        {
-            var exceptionService = serviceContainer.GetInstance<IExceptionService>();
-
-            exceptionService.Register<CouchbaseDataException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
-
-            exceptionService.Register<QueryRequestException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans lors de la requète. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
-
-            exceptionService.Register<ViewRequestException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
-        }
-
-        /// <summary>
-        /// Registers the repositories.
-        /// </summary>
-        /// <param name="container">The container.</param>
-        protected void RegisterRepositories(IServiceContainer container)
-        {
-            container.Register<IDocumentDomainRepository, DocumentDomainRepository>();
+            serviceRegistry.Register<IDocumentDomainRepository, DocumentDomainRepository>();
         }
 
         #endregion
+
+        public override void Compose(IServiceRegistry serviceRegistry)
+        {
+            Argument.IsNotNull(() => serviceRegistry);
+
+            RegisterRepositories(serviceRegistry);
+        }
     }
 }

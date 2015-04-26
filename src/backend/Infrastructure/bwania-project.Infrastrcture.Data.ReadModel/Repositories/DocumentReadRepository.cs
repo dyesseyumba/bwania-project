@@ -10,7 +10,7 @@ using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
 
-namespace BwaniaProject.Data
+namespace BwaniaProject.Data.Repositories
 {
     public class DocumentReadRepository : ReadRepositoryBase, IDocumentReadRepository
     {

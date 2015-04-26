@@ -1,15 +1,15 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-//  <copyright file="IDocumentEngine.cs" company="Bwania development team">
+//  <copyright file="CommentValidator.cs" company="Bwania development team">
 //    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using BwaniaProject.Data;
 using BwaniaProject.Entities;
+using FluentValidation;
 
-namespace BwaniaProject.Domain.Engines
+namespace BwaniaProject.Domain.Validators
 {
-    public interface IDocumentDomainEngine : IDomainEngine<IDocument, IDocumentDomainRepository>
+    public class CommentValidator : AbstractValidator<ICommentaire>
     {
     }
 }

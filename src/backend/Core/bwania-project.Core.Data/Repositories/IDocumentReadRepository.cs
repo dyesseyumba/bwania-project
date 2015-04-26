@@ -8,12 +8,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BwaniaProject.Entities;
 
-namespace BwaniaProject.Data
+namespace BwaniaProject.Data.Repositories
 {
     public interface IDocumentReadRepository : IReadRepository
     {
         /// <summary>
-        /// Gets the ten document.
+        ///     Gets the ten document.
         /// </summary>
         /// <param name="nbPage">The nb page.</param>
         /// <returns></returns>

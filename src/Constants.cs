@@ -9,9 +9,7 @@ namespace BwaniaProject
     public static class Constants
     {
         public const string DatabaseConnectionName = "BwaniaIdServerDb";
-
         public const string DocumentBucketName = "BwaniaDocument";
-
         public const string DocumentIndexName = "bwania-document";
     }
 
@@ -23,11 +21,8 @@ namespace BwaniaProject
         public static class Document
         {
             public const string GetTen = "documents/" + IdSuffix;
-
             public const string Insert = "document/create";
-
             public const string Update = "document/edit";
-
             public const string Delete = "document/delete";
         }
     }

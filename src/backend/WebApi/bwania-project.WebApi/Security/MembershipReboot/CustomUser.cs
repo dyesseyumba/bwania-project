@@ -1,7 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-using BrockAllen.MembershipReboot;
-using BrockAllen.MembershipReboot.Ef;
-using BrockAllen.MembershipReboot.Relational;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CustomUser.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Thinktecture.IdentityManager.Host
 {
@@ -9,8 +10,10 @@ namespace Thinktecture.IdentityManager.Host
     {
         [Display(Name = "First Name")]
         public virtual string FirstName { get; set; }
+
         [Display(Name = "Last Name")]
         public virtual string LastName { get; set; }
+
         public virtual int? Age { get; set; }
     }
 

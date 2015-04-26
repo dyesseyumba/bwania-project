@@ -1,4 +1,8 @@
-﻿using Thinktecture.IdentityManager.Configuration;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="MembershipRebootIdentityManagerServiceExtensions.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Thinktecture.IdentityManager.Host
 {
@@ -13,6 +17,6 @@ namespace Thinktecture.IdentityManager.Host
             factory.Register(new Registration<CustomGroupRepository>());
             factory.Register(new Registration<CustomDatabase>(resolver => new CustomDatabase(connectionString)));
             factory.Register(new Registration<CustomConfig>(CustomConfig.Config));
-        } 
+        }
     }
 }

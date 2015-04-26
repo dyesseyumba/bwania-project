@@ -1,8 +1,12 @@
-﻿
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="IReadRepository.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace BwaniaProject.Data
+namespace BwaniaProject.Data.Repositories
 {
-    public interface IReadRepository
+    public interface IReadRepository : IRepository
     {
     }
 }

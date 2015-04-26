@@ -1,48 +1,32 @@
-﻿using System;
-using Anotar.Catel;
-using BwaniaProject.Data.Exceptions;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="DataReadBootstrapper.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using bwaniaProject;
+using BwaniaProject.Data.Repositories;
 using Catel;
-using Catel.ExceptionHandling;
 using LightInject;
 
 namespace BwaniaProject.Data
 {
-    public class DataReadBootstrapper
+    public class DataReadBootstrapper : BootstrapperBase
     {
         #region Methods
 
-        /// <summary>
-        ///     Initializes the specified service locator.
-        /// </summary>
-        /// <param name="serviceContainer">The service locator.</param>
-        /// <exception cref="System.ArgumentNullException">The <paramref name="serviceContainer" /> is <c>null</c>.</exception>
-        public void Initialize(IServiceContainer serviceContainer)
+        protected void RegisterRepositories(IServiceRegistry serviceRegistry)
         {
-            Argument.IsNotNull("serviceContainer", serviceContainer);
-
-            ConfigureExceptionPolicies(serviceContainer);
-
-            RegisterRepositories(serviceContainer);
+            serviceRegistry.Register<IDocumentReadRepository, DocumentReadRepository>();
         }
 
-        protected void ConfigureExceptionPolicies(IServiceContainer serviceContainer)
+        #endregion
+
+        public override void Compose(IServiceRegistry serviceRegistry)
         {
-            var exceptionService = serviceContainer.GetInstance<IExceptionService>();
+            Argument.IsNotNull(() => serviceRegistry);
 
-            exceptionService.Register<SearchRequestException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans la couche d'accès aux données. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
+            RegisterRepositories(serviceRegistry);
         }
-
-        protected void RegisterRepositories(IServiceContainer container)
-        {
-            container.Register<IDocumentReadRepository, DocumentReadRepository>();
-        }
-
-        #endregion 
     }
 }

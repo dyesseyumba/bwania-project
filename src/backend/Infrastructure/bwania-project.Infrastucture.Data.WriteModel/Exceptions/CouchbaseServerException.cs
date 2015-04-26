@@ -1,10 +1,16 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CouchbaseServerException.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Runtime.Serialization;
 using Couchbase;
 
 namespace BwaniaProject.Data.Exceptions
 {
-   public class CouchbaseServerException : CouchbaseDataException
+    public class CouchbaseServerException : CouchbaseDataException
     {
         public CouchbaseServerException()
         {

@@ -1,5 +1,8 @@
-﻿using System.Data.Entity;
-using BrockAllen.MembershipReboot.Ef;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CustomDatabase.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Thinktecture.IdentityManager.Host
 {
