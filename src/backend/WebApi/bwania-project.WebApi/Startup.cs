@@ -5,23 +5,24 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Web.Http;
-using BwaniaProject.DependencyResolution;
-using BwaniaProject.WebApi;
+using BwaniaProject.Web.Api;
+using CacheCow.Server;
 using Catel.Logging;
+using IdentityManager.Configuration;
 using LightInject;
 using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.Facebook;
 using Newtonsoft.Json.Serialization;
 using Owin;
-using Thinktecture.IdentityManager.Configuration;
 using Thinktecture.IdentityManager.Host;
 using Thinktecture.IdentityServer.Core.Configuration;
+using Thinktecture.IdentityServer.Core.Logging;
 using Thinktecture.IdentityServer.Host;
 
 [assembly: OwinStartup(typeof (Startup))]
 
-namespace BwaniaProject.WebApi
+namespace BwaniaProject.Web.Api
 {
     public class Startup : ApiBootstrapper
     {
@@ -29,27 +30,26 @@ namespace BwaniaProject.WebApi
         {
 #if DEBUG
             LogManager.AddDebugListener();
+            LogProvider.SetCurrentLogProvider(new TraceSourceLogProvider());
 
             var customDatabase = new CustomDatabase(Constants.DatabaseConnectionName);
             customDatabase.Database.CreateIfNotExists();
 #endif
 
-            var serviceContainer = new ServiceContainer();
-            serviceContainer.RegisterApiControllers();
-            Initialize(serviceContainer);
+            this.RegisterApiControllers();
 
             const string databaseConnectionName = Constants.DatabaseConnectionName;
 
 
-            app.Map("/" + RouteNames.RoutePrefix, builder =>
+            app.Map("/" + Constants.CommonRoutingDefinitions.ApiSegmentName, builder =>
             {
                 var httpConfiguration = new HttpConfiguration();
 
                 UseJsonCamelCaseFormatter(httpConfiguration);
-
-                serviceContainer.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
-
                 ConfigureRouting(httpConfiguration);
+                ConfigureCaching(httpConfiguration);
+
+                this.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
 
                 builder.UseCors(CorsOptions.AllowAll);
 
@@ -93,16 +93,22 @@ namespace BwaniaProject.WebApi
             app.UseWelcomePage();
         }
 
-        public static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)
+        private static void ConfigureCaching(HttpConfiguration httpConfiguration)
         {
-            var fb = new FacebookAuthenticationOptions
+            httpConfiguration.MessageHandlers.Add(new CachingHandler(httpConfiguration));
+        }
+
+        private static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)
+        {
+            var facebookAuthenticationOptions = new FacebookAuthenticationOptions
             {
                 AuthenticationType = "Facebook",
                 SignInAsAuthenticationType = signInAsType,
                 AppId = "1414324985471775",
                 AppSecret = "9d6ab75f921942e61fb43a9b1fc25c63"
             };
-            app.UseFacebookAuthentication(fb);
+
+            app.UseFacebookAuthentication(facebookAuthenticationOptions);
         }
 
         private static void ConfigureRouting(HttpConfiguration httpConfiguration)

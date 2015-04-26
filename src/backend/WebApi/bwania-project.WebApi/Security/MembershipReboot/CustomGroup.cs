@@ -1,4 +1,10 @@
-﻿using BrockAllen.MembershipReboot;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CustomGroup.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using BrockAllen.MembershipReboot;
 using BrockAllen.MembershipReboot.Ef;
 
 namespace Thinktecture.IdentityManager.Host
@@ -13,7 +19,6 @@ namespace Thinktecture.IdentityManager.Host
         public CustomGroupService(CustomGroupRepository repo, CustomConfig config)
             : base(config.DefaultTenant, repo)
         {
-
         }
     }
 
@@ -24,5 +29,4 @@ namespace Thinktecture.IdentityManager.Host
         {
         }
     }
-
 }

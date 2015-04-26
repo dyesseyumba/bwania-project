@@ -1,4 +1,10 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="IDocument.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 
 namespace BwaniaProject.Entities
@@ -6,122 +12,122 @@ namespace BwaniaProject.Entities
     public interface IDocument : IEntity
     {
         /// <summary>
-        /// Gets or sets the titre.
+        ///     Gets or sets the titre.
         /// </summary>
         /// <value>
-        /// The titre.
+        ///     The titre.
         /// </value>
         string Titre { get; set; }
 
         /// <summary>
-        /// Gets or sets the description.
+        ///     Gets or sets the description.
         /// </summary>
         /// <value>
-        /// The description.
+        ///     The description.
         /// </value>
         string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the domaine.
+        ///     Gets or sets the domaine.
         /// </summary>
         /// <value>
-        /// The domaine.
+        ///     The domaine.
         /// </value>
         string Domaine { get; set; }
 
         /// <summary>
-        /// Gets or sets the discipline.
+        ///     Gets or sets the discipline.
         /// </summary>
         /// <value>
-        /// The discipline.
+        ///     The discipline.
         /// </value>
         string Discipline { get; set; }
 
         /// <summary>
-        /// Gets or sets the fichier.
+        ///     Gets or sets the fichier.
         /// </summary>
         /// <value>
-        /// The fichier.
+        ///     The fichier.
         /// </value>
         byte[] Fichier { get; set; }
 
         /// <summary>
-        /// Gets or sets the date de publication.
+        ///     Gets or sets the date de publication.
         /// </summary>
         /// <value>
-        /// The date de publication.
+        ///     The date de publication.
         /// </value>
         DateTime DateDePublication { get; set; }
 
         /// <summary>
-        /// Gets or sets the date modification.
+        ///     Gets or sets the date modification.
         /// </summary>
         /// <value>
-        /// The date modification.
+        ///     The date modification.
         /// </value>
         DateTime DateModification { get; set; }
 
         /// <summary>
-        /// Gets or sets the mot cle.
+        ///     Gets or sets the mot cle.
         /// </summary>
         /// <value>
-        /// The mot cle.
+        ///     The mot cle.
         /// </value>
         List<string> MotCle { get; set; }
 
         /// <summary>
-        /// Gets or sets the niveau.
+        ///     Gets or sets the niveau.
         /// </summary>
         /// <value>
-        /// The niveau.
+        ///     The niveau.
         /// </value>
         string Niveau { get; set; }
 
         /// <summary>
-        /// Gets or sets the nb consultation.
+        ///     Gets or sets the nb consultation.
         /// </summary>
         /// <value>
-        /// The nb consultation.
+        ///     The nb consultation.
         /// </value>
         long NbConsultation { get; set; }
 
         /// <summary>
-        /// Gets or sets the nb etoile.
+        ///     Gets or sets the nb etoile.
         /// </summary>
         /// <value>
-        /// The nb etoile.
+        ///     The nb etoile.
         /// </value>
         long NbEtoile { get; set; }
 
         /// <summary>
-        /// Gets or sets the nb vote.
+        ///     Gets or sets the nb vote.
         /// </summary>
         /// <value>
-        /// The nb vote.
+        ///     The nb vote.
         /// </value>
         int NbVote { get; set; }
 
         /// <summary>
-        /// Gets or sets the "moyenne etoile".
+        ///     Gets or sets the "moyenne etoile".
         /// </summary>
         /// <value>
-        /// The "moyenne etoile".
+        ///     The "moyenne etoile".
         /// </value>
         int MoyenneEtoile { get; set; }
 
         /// <summary>
-        /// Gets or sets the "niveau difficulte".
+        ///     Gets or sets the "niveau difficulte".
         /// </summary>
         /// <value>
-        /// The "niveau difficulte".
+        ///     The "niveau difficulte".
         /// </value>
         string NiveauDifficulte { get; set; }
 
         /// <summary>
-        /// Gets or sets the commentaire.
+        ///     Gets or sets the commentaire.
         /// </summary>
         /// <value>
-        /// The commentaire.
+        ///     The commentaire.
         /// </value>
         List<ICommentaire> Commentaires { get; set; }
     }

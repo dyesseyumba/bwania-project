@@ -1,22 +1,28 @@
-﻿using System.Threading.Tasks;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="IDomainRepository.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using System.Threading.Tasks;
 using BwaniaProject.Entities;
 
-namespace BwaniaProject.Data
+namespace BwaniaProject.Data.Repositories
 {
-    public interface IDomainRepository<in T> where T : IEntity
+    public interface IDomainRepository<in TEntity> : IRepository where TEntity : IEntity
     {
         /// <summary>
-        /// Saves the asynchronous.
+        ///     Saves the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        Task<bool> SaveAsync(T entity);
+        Task<bool> SaveAsync(TEntity entity);
 
         /// <summary>
-        /// Removes the asynchronous.
+        ///     Removes the asynchronous.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        Task<bool> RemoveAsync(T entity);
+        Task<bool> RemoveAsync(TEntity entity);
     }
 }

@@ -1,4 +1,10 @@
-﻿using BrockAllen.MembershipReboot;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CustomConfig.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using BrockAllen.MembershipReboot;
 
 namespace Thinktecture.IdentityManager.Host
 {
@@ -8,10 +14,12 @@ namespace Thinktecture.IdentityManager.Host
 
         static CustomConfig()
         {
-            Config = new CustomConfig();
-            Config.PasswordHashingIterationCount = 10000;
-            Config.RequireAccountVerification = false;
-            Config.EmailIsUsername = true;
+            Config = new CustomConfig
+            {
+                PasswordHashingIterationCount = 10000,
+                RequireAccountVerification = false,
+                EmailIsUsername = true
+            };
         }
     }
 }

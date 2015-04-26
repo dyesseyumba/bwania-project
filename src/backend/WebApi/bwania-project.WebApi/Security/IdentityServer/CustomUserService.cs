@@ -1,4 +1,10 @@
-﻿using Thinktecture.IdentityManager.Host;
+﻿// --------------------------------------------------------------------------------------------------------------------
+//  <copyright file="CustomUserService.cs" company="Bwania development team">
+//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
+
+using Thinktecture.IdentityManager.Host;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Core.Services;
 using Thinktecture.IdentityServer.MembershipReboot;

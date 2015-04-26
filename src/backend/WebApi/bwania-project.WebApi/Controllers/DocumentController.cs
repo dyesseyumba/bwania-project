@@ -10,41 +10,50 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+<<<<<<< HEAD
 using System.Web.Http.Results;
 using BwaniaProject.Data;
+=======
+using BwaniaProject.Data.Repositories;
+>>>>>>> d2cd42d9858ea062b1242819ce2231077c08604a
 using BwaniaProject.Domain.Engines;
 using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
 
-namespace BwaniaProject.WebApi.Controllers
+namespace BwaniaProject.Web.Api.Controllers
 {
-    public class DocumentController 
-        : ApiControllerBase<IDocumentReadRepository, IDocumentDomainEngine>
+    public class DocumentController
+        : ApiControllerBase<IDocumentReadRepository, IDocumentEngine>
     {
         #region Constructor
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentController"/> class.
+        ///     Initializes a new instance of the <see cref="DocumentController" /> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
+        /// <param name="documentEngine"></param>
         /// <param name="exceptionService">The exception service.</param>
-        public DocumentController(IDocumentReadRepository repository, IDocumentDomainEngine engine,
-            IExceptionService exceptionService) 
-            : base(repository, engine, exceptionService)
+        public DocumentController(IDocumentReadRepository repository, IDocumentEngine documentEngine,
+            IExceptionService exceptionService)
+            : base(repository, documentEngine, exceptionService)
         {
         }
+
         #endregion
 
         #region Actions
-        [Route(RouteNames.Document.GetTen), HttpGet]
+
+        [HttpGet, Route(Constants.RouteNames.Document.GetTen)]
         public async Task<IHttpActionResult> GetTen(int nbPage)
         {
-            var documents = await ExceptionService.ProcessAsync(()
+            var documents = await ExceptionService.Process(()
                 => Repository.GetTenDocumentAsync(nbPage));
 
             return Ok(documents);
         }
 
+<<<<<<< HEAD
         [Route(RouteNames.Document.Upload), HttpPost]
         public async Task<IHttpActionResult> Upload()
         {
@@ -70,14 +79,23 @@ namespace BwaniaProject.WebApi.Controllers
         }
 
         [Route(RouteNames.Document.Insert), HttpPost]
+=======
+        [HttpPost, Route(Constants.RouteNames.Document.Insert)]
+>>>>>>> d2cd42d9858ea062b1242819ce2231077c08604a
         public async Task<IHttpActionResult> Post(Document document)
         {
             Argument.IsNotNull("document", document);
 
+<<<<<<< HEAD
             var result = await ExceptionService.Process(() => Engine.SaveAsync(document).ConfigureAwait(false));
+=======
+            document.id = string.Format("document-{0}", Guid.NewGuid());
+            var result = await ExceptionService.Process(() => DocumentEngine.SaveAsync(document));
+>>>>>>> d2cd42d9858ea062b1242819ce2231077c08604a
 
-            return Created(RouteNames.Document.Insert, result);
+            return Created(Constants.RouteNames.Document.Insert, result);
         }
+
         #endregion
 
         #region Methods

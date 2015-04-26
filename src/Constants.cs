@@ -8,29 +8,46 @@ namespace BwaniaProject
 {
     public static class Constants
     {
+#if DATA || WEBAPI
         public const string DatabaseConnectionName = "BwaniaIdServerDb";
-
+#endif
+#if DATA
         public const string DocumentBucketName = "BwaniaDocument";
-
         public const string DocumentIndexName = "bwania-document";
-    }
+#endif
 
-    public static class RouteNames
-    {
-        public const string RoutePrefix = "api";
-        public const string IdSuffix = "{nbPage:int}";
-
-        public static class Document
+#if WEBAPI
+        public static class MediaTypeNames
         {
-            public const string GetTen = "documents/" + IdSuffix;
+            public const string AplicationJson = "application/json";
+            public const string AplicationXml = "application/xml";
+            public const string TextJson = "test/json";
+            public const string TextXml = "text/xml";
+        }
 
-            public const string Insert = "document/create";
+        public static class CommonRoutingDefinitions
+        {
+            public const string ApiSegmentName = "api";
+        }
 
-            public const string Update = "document/edit";
-
+<<<<<<< HEAD
             public const string Delete = "document/delete";
 
             public const string Upload = "document/upload";
+=======
+        public static class RouteNames
+        {
+            public const string IdSuffix = "{nbPage:int}";
+
+            public static class Document
+            {
+                public const string GetTen = "documents/" + IdSuffix;
+                public const string Insert = "document/create";
+                public const string Update = "document/edit";
+                public const string Delete = "document/delete";
+            }
+>>>>>>> d2cd42d9858ea062b1242819ce2231077c08604a
         }
+#endif
     }
 }

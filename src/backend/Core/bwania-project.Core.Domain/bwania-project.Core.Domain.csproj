@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Domain\</OutputPath>
+    <OutputPath>..\..\..\..\output\Core\Core.Domain\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NET45 SERVER DOMAIN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -27,7 +27,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\output\Server\Core.Domain\</OutputPath>
+    <OutputPath>..\..\..\..\output\Core\Core.Domain\</OutputPath>
     <DefineConstants>TRACE;NET45 SERVER DOMAIN</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,10 +46,10 @@
     <Compile Include="..\..\..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Engines\IDocumentDomainEngine.cs" />
-    <Compile Include="Engines\IDocumentReadEngine.cs" />
-    <Compile Include="Engines\IDomainEngine.cs" />
-    <Compile Include="IReadEngine.cs" />
+    <Compile Include="DomainExceptions.cs" />
+    <Compile Include="Engines\IDocumentEngine.cs" />
+    <Compile Include="Engines\IEngine.cs" />
+    <Compile Include="Engines\IEngineProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +63,10 @@
     <ProjectReference Include="..\bwania-project.Core.Enities\bwania-project.Core.Entities.csproj">
       <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>
       <Name>bwania-project.Core.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bwania-project.Core\bwania-project.Core.csproj">
+      <Project>{A03A59B6-30E0-432F-B5EB-EE57851E92D0}</Project>
+      <Name>bwania-project.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

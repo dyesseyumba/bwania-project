@@ -1,8 +1,8 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
 //  <copyright file="SolutionAssemblyInfo.cs" company="Bwania development team">
 //    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
-//  </copyright>
-//  --------------------------------------------------------------------------------------------------------------------
+//  </copyright>  
+// --------------------------------------------------------------------------------------------------------------------
 
 #pragma warning disable 1699    // 1699 = Use command line option '/keyfile' or appropriate project settings instead of 'AssemblyKeyFile'
 
@@ -27,6 +27,7 @@ using System.Resources;
 #if NET40
 [assembly: AssemblyConfiguration("NET40, Debug")]
 #elif NET45
+
 [assembly: AssemblyConfiguration("NET45, Debug")]
 #elif NET50
 [assembly: AssemblyConfiguration("NET50, Debug")]

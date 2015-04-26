@@ -6,12 +6,11 @@
 
 using System;
 using System.Web.Http;
-using BwaniaProject.Data;
-using BwaniaProject.Entities;
+using BwaniaProject.Data.Repositories;
 using Catel;
 using Catel.ExceptionHandling;
 
-namespace BwaniaProject.WebApi.Controllers
+namespace BwaniaProject.Web.Api.Controllers
 {
     public class ApiControllerBase<TRepository, TEngine> : ApiController
         where TRepository : IReadRepository
@@ -20,21 +19,21 @@ namespace BwaniaProject.WebApi.Controllers
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiControllerBase{TRepository, TEngine}"/> class.
+        ///     Initializes a new instance of the <see cref="ApiControllerBase{TRepository, TEngine}" /> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
-        /// <param name="engine">The engine.</param>
+        /// <param name="documentEngine">The engine.</param>
         /// <param name="exceptionService">The exception service.</param>
         /// <exception cref="ArgumentNullException">The <paramref name="repository" /> is <c>null</c>.</exception>
         /// <exception cref="ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
-        public ApiControllerBase(TRepository repository, TEngine engine, IExceptionService exceptionService)
+        public ApiControllerBase(TRepository repository, TEngine documentEngine, IExceptionService exceptionService)
         {
             Argument.IsNotNull("repository", repository);
-            Argument.IsNotNull("engine", engine);
+            Argument.IsNotNull("engine", documentEngine);
             Argument.IsNotNull("exceptionService", exceptionService);
 
             Repository = repository;
-            Engine = engine;
+            DocumentEngine = documentEngine;
             ExceptionService = exceptionService;
         }
 
@@ -43,28 +42,28 @@ namespace BwaniaProject.WebApi.Controllers
         #region Properties
 
         /// <summary>
-        /// Gets the repository.
+        ///     Gets the repository.
         /// </summary>
         /// <value>
-        /// The repository.
+        ///     The repository.
         /// </value>
         protected TRepository Repository { get; private set; }
 
         /// <summary>
-        /// Gets the exception service.
+        ///     Gets the exception service.
         /// </summary>
         /// <value>
-        /// The exception service.
+        ///     The exception service.
         /// </value>
         protected IExceptionService ExceptionService { get; private set; }
 
         /// <summary>
-        /// Gets the engine.
+        ///     Gets the engine.
         /// </summary>
         /// <value>
-        /// The engine.
+        ///     The engine.
         /// </value>
-        protected TEngine Engine { get; private set; }
+        protected TEngine DocumentEngine { get; private set; }
 
         #endregion
     }
