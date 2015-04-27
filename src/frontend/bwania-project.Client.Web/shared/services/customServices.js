@@ -125,7 +125,7 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
             $upload.upload({
                 method: 'POST',
                 url: urlMain + 'document/upload',
-                data: {documentId: documentId},
+                fields: { documentId: documentId },
                 file: file
             }).progress(function (evt) {
                 progressDownload(evt.loaded, evt.total);

@@ -6,6 +6,7 @@
 
 using System;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using BwaniaProject.Data.Repositories;
 using BwaniaProject.Domain.Engines;
@@ -45,15 +46,47 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(documents);
         }
 
+        [Route(Constants.RouteNames.Document.Upload), HttpPost]
+        public async Task<IHttpActionResult> Upload()
+        {
+            var document = new Document();
+            var file = HttpContext.Current.Request.Files[0];
+
+            if (!Infile(file)) return BadRequest("No file has been uploaded");
+
+            var documentId = HttpContext.Current.Request.Form["documentId"];
+            if (documentId != null)
+                document.id = documentId;
+
+            var fileStream = file.InputStream;
+            var fileRecord = new byte[file.ContentLength];
+
+            fileStream.Read(fileRecord, 0, file.ContentLength);
+
+            document.Fichier = fileRecord;
+
+            var result = await ExceptionService.Process(() => DocumentEngine.SaveAsync(document).ConfigureAwait(false));
+
+            return Created(Constants.RouteNames.Document.Insert, result);
+        }
+
         [HttpPost, Route(Constants.RouteNames.Document.Insert)]
         public async Task<IHttpActionResult> Post(Document document)
         {
             Argument.IsNotNull("document", document);
 
-            document.id = string.Format("document-{0}", Guid.NewGuid());
-            var result = await ExceptionService.Process(() => DocumentEngine.SaveAsync(document));
+            var result = await ExceptionService.Process(() => DocumentEngine.SaveAsync(document).ConfigureAwait(false));
 
             return Created(Constants.RouteNames.Document.Insert, result);
+        }
+
+        #endregion
+
+        #region Methods
+
+        public bool Infile(HttpPostedFile file)
+        {
+            return file != null && file.ContentLength > 0;
         }
 
         #endregion

@@ -60,7 +60,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', 'uui
         };
 
         $scope.onFileSelect = function (files) {
-            documentId = "document-" + uuid.newguid;
+            documentId = "document-" +  uuid.newuuid();
             //$scope.document.Fichier = $files[0].name;
             userFactory.docUpload(files[0], documentId, function () {
                 $scope.messageInfo = $files[0].name;

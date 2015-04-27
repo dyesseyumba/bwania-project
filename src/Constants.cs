@@ -40,6 +40,7 @@ namespace BwaniaProject
                 public const string Insert = "document/create";
                 public const string Update = "document/edit";
                 public const string Delete = "document/delete";
+                public const string Upload = "document/upload";
             }
         }
 #endif
