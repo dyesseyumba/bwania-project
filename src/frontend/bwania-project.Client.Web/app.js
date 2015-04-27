@@ -1,9 +1,9 @@
 'use strict';
 
 var app = angular.module('bwania', ['ngRoute', 'ngCookies', 'bwaniaAnimations', 'customServices', 'ui.bootstrap', 
-    'angularFileUpload','facebook','angular-loading-bar'])
+    'angularFileUpload', 'facebook', 'angular-loading-bar', 'angularUUID2'])
         .config(['$routeProvider', '$httpProvider','FacebookProvider',
-         function($routeProvider, $httpProvider, FacebookProvider) {
+         function($routeProvider, $httpProvider, facebookProvider) {
         $routeProvider.when('/home', {templateUrl: 'modules/home/views/homeView.html', controller: 'homeCtrl'});
         $routeProvider.when('/formation', {templateUrl: 'modules/formation/views/formationView.html', controller: 'formationCtrl'});
         $routeProvider.when('/formation/:titre', {templateUrl: 'modules/formation/views/formationView.html', controller: 'formationCtrl'});
@@ -51,7 +51,7 @@ var app = angular.module('bwania', ['ngRoute', 'ngCookies', 'bwaniaAnimations', 
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
         //Initialisation de facebook javascript SDK
-        FacebookProvider.init('1414324985471775');
+        facebookProvider.init('1414324985471775');
 
     }]);
 

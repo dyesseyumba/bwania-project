@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group">
                             <label>Fichier</label>
-                            <input type="file" accept="application/pdf" required="" ng-file-select="onFileSelect($files)">
+                            <input type="file" accept="application/pdf" required="" ng-file-select ng-file-change="onFileSelect($files)">
                         </div>
 
                         <progressbar class="progress-striped active" max="100" value="dynamic" type="info">

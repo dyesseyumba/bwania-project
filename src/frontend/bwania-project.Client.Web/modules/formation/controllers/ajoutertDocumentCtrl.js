@@ -1,21 +1,21 @@
 'use strict';
 
-app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$cookieStore',
-    function ($scope, $upload, userFactory, $cookieStore) {
+app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', 'uuid2', '$cookieStore',
+    function ($scope, $upload, userFactory, uuid, $cookieStore) {
         $scope.showMsgInfo = true;
         $scope.showErrorInfo = true;
 
+        var documentId = "";
 
 
-
-        var locals = $scope.document = {
-            Titre: $scope.titre,
-            Domaine: $scope.domaine,
-            Discipline: $scope.discipline,
-            Diveau: $scope.niveau,
-            MotCle: $scope.motCle,
-            DateDePublication: $scope.dateDePublication,
-            Description: $scope.description
+        var locals = $scope.Document = {
+            Titre: $scope.Titre,
+            Domaine: $scope.Domaine,
+            Discipline: $scope.Discipline,
+            Diveau: $scope.Niveau,
+            MotCle: $scope.MotCle,
+            DateDePublication: $scope.DateDePublication,
+            Description: $scope.Description
         }
 
 
@@ -37,17 +37,17 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
 
         $scope.send = function (document) {
 
-            locals.Titre = document.Titre,
-            locals.Domaine = document.Domaine,
-            locals.Discipline = document.Discipline,
-            locals.Niveau = document.Niveau,
-            locals.MotCle = document.MotCle,
-            locals.DateDePublication = document.DateDePublication,
+            locals.Titre = document.Titre;
+            locals.Domaine = document.Domaine;
+            locals.Discipline = document.Discipline;
+            locals.Niveau = document.Niveau;
+            locals.MotCle = document.MotCle;
+            locals.DateDePublication = document.DateDePublication;
             locals.DateModification = new Date();
-            locals.Description = document.Description,
+            locals.Description = document.Description;
+            locals.id = documentId;
 
             userFactory.docResource.save(locals, function () {
-                $scope.messageInfo = $scope.document.Fichier;
                 $scope.showMsgInfo = false;
                 $scope.showErrorInfo = true;
                 $scope.document = {};
@@ -59,10 +59,14 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', '$co
 
         };
 
-        $scope.onFileSelect = function ($files) {
-            $scope.document.Fichier = $files[0].name;
-            userFactory.docUpload($files[0], function (data) {
-                $scope.document.pathStockageCrypte = data;
+        $scope.onFileSelect = function (files) {
+            documentId = "document-" +  uuid.newuuid();
+            //$scope.document.Fichier = $files[0].name;
+            userFactory.docUpload(files[0], documentId, function () {
+                $scope.messageInfo = $files[0].name;
+                //$scope.document.pathStockageCrypte = data;
+                //$scope.showMsgInfo = false;
+                //$scope.showErrorInfo = true;
             }, function (loaded, total) {
                 var value = parseInt(100.0 * loaded / total);
                 $scope.dynamic = value;

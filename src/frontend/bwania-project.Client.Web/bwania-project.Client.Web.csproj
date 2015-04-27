@@ -159,17 +159,6 @@
     <Content Include="modules\user\views\compteActivationView.html" />
     <Content Include="modules\user\views\updateCredentialView.html" />
     <Content Include="modules\user\views\userHomeView.html" />
-    <Content Include="scripts\angular-file-upload-all.js" />
-    <Content Include="scripts\angular-file-upload-all.min.js" />
-    <Content Include="scripts\angular-file-upload-shim.js" />
-    <Content Include="scripts\angular-file-upload-shim.min.js" />
-    <Content Include="scripts\angular-file-upload.js" />
-    <Content Include="scripts\angular-file-upload.min.js" />
-    <Content Include="scripts\FileAPI.flash.swf" />
-    <Content Include="scripts\FileAPI.js" />
-    <Content Include="scripts\FileAPI.min.js" />
-    <Content Include="scripts\ng-file-upload-all.js" />
-    <Content Include="scripts\ng-file-upload-all.min.js" />
     <Content Include="shared\animations\animations.js" />
     <Content Include="shared\controllers\menuCtrl.js" />
     <Content Include="shared\directives\headerDirective.js" />
@@ -182,6 +171,8 @@
     <Content Include="vendor\angular-autocomplete\angucomplete.js" />
     <Content Include="vendor\angular-custom\angular-facebook.js" />
     <Content Include="vendor\angular-custom\angular-md5.js" />
+    <Content Include="vendor\angular-custom\angular-uuid2.js" />
+    <Content Include="vendor\angular-custom\angular-uuid2.min.js" />
     <Content Include="vendor\angular-custom\loading-bar.js" />
     <Content Include="vendor\angular-file-upload\angular-file-upload-shim.min.js" />
     <Content Include="vendor\angular-file-upload\angular-file-upload.min.js" />
@@ -226,9 +217,6 @@
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -244,7 +232,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:2062/</IISUrl>
+          <IISUrl>http://localhost:20623/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
