@@ -30,11 +30,6 @@ namespace BwaniaProject
             public const string ApiSegmentName = "api";
         }
 
-<<<<<<< HEAD
-            public const string Delete = "document/delete";
-
-            public const string Upload = "document/upload";
-=======
         public static class RouteNames
         {
             public const string IdSuffix = "{nbPage:int}";
@@ -46,7 +41,6 @@ namespace BwaniaProject
                 public const string Update = "document/edit";
                 public const string Delete = "document/delete";
             }
->>>>>>> d2cd42d9858ea062b1242819ce2231077c08604a
         }
 #endif
     }
