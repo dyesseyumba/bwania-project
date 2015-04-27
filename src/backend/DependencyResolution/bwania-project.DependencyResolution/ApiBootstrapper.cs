@@ -10,6 +10,7 @@ using bwaniaProject;
 using bwaniaProject.Data;
 using BwaniaProject.Data;
 using BwaniaProject.Data.Exceptions;
+using BwaniaProject.Domain;
 using Catel.ExceptionHandling;
 using LightInject;
 
@@ -23,7 +24,7 @@ namespace BwaniaProject
             RegisterFrom<DataBootstrapper>();
             RegisterFrom<DataReadBootstrapper>();
             RegisterFrom<DataDomainBootstrapper>();
-            RegisterFrom<DataDomainBootstrapper>();
+            RegisterFrom<DomainBootstrapper>();
 
             ConfigureExceptionPolicies();
         }

@@ -77,6 +77,10 @@
       <Project>{981BBE66-A889-4670-ABF0-8D0CB5F70691}</Project>
       <Name>bwania-project.Infrastructure.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Domain\bwania-project.Infrastructure.Domain.csproj">
+      <Project>{A8571845-52C2-43D2-B8D2-C7603BC5598D}</Project>
+      <Name>bwania-project.Infrastructure.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure\bwania-project.Infrastructure.csproj">
       <Project>{FED8990E-BB0D-4154-8FE4-C7D20E4282B4}</Project>
       <Name>bwania-project.Infrastructure</Name>

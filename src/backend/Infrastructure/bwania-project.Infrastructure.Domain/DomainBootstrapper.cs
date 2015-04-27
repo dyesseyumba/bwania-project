@@ -31,6 +31,7 @@ namespace BwaniaProject.Domain
         protected void RegisterEngines(IServiceRegistry serviceRegistry)
         {
             serviceRegistry.Register<IDocumentEngine, DocumentEngine>();
+            serviceRegistry.Register<IEngineProvider>(factory => new EngineProvider(factory));
         }
 
         public override void Compose(IServiceRegistry serviceRegistry)

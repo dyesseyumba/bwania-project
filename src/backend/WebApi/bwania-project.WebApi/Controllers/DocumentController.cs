@@ -17,20 +17,28 @@ using Catel.ExceptionHandling;
 namespace BwaniaProject.Web.Api.Controllers
 {
     public class DocumentController
-        : ApiControllerBase<IDocumentReadRepository, IDocumentEngine>
+        : ApiControllerBase
     {
+        private readonly IDocumentEngine _documentEngine;
+        private readonly IDocumentReadRepository _documentReadRepository;
+
         #region Constructor
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DocumentController" /> class.
         /// </summary>
-        /// <param name="repository">The repository.</param>
-        /// <param name="documentEngine"></param>
+        /// <param name="repositoryProvider"></param>
         /// <param name="exceptionService">The exception service.</param>
-        public DocumentController(IDocumentReadRepository repository, IDocumentEngine documentEngine,
+        /// <param name="engineProvider"></param>
+        public DocumentController(IEngineProvider engineProvider, IRepositoryProvider repositoryProvider,
             IExceptionService exceptionService)
-            : base(repository, documentEngine, exceptionService)
+            : base(exceptionService)
         {
+            Argument.IsNotNull(() => engineProvider);
+            Argument.IsNotNull(() => repositoryProvider);
+
+            _documentEngine = engineProvider.GetEngine<IDocumentEngine>();
+            _documentReadRepository = repositoryProvider.GetRepository<IDocumentReadRepository>();
         }
 
         #endregion
@@ -41,12 +49,12 @@ namespace BwaniaProject.Web.Api.Controllers
         public async Task<IHttpActionResult> GetTen(int nbPage)
         {
             var documents = await ExceptionService.Process(()
-                => Repository.GetTenDocumentAsync(nbPage));
+                => _documentReadRepository.GetTenDocumentAsync(nbPage));
 
             return Ok(documents);
         }
 
-        [Route(Constants.RouteNames.Document.Upload), HttpPost]
+        [HttpPost, Route(Constants.RouteNames.Document.Upload)]
         public async Task<IHttpActionResult> Upload()
         {
             var document = new Document();
@@ -65,7 +73,7 @@ namespace BwaniaProject.Web.Api.Controllers
 
             document.Fichier = fileRecord;
 
-            var result = await ExceptionService.Process(() => DocumentEngine.SaveAsync(document).ConfigureAwait(false));
+            var result = await ExceptionService.Process(() => _documentEngine.SaveAsync(document).ConfigureAwait(false));
 
             return Created(Constants.RouteNames.Document.Insert, result);
         }
@@ -75,7 +83,7 @@ namespace BwaniaProject.Web.Api.Controllers
         {
             Argument.IsNotNull("document", document);
 
-            var result = await ExceptionService.Process(() => DocumentEngine.SaveAsync(document).ConfigureAwait(false));
+            var result = await ExceptionService.Process(() => _documentEngine.SaveAsync(document).ConfigureAwait(false));
 
             return Created(Constants.RouteNames.Document.Insert, result);
         }
