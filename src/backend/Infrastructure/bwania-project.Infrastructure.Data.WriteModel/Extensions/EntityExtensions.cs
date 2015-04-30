@@ -15,7 +15,7 @@ namespace BwaniaProject.Data.Extensions
         {
             return new Document<T>
             {
-                Id = entity.id,
+                Id = entity.Id,
                 Cas = entity.Cas,
                 Content = entity
             };
@@ -25,7 +25,7 @@ namespace BwaniaProject.Data.Extensions
         {
             var entity = document.Content;
             entity.Cas = document.Cas;
-            entity.id = document.Id;
+            entity.Id = document.Id;
             return entity;
         }
     }

@@ -58,7 +58,7 @@ namespace BwaniaProject.Data.Repositories
             Argument.IsNotNull("entity", entity);
 
             var result = await Task.Run(() => Bucket.Remove(entity.Wrap())).ConfigureAwait(false);
-            result.ThrowIfNotSuccess(entity.id);
+            result.ThrowIfNotSuccess(entity.Id);
 
             return result.Success;
         }

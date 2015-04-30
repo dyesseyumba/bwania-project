@@ -8,7 +8,7 @@ using System;
 
 namespace BwaniaProject.Entities
 {
-    public class Commentaire : EntityBase, ICommentaire
+    public class Commentaire : ICommentaire
     {
         /// <summary>
         ///     Gets or sets the designation.

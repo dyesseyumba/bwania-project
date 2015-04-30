@@ -45,7 +45,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', 'uui
             locals.DateDePublication = document.DateDePublication;
             locals.DateModification = new Date();
             locals.Description = document.Description;
-            locals.id = documentId;
+            locals.Id = documentId;
 
             userFactory.docResource.save(locals, function () {
                 $scope.showMsgInfo = false;

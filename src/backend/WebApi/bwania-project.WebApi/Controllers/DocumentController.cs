@@ -64,7 +64,7 @@ namespace BwaniaProject.Web.Api.Controllers
 
             var documentId = HttpContext.Current.Request.Form["documentId"];
             if (documentId != null)
-                document.id = documentId;
+                document.Id = documentId;
 
             var fileStream = file.InputStream;
             var fileRecord = new byte[file.ContentLength];

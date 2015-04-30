@@ -32,36 +32,34 @@ namespace BwaniaProject.Entities
         #region Properties
 
         /// <summary>
-        ///     Gets or sets the identifier.
+        /// The unique identifier for the document
+        /// 
         /// </summary>
-        /// <value>
-        ///     The identifier.
-        /// </value>
-        public string id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        ///     Gets or sets the type.
+        /// The "Check and Set" value for enforcing optimistic concurrency
+        /// 
         /// </summary>
-        /// <value>
-        ///     The type.
-        /// </value>
-        public string Type { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the cas.
-        /// </summary>
-        /// <value>
-        ///     The cas.
-        /// </value>
         public ulong Cas { get; set; }
 
         /// <summary>
-        ///     Gets or sets the updated.
+        /// The time-to-live or TTL for the document before it's evicated from disk
+        /// 
+        /// </summary>
+        /// 
+        /// <remarks>
+        /// Setting this to zero or less will give the document infinite lifetime
+        /// </remarks>
+        public uint Expiry { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type.
         /// </summary>
         /// <value>
-        ///     The updated.
+        /// The type.
         /// </value>
-        public DateTime Updated { get; set; }
+        public string Type { get; set; }
 
         #endregion
     }

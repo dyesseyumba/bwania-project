@@ -35,7 +35,7 @@ namespace BwaniaProject.Data.Extensions
                 case ResponseStatus.OperationTimeout:
                     throw new CouchbaseClientException(result, result.Document.Id);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(result.Message);
             }
         }
 
@@ -61,7 +61,7 @@ namespace BwaniaProject.Data.Extensions
                 case ResponseStatus.OperationTimeout:
                     throw new CouchbaseClientException(result, key);
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new ArgumentOutOfRangeException(result.Message);
             }
         }
     }

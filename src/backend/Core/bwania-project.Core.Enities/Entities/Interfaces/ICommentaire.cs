@@ -8,7 +8,7 @@ using System;
 
 namespace BwaniaProject.Entities
 {
-    public interface ICommentaire : IEntity
+    public interface ICommentaire
     {
         /// <summary>
         ///     Gets or sets the designation.

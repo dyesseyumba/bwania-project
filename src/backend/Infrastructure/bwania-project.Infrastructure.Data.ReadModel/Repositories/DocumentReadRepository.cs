@@ -12,7 +12,7 @@ using Catel.ExceptionHandling;
 
 namespace BwaniaProject.Data.Repositories
 {
-    public class DocumentReadRepository : ReadRepositoryBase, IDocumentReadRepository
+    public class DocumentReadRepository : ReadRepositoryBase<IDocument>, IDocumentReadRepository
     {
         #region Constructors
 

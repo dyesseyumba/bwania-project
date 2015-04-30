@@ -40,14 +40,13 @@ namespace BwaniaProject.Web.Api
 
             const string databaseConnectionName = Constants.DatabaseConnectionName;
 
-
             app.Map("/" + Constants.CommonRoutingDefinitions.ApiSegmentName, builder =>
             {
                 var httpConfiguration = new HttpConfiguration();
 
                 UseJsonCamelCaseFormatter(httpConfiguration);
                 ConfigureRouting(httpConfiguration);
-                ConfigureCaching(httpConfiguration);
+                //ConfigureCaching(httpConfiguration);
 
                 this.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
 

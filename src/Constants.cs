@@ -21,7 +21,7 @@ namespace BwaniaProject
         {
             public const string AplicationJson = "application/json";
             public const string AplicationXml = "application/xml";
-            public const string TextJson = "test/json";
+            public const string TextJson = "text/json";
             public const string TextXml = "text/xml";
         }
 

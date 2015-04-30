@@ -6,19 +6,18 @@
 
 using System;
 using System.Configuration;
+using System.Linq;
+using System.Threading.Tasks;
+using BwaniaProject.Data.Exceptions;
+using BwaniaProject.Data.Repositories;
+using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
 using Nest;
 
-// --------------------------------------------------------------------------------------------------------------------
-//  <copyright file="ReadRepositoryBase.cs" company="Bwania development team">
-//    Copyright (c) 2014 - 2015 Bwania development team. All rights reserved.
-//  </copyright>  
-// --------------------------------------------------------------------------------------------------------------------
-
 namespace BwaniaProject.Data
 {
-    public class ReadRepositoryBase
+    public class ReadRepositoryBase<T> : IReadRepository<T> where T : class, IEntity
     {
         #region Constructors
 
@@ -58,6 +57,24 @@ namespace BwaniaProject.Data
         ///     The exception service.
         /// </value>
         protected IExceptionService ExceptionService { get; private set; }
+
+        #endregion
+
+        #region Methods
+
+        public async Task<T> GetOneByIdAsync(string entityId)
+        {
+            var results = Client.Search<T>(s => s
+                .From(0)
+                .Size(1)
+                .Query(q => q.Term(d => d.Id, entityId)));
+
+            if (results.IsValid)
+            {
+                return await ExceptionService.ProcessAsync(() => results.Documents.FirstOrDefault()).ConfigureAwait(false);
+            }
+            throw new SearchRequestException(results.RequestInformation);
+        }
 
         #endregion
     }

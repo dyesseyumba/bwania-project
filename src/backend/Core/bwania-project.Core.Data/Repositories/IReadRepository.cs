@@ -4,9 +4,18 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Threading.Tasks;
+using BwaniaProject.Entities;
+
 namespace BwaniaProject.Data.Repositories
 {
-    public interface IReadRepository : IRepository
+    public interface IReadRepository<T> : IRepository where T : IEntity
     {
+        /// <summary>
+        /// Gets the one by identifier asynchronous.
+        /// </summary>
+        /// <param name="entityId">The entity identifier.</param>
+        /// <returns></returns>
+        Task<T> GetOneByIdAsync(string entityId);
     }
 }
