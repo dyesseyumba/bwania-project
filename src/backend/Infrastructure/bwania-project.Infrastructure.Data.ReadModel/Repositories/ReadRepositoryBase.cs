@@ -36,6 +36,7 @@ namespace BwaniaProject.Data
             var settings = new ConnectionSettings(node, indexName);
 
             Client = new ElasticClient(settings);
+            ExceptionService = exceptionService;
         }
 
         #endregion

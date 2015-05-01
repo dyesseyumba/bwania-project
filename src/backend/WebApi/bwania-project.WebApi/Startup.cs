@@ -46,7 +46,7 @@ namespace BwaniaProject.Web.Api
 
                 UseJsonCamelCaseFormatter(httpConfiguration);
                 ConfigureRouting(httpConfiguration);
-                //ConfigureCaching(httpConfiguration);
+                ConfigureCaching(httpConfiguration);
 
                 this.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
 
@@ -94,7 +94,7 @@ namespace BwaniaProject.Web.Api
 
         private static void ConfigureCaching(HttpConfiguration httpConfiguration)
         {
-            httpConfiguration.MessageHandlers.Add(new CachingHandler(httpConfiguration));
+            httpConfiguration.MessageHandlers.Add(new CachingHandler(httpConfiguration, new InMemoryEntityTagStore()));
         }
 
         private static void ConfigureAdditionalIdentityProviders(IAppBuilder app, string signInAsType)

@@ -33,13 +33,13 @@ namespace BwaniaProject.Data.Repositories
         /// <exception cref="SearchRequestException"></exception>
         public async Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage)
         {
-            var results = Client.Search<IDocument>(s => s
+            var results = await ExceptionService.ProcessAsync(() => Client.Search<IDocument>(s => s
                 .From(nbPage)
-                .Size(10));
+                .Size(10))).ConfigureAwait(false);
 
             if (results.IsValid)
             {
-                return await ExceptionService.ProcessAsync(() => results.Documents).ConfigureAwait(false);
+                return results.Documents;
             }
             throw new SearchRequestException(results.RequestInformation);
         }
