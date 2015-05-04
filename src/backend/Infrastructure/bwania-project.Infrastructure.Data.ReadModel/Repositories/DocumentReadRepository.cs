@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
+using Couchbase;
 
 namespace BwaniaProject.Data.Repositories
 {
@@ -17,7 +18,7 @@ namespace BwaniaProject.Data.Repositories
         #region Constructors
 
         public DocumentReadRepository(IExceptionService exceptionService)
-            : base(Constants.DocumentIndexName, exceptionService)
+            : base(new Cluster(Constants.ClusterConfig).OpenBucket(), exceptionService)
         {
         }
 
@@ -25,25 +26,13 @@ namespace BwaniaProject.Data.Repositories
 
         #region Methods
 
-        /// <summary>
-        ///     Gets the ten indexed document.
-        /// </summary>
-        /// <param name="nbPage">The nb page.</param>
-        /// <returns></returns>
-        /// <exception cref="SearchRequestException"></exception>
-        public async Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage)
+        public Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage)
         {
-            var results = await ExceptionService.ProcessAsync(() => Client.Search<IDocument>(s => s
-                .From(nbPage)
-                .Size(10))).ConfigureAwait(false);
-
-            if (results.IsValid)
-            {
-                return results.Documents;
-            }
-            throw new SearchRequestException(results.RequestInformation);
+            throw new System.NotImplementedException();
         }
 
         #endregion
+
+        
     }
 }

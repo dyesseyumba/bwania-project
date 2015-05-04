@@ -14,6 +14,7 @@ namespace BwaniaProject
 #if DATA
         public const string DocumentBucketName = "BwaniaDocument";
         public const string DocumentIndexName = "bwania-document";
+        public const string ClusterConfig = "couchbaseClients/couchbase";
 #endif
 
 #if WEBAPI

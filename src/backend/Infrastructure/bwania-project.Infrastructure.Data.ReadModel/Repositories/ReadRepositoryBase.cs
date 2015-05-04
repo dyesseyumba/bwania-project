@@ -4,16 +4,13 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Configuration;
-using System.Linq;
 using System.Threading.Tasks;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Data.Repositories;
 using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
-using Nest;
+using Couchbase.Core;
 
 namespace BwaniaProject.Data
 {
@@ -22,20 +19,20 @@ namespace BwaniaProject.Data
         #region Constructors
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ReadRepositoryBase" /> class.
+        ///     Initializes a new instance of the <see>
+        ///         <cref>ReadRepositoryBase</cref>
+        ///     </see>
+        ///     class.
         /// </summary>
-        /// <param name="indexName">Name of the index.</param>
+        /// <param name="bucket">the couchbase Bucket.</param>
         /// <param name="exceptionService">The exception service</param>
-        /// <exception cref="System.ArgumentNullException">The <paramref name="indexName" /> is <c>null</c>.</exception>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="bucket" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
-        public ReadRepositoryBase(string indexName, IExceptionService exceptionService)
+        public ReadRepositoryBase(IBucket bucket, IExceptionService exceptionService)
         {
-            Argument.IsNotNull("indexName", indexName);
+            Argument.IsNotNull("indexName", bucket);
 
-            var node = new Uri(ConfigurationManager.AppSettings["ElasticSearchUri"]);
-            var settings = new ConnectionSettings(node, indexName);
-
-            Client = new ElasticClient(settings);
+            Bucket = bucket;
             ExceptionService = exceptionService;
         }
 
@@ -44,12 +41,12 @@ namespace BwaniaProject.Data
         #region Properties
 
         /// <summary>
-        ///     Gets or sets the alastic search client.
+        /// Gets the bucket.
         /// </summary>
         /// <value>
-        ///     The client.
+        /// The bucket.
         /// </value>
-        public ElasticClient Client { get; set; }
+        protected IBucket Bucket { get; private set; }
 
         /// <summary>
         ///     Gets the exception service.
@@ -65,16 +62,13 @@ namespace BwaniaProject.Data
 
         public async Task<T> GetOneByIdAsync(string entityId)
         {
-            var results = Client.Search<T>(s => s
-                .From(0)
-                .Size(1)
-                .Query(q => q.Term(d => d.Id, entityId)));
+            var result = await ExceptionService.ProcessAsync(() => Bucket.GetDocument<T>(entityId));
 
-            if (results.IsValid)
+            if (result.Success)
             {
-                return await ExceptionService.ProcessAsync(() => results.Documents.FirstOrDefault()).ConfigureAwait(false);
+                return result.Content;
             }
-            throw new SearchRequestException(results.RequestInformation);
+            throw new SearchRequestException(result.Message);
         }
 
         #endregion

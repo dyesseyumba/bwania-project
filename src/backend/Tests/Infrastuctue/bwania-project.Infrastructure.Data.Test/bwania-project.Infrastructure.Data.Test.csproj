@@ -112,7 +112,7 @@
       <Project>{CA864EA3-6423-48BF-9352-666A0BCFB7AF}</Project>
       <Name>bwania-project.Core.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Infrastructure\bwania-project.Infrastucture.Data.WriteModel\bwania-project.Infrastructure.Data.WriteModel.csproj">
+    <ProjectReference Include="..\..\..\Infrastructure\bwania-project.Infrastructure.Data.WriteModel\bwania-project.Infrastructure.Data.WriteModel.csproj">
       <Project>{425E4725-3954-4236-AB15-F0C0708934FC}</Project>
       <Name>bwania-project.Infrastructure.Data.WriteModel</Name>
     </ProjectReference>

@@ -16,7 +16,7 @@ namespace BwaniaProject.Data.Repositories
         //{
         //}
         public DocumentDomainRepository()
-            : base(new Cluster("couchbaseClients/couchbase").OpenBucket())
+            : base(new Cluster(Constants.ClusterConfig).OpenBucket())
         {
         }
     }
