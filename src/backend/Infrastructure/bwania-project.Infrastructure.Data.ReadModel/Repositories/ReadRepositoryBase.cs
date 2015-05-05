@@ -62,7 +62,7 @@ namespace BwaniaProject.Data
 
         public async Task<T> GetOneByIdAsync(string entityId)
         {
-            var result = await ExceptionService.ProcessAsync(() => Bucket.GetDocument<T>(entityId));
+            var result = await ExceptionService.ProcessAsync(() => Bucket.GetDocument<T>(entityId)).ConfigureAwait(false);
 
             if (result.Success)
             {

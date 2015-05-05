@@ -4,16 +4,16 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
 using Couchbase;
 
 namespace BwaniaProject.Data.Repositories
 {
-    public class DocumentReadRepository : ReadRepositoryBase<IDocument>, IDocumentReadRepository
+    public class DocumentReadRepository : ReadRepositoryBase<Document>, IDocumentReadRepository
     {
         #region Constructors
 
@@ -28,7 +28,7 @@ namespace BwaniaProject.Data.Repositories
 
         public Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         #endregion

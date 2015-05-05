@@ -46,7 +46,7 @@ namespace BwaniaProject.Web.Api
 
                 UseJsonCamelCaseFormatter(httpConfiguration);
                 ConfigureRouting(httpConfiguration);
-                ConfigureCaching(httpConfiguration);
+                //ConfigureCaching(httpConfiguration);
 
                 this.EnableWebApi(httpConfiguration); //Enabling Ioc on Web API
 

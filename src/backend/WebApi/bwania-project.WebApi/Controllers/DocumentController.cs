@@ -4,7 +4,6 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -19,8 +18,10 @@ namespace BwaniaProject.Web.Api.Controllers
     public class DocumentController
         : ApiControllerBase
     {
+        #region Fields
         private readonly IDocumentEngine _documentEngine;
         private readonly IDocumentReadRepository _documentReadRepository;
+        #endregion
 
         #region Constructor
 
@@ -81,11 +82,18 @@ namespace BwaniaProject.Web.Api.Controllers
         [HttpPost, Route(Constants.RouteNames.Document.Insert)]
         public async Task<IHttpActionResult> Post(Document document)
         {
-            Argument.IsNotNull("document", document);
+          var result = await ExceptionService.Process( () =>
+            {
+              return _documentReadRepository.GetOneByIdAsync(document.Id)
+                    .ContinueWith(t =>
+                    {
+                        document.Fichier = t.Result.Fichier;
+                        return _documentEngine.SaveAsync(document).Result;
+                    });
 
-            var result = await ExceptionService.Process(() => _documentEngine.SaveAsync(document).ConfigureAwait(false));
+            }).ConfigureAwait(false);
 
-            return Created(Constants.RouteNames.Document.Insert, result);
+          return Created(Constants.RouteNames.Document.Insert, result);
         }
 
         #endregion
