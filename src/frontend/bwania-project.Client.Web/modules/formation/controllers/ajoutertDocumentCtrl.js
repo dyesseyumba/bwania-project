@@ -1,7 +1,7 @@
 'use strict';
 
-app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', 'uuid2', '$cookieStore',
-    function ($scope, $upload, userFactory, uuid, $cookieStore) {
+app.controller('ajoutertDocumentCtrl', ['$scope', 'UserFactory', 'uuid2', '$cookieStore',
+    function ($scope, userFactory, uuid, $cookieStore) {
         $scope.showMsgInfo = true;
         $scope.showErrorInfo = true;
 
@@ -63,13 +63,11 @@ app.controller('ajoutertDocumentCtrl', ['$scope', '$upload', 'UserFactory', 'uui
             documentId = "document-" +  uuid.newuuid();
             //$scope.document.Fichier = $files[0].name;
             userFactory.docUpload(files[0], documentId, function () {
-                $scope.messageInfo = $files[0].name;
-                //$scope.document.pathStockageCrypte = data;
-                //$scope.showMsgInfo = false;
-                //$scope.showErrorInfo = true;
+                $scope.messageInfo = files[0].name;
             }, function (loaded, total) {
                 var value = parseInt(100.0 * loaded / total);
                 $scope.dynamic = value;
+                $scope.fileName = files[0].name;
             });
         };
 

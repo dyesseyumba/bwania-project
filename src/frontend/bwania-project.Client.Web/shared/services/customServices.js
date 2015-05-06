@@ -2,7 +2,7 @@ var customServices = angular.module('customServices', ['ngResource']);
 
 var urlMain = 'http://localhost:27573/api/';
 
-customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore', '$upload', function ($resource, $location, $cookieStore, $upload) {
+customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore', 'Upload', function ($resource, $location, $cookieStore, Upload) {
 
         var connectedUser = {};
         var cookieEmail;
@@ -122,8 +122,7 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
 
         //Uploader un documents
         var docUpload = function (file, documentId, successCallBack, progressDownload) {
-            $upload.upload({
-                method: 'POST',
+            Upload.upload({
                 url: urlMain + 'document/upload',
                 fields: { documentId: documentId },
                 file: file

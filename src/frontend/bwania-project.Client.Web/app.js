@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('bwania', ['ngRoute', 'ngCookies', 'bwaniaAnimations', 'customServices', 'ui.bootstrap', 
-    'angularFileUpload', 'facebook', 'angular-loading-bar', 'angularUUID2'])
+    'ngFileUpload', 'facebook', 'angular-loading-bar', 'angularUUID2'])
         .config(['$routeProvider', '$httpProvider','FacebookProvider',
          function($routeProvider, $httpProvider, facebookProvider) {
         $routeProvider.when('/home', {templateUrl: 'modules/home/views/homeView.html', controller: 'homeCtrl'});
