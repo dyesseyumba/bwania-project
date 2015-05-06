@@ -55,6 +55,7 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(documents);
         }
 
+
         [HttpPost, Route(Constants.RouteNames.Document.Upload)]
         public async Task<IHttpActionResult> Upload()
         {
@@ -64,20 +65,25 @@ namespace BwaniaProject.Web.Api.Controllers
             if (!Infile(file)) return BadRequest("No file has been uploaded");
 
             var documentId = HttpContext.Current.Request.Form["documentId"];
+
             if (documentId != null)
+            {
                 document.Id = documentId;
 
-            var fileStream = file.InputStream;
-            var fileRecord = new byte[file.ContentLength];
+                var fileStream = file.InputStream;
+                var fileRecord = new byte[file.ContentLength];
 
-            fileStream.Read(fileRecord, 0, file.ContentLength);
+                fileStream.Read(fileRecord, 0, file.ContentLength);
 
-            document.Fichier = fileRecord;
+                document.Expiry = 3600000; //The document will expire in next 60 minutes
+                document.Fichier = fileRecord;
+            }
 
             var result = await ExceptionService.Process(() => _documentEngine.SaveAsync(document).ConfigureAwait(false));
 
             return Created(Constants.RouteNames.Document.Insert, result);
         }
+
 
         [HttpPost, Route(Constants.RouteNames.Document.Insert)]
         public async Task<IHttpActionResult> Post(Document document)
@@ -88,6 +94,7 @@ namespace BwaniaProject.Web.Api.Controllers
                     .ContinueWith(t =>
                     {
                         document.Fichier = t.Result.Fichier;
+                        document.Expiry = 0; //Disable the expiration
                         return _documentEngine.SaveAsync(document).Result;
                     });
 
