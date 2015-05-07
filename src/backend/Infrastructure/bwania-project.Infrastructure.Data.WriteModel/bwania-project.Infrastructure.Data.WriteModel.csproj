@@ -86,8 +86,6 @@
     <Compile Include="Exceptions\CouchbaseServerException.cs" />
     <Compile Include="Exceptions\DocumentExistsException.cs" />
     <Compile Include="Exceptions\DocumentNotFoundException.cs" />
-    <Compile Include="Exceptions\QueryRequestException.cs" />
-    <Compile Include="Exceptions\ViewRequestException.cs" />
     <Compile Include="Extensions\DocumentResultExtensions.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

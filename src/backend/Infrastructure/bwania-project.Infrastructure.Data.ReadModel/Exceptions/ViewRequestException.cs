@@ -7,11 +7,10 @@
 using System;
 using System.Net;
 using System.Runtime.Serialization;
-using bwaniaProject.Data;
 
 namespace BwaniaProject.Data.Exceptions
 {
-    public class ViewRequestException : DataException
+    public class ViewRequestException : Exception
     {
         public ViewRequestException()
         {
@@ -27,6 +26,7 @@ namespace BwaniaProject.Data.Exceptions
         {
             StatusCode = statusCode;
         }
+
 
         public ViewRequestException(string message, Exception innerException)
             : base(message, innerException)

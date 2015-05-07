@@ -56,14 +56,6 @@ namespace BwaniaProject
                     exception);
             });
 
-            exceptionService.Register<QueryRequestException>(exception =>
-            {
-                LogTo.Error(exception.Message);
-                throw new Exception(
-                    "Une erreur est survenue dans lors de la requète. Si le problème persiste, contactez l'administrateur.",
-                    exception);
-            });
-
             exceptionService.Register<ViewRequestException>(exception =>
             {
                 LogTo.Error(exception.Message);
