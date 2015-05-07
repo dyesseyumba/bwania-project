@@ -28,10 +28,10 @@ namespace BwaniaProject.Data.Repositories
 
         public async Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage)
         {
-            //TODO : add document name and view name
-            var query = Bucket.CreateQuery("", "", true)
+            var query = Bucket.CreateQuery(Constants.DesignDocumentNameGet10Doc, Constants.ViewNameGet10Doc, true)
                 .Skip(nbPage)
-                .Limit(10);
+                .Limit(10)
+                .Desc();
 
             var results = await ExceptionService.ProcessAsync(() => Bucket.Query<Document>(query))
                 .ConfigureAwait(false) ;

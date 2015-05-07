@@ -15,6 +15,8 @@ namespace BwaniaProject
         public const string DocumentBucketName = "BwaniaDocument";
         public const string DocumentIndexName = "bwania-document";
         public const string ClusterConfig = "couchbaseClients/couchbase";
+        public const string DesignDocumentNameGet10Doc = "dev_document";
+        public const string ViewNameGet10Doc = "document.get10";
 #endif
 
 #if WEBAPI
