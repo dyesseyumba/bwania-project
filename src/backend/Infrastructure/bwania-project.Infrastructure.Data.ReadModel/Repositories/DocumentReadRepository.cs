@@ -45,7 +45,7 @@ namespace BwaniaProject.Data.Repositories
 
         #endregion
 
-        public override async Task<IDocument> GetOneByIdAsync(string entityId)
+        public override async Task<IDocument> GetByIdAsync(string entityId)
         {
             return await GetByIdAsync<Document>(entityId).ConfigureAwait(false);
         }

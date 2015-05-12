@@ -16,6 +16,6 @@ namespace BwaniaProject.Data.Repositories
         /// </summary>
         /// <param name="entityId">The entity identifier.</param>
         /// <returns></returns>
-        Task<T> GetOneByIdAsync(string entityId);
+        Task<T> GetByIdAsync(string entityId);
     }
 }

@@ -55,6 +55,15 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(documents);
         }
 
+        [HttpGet, Route(Constants.RouteNames.Document.GetById)]
+        public async Task<IHttpActionResult> GetById(string id)
+        {
+            var document = await ExceptionService.Process(()
+                => _documentReadRepository.GetByIdAsync(id));
+
+            return Ok(document);
+        }
+
 
         [HttpPost, Route(Constants.RouteNames.Document.Upload)]
         public async Task<IHttpActionResult> Upload()
@@ -90,7 +99,7 @@ namespace BwaniaProject.Web.Api.Controllers
         {
           var result = await ExceptionService.Process( () =>
             {
-              return _documentReadRepository.GetOneByIdAsync(document.Id)
+              return _documentReadRepository.GetByIdAsync(document.Id)
                     .ContinueWith(t =>
                     {
                         document.Fichier = t.Result.Fichier;

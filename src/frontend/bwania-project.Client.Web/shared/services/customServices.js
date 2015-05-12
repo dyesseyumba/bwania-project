@@ -221,7 +221,7 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
                 + '/:lycee/:univ');
 
         //Afficher les détails d'un documents
-        var getOneDocById = $resource(urlMain + 'documents/:documentId');
+        var getOneDocById = $resource(urlMain + 'document/:documentId');
 
         //Afficher les documents similaire
         var getDocSimilars = $resource(urlMain + 'documents/doc_similaire/:domaine');

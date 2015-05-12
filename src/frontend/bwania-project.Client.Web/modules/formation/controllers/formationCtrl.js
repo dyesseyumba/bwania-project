@@ -41,41 +41,43 @@ app.controller("formationCtrl", [
          *Cas d'une redirection de la page home - Trillage des documents par domaines - Recherche d'un document.
          */
         //Trie par Informatique & Technologies
-        if ($route.current.params.titre) {
-            $scope.documents = userFactory.getDocSearchResults.query({ pageIndex: 0, titre: $route.current.params.titre });
-        } else if ($route.current.params.infoTech === "Informatique & Technologies") {
-            applyFilter("Informatique & Technologies", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.mathematiques === "Mathématiques") {
-            //localFilter{};
-            applyFilter("''", "Mathématiques", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.medecine === "Médecine") {
-            applyFilter("''", "''", "Médecine", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.physiqueChimie === "Physique & Chimie") {
-            applyFilter("''", "''", "''", "Physique & Chimie", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.banqueFinance === "Banque & Finances") {
-            applyFilter("''", "''", "''", "''", "Banque & Finances", "''", "''", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.economieGestion === "Economie & Gestion") {
-            applyFilter("''", "''", "''", "''", "''", "Economie & Gestion", "''", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.langues === "Langues") {
-            applyFilter("''", "''", "''", "''", "''", "''", "Langues", "''", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.philoLit === "Philosophie & Littérature") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "Philosophie & Littérature", "''", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.histGeogr === "Histoire & Géographie") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "Histoire & Géographie", "''", "''", "''", "''", "''");
-        } else if ($route.current.params.trucsEtAstuces === "Trucs & Astuces") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "Trucs & Astuces", "''", "''", "''", "''");
-        } else if ($route.current.params.autre === "Autre") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Autre", "''", "''", "''");
-        } else if ($route.current.params.college === "Collège") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Collège", "''", "''");
-        } else if ($route.current.params.lycee === "Lycée") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Lycée", "''");
-        } else if ($route.current.params.univ === "Université") {
-            applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Université");
-        } else {
+        //if ($route.current.params.titre) {
+        //    $scope.documents = userFactory.getDocSearchResults.query({ pageIndex: 0, titre: $route.current.params.titre });
+        //} else if ($route.current.params.infoTech === "Informatique & Technologies") {
+        //    applyFilter("Informatique & Technologies", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.mathematiques === "Mathématiques") {
+        //    //localFilter{};
+        //    applyFilter("''", "Mathématiques", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.medecine === "Médecine") {
+        //    applyFilter("''", "''", "Médecine", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.physiqueChimie === "Physique & Chimie") {
+        //    applyFilter("''", "''", "''", "Physique & Chimie", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.banqueFinance === "Banque & Finances") {
+        //    applyFilter("''", "''", "''", "''", "Banque & Finances", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.economieGestion === "Economie & Gestion") {
+        //    applyFilter("''", "''", "''", "''", "''", "Economie & Gestion", "''", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.langues === "Langues") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "Langues", "''", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.philoLit === "Philosophie & Littérature") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "Philosophie & Littérature", "''", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.histGeogr === "Histoire & Géographie") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "Histoire & Géographie", "''", "''", "''", "''", "''");
+        //} else if ($route.current.params.trucsEtAstuces === "Trucs & Astuces") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "Trucs & Astuces", "''", "''", "''", "''");
+        //} else if ($route.current.params.autre === "Autre") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Autre", "''", "''", "''");
+        //} else if ($route.current.params.college === "Collège") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Collège", "''", "''");
+        //} else if ($route.current.params.lycee === "Lycée") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Lycée", "''");
+        //} else if ($route.current.params.univ === "Université") {
+        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Université");
+        //} else {
             //Consommation de la ressource de chargement des documents
-            $scope.documents = userFactory.filterByDomaine.query(localFilter);
-        }
+            //$scope.documents = userFactory.filterByDomaine.query(localFilter);
+        //}
+        //Consommation de la ressource de chargement des documents
+        $scope.documents = userFactory.docResourceGet.query({ pageIndex: 0 });
 
 
          /*

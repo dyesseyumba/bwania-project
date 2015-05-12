@@ -39,15 +39,17 @@ namespace BwaniaProject
 
         public static class RouteNames
         {
-            public const string IdSuffix = "{nbPage:int}";
+            public const string NbPageSuffix = "{nbPage:int}";
+            public const string IdSuffix = "{id}";
 
             public static class Document
             {
-                public const string GetTen = "documents/" + IdSuffix;
+                public const string GetTen = "documents/" + NbPageSuffix;
                 public const string Insert = "document/create";
                 public const string Update = "document/edit";
                 public const string Delete = "document/delete";
                 public const string Upload = "document/upload";
+                public const string GetById = "document/" + IdSuffix;
             }
         }
 #endif

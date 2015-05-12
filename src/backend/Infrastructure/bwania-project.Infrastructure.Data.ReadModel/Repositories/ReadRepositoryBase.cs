@@ -74,6 +74,6 @@ namespace BwaniaProject.Data
 
         #endregion
 
-        public abstract Task<T> GetOneByIdAsync(string entityId);
+        public abstract Task<T> GetByIdAsync(string entityId);
     }
 }
