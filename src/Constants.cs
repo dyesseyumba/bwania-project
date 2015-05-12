@@ -16,7 +16,7 @@ namespace BwaniaProject
 #endif
 #if DATA
         public const string DocumentIndexName = "bwania-document";
-        public const string DesignDocumentNameGet10Doc = "_design/dev_document";
+        public const string DesignDocumentNameGet10Doc = "document";
         public const string ViewNameGet10Doc = "document.get10";
 #endif
 
