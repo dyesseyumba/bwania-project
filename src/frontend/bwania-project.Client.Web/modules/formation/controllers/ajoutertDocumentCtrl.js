@@ -51,6 +51,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', 'UserFactory', 'uuid2', '$cook
                 $scope.showMsgInfo = false;
                 $scope.showErrorInfo = true;
                 $scope.document = {};
+                $scope.fileName = "";
             }, function () {
                 $scope.showErrorInfo = false;
                 $scope.showMsgInfo = true;
