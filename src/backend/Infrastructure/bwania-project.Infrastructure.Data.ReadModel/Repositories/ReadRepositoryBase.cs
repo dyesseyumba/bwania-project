@@ -14,7 +14,7 @@ using Couchbase.Core;
 
 namespace BwaniaProject.Data
 {
-    public class ReadRepositoryBase<T> : IReadRepository<T> where T : class, IEntity
+    public abstract class ReadRepositoryBase<T> : IReadRepository<T> where T : class, IEntity
     {
         #region Constructors
 
@@ -60,9 +60,10 @@ namespace BwaniaProject.Data
 
         #region Methods
 
-        public async Task<T> GetOneByIdAsync(string entityId)
+        protected async Task<TEntity> GetByIdAsync<TEntity>(string entityId)
+            where TEntity : class 
         {
-            var result = await ExceptionService.ProcessAsync(() => Bucket.GetDocument<T>(entityId)).ConfigureAwait(false);
+            var result = await ExceptionService.ProcessAsync(() => Bucket.GetDocument<TEntity>(entityId)).ConfigureAwait(false);
 
             if (result.Success)
             {
@@ -72,5 +73,7 @@ namespace BwaniaProject.Data
         }
 
         #endregion
+
+        public abstract Task<T> GetOneByIdAsync(string entityId);
     }
 }

@@ -4,6 +4,9 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+
+using System.Configuration;
+
 namespace BwaniaProject
 {
     public static class Constants
@@ -12,12 +15,13 @@ namespace BwaniaProject
         public const string DatabaseConnectionName = "BwaniaIdServerDb";
 #endif
 #if DATA
-        public const string DocumentBucketName = "BwaniaDocument";
         public const string DocumentIndexName = "bwania-document";
-        public const string ClusterConfig = "couchbaseClients/couchbase";
         public const string DesignDocumentNameGet10Doc = "dev_document";
         public const string ViewNameGet10Doc = "document.get10";
 #endif
+
+        public static string DocumentBucketName = ConfigurationManager.AppSettings.Get("DocumentBucketName");
+        public const string ClusterConfig = "couchbaseClients/couchbase";
 
 #if WEBAPI
         public static class MediaTypeNames

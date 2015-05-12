@@ -10,7 +10,7 @@ using BwaniaProject.Entities;
 
 namespace BwaniaProject.Data.Repositories
 {
-    public interface IDocumentReadRepository : IReadRepository<Document>
+    public interface IDocumentReadRepository : IReadRepository<IDocument>
     {
         /// <summary>
         ///     Gets the ten document.

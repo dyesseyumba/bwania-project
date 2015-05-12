@@ -6,6 +6,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Entities;
 using Catel.ExceptionHandling;
@@ -13,12 +14,12 @@ using Couchbase;
 
 namespace BwaniaProject.Data.Repositories
 {
-    public class DocumentReadRepository : ReadRepositoryBase<Document>, IDocumentReadRepository
+    public class DocumentReadRepository : ReadRepositoryBase<IDocument>, IDocumentReadRepository
     {
         #region Constructors
 
-        public DocumentReadRepository(IExceptionService exceptionService)
-            : base(new Cluster(Constants.ClusterConfig).OpenBucket(), exceptionService)
+        public DocumentReadRepository(IDocumentBucket documentBucket, IExceptionService exceptionService)
+            : base(documentBucket.Default, exceptionService)
         {
         }
 
@@ -44,6 +45,9 @@ namespace BwaniaProject.Data.Repositories
 
         #endregion
 
-        
+        public override async Task<IDocument> GetOneByIdAsync(string entityId)
+        {
+            return await GetByIdAsync<Document>(entityId).ConfigureAwait(false);
+        }
     }
 }

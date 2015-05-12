@@ -7,6 +7,7 @@
 using bwaniaProject;
 using BwaniaProject.Data.Repositories;
 using Catel;
+using Couchbase;
 using LightInject;
 
 namespace BwaniaProject.Data
@@ -32,5 +33,7 @@ namespace BwaniaProject.Data
 
             RegisterRepositories(serviceRegistry);
         }
+
+        
     }
 }

@@ -65,6 +65,7 @@
       <HintPath>..\..\..\..\lib\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -107,6 +108,10 @@
     <ProjectReference Include="..\..\Core\bwania-project.Core\bwania-project.Core.csproj">
       <Project>{A03A59B6-30E0-432F-B5EB-EE57851E92D0}</Project>
       <Name>bwania-project.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bwania-project.Infrastructure.Data.Buckets\bwania-project.Infrastructure.Data.Buckets.csproj">
+      <Project>{81047209-4385-4EC6-951B-0DE189BD4134}</Project>
+      <Name>bwania-project.Infrastructure.Data.Buckets</Name>
     </ProjectReference>
     <ProjectReference Include="..\bwania-project.Infrastructure\bwania-project.Infrastructure.csproj">
       <Project>{FED8990E-BB0D-4154-8FE4-C7D20E4282B4}</Project>

@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.DependencyResolution", "backend\DependencyResolution\bwania-project.DependencyResolution\bwania-project.DependencyResolution.csproj", "{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwania-project.Infrastructure.Data.Buckets", "backend\Infrastructure\bwania-project.Infrastructure.Data.Buckets\bwania-project.Infrastructure.Data.Buckets.csproj", "{81047209-4385-4EC6-951B-0DE189BD4134}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81047209-4385-4EC6-951B-0DE189BD4134}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81047209-4385-4EC6-951B-0DE189BD4134}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81047209-4385-4EC6-951B-0DE189BD4134}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81047209-4385-4EC6-951B-0DE189BD4134}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,5 +129,6 @@ Global
 		{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{425E4725-3954-4236-AB15-F0C0708934FC} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 		{9B7715DB-604B-4E0F-A560-E7E2EBBA4A73} = {FFF048F0-526B-4BB2-85D7-3CD98EE6D5C7}
+		{81047209-4385-4EC6-951B-0DE189BD4134} = {DB5E1907-1C60-4710-A3E2-D4A4E4236B27}
 	EndGlobalSection
 EndGlobal

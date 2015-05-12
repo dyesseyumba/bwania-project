@@ -65,6 +65,10 @@
       <Project>{A03A59B6-30E0-432F-B5EB-EE57851E92D0}</Project>
       <Name>bwania-project.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Data.Buckets\bwania-project.Infrastructure.Data.Buckets.csproj">
+      <Project>{81047209-4385-4EC6-951B-0DE189BD4134}</Project>
+      <Name>bwania-project.Infrastructure.Data.Buckets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Infrastructure\bwania-project.Infrastructure.Data.ReadModel\bwania-project.Infrastructure.Data.ReadModel.csproj">
       <Project>{F323D1A4-BD79-4A6F-8EBA-14651BA3A98A}</Project>
       <Name>bwania-project.Infrastructure.Data.ReadModel</Name>

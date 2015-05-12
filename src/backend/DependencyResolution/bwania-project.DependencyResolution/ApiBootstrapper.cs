@@ -8,6 +8,7 @@ using System;
 using Anotar.Catel;
 using bwaniaProject;
 using bwaniaProject.Data;
+using bwaniaProject.Data.Buckets;
 using BwaniaProject.Data;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Domain;
@@ -21,6 +22,7 @@ namespace BwaniaProject
         public ApiBootstrapper()
         {
             RegisterFrom<SharedBootstrapper>();
+            RegisterFrom<BucketBootstrapper>();
             RegisterFrom<DataBootstrapper>();
             RegisterFrom<DataReadBootstrapper>();
             RegisterFrom<DataDomainBootstrapper>();
