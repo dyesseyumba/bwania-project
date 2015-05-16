@@ -18,5 +18,12 @@ namespace BwaniaProject.Data.Repositories
         /// <param name="nbPage">The nb page.</param>
         /// <returns></returns>
         Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage);
+
+        /// <summary>
+        /// Gets the file asynchronous from couch base.
+        /// </summary>
+        /// <param name="entityId">The entity identifier.</param>
+        /// <returns></returns>
+        Task<IDictionary<string, dynamic>> GetFileAsync(string entityId);
     }
 }

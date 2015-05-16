@@ -72,8 +72,10 @@ namespace BwaniaProject.Data
             throw new SearchRequestException(result.Message);
         }
 
+         public abstract Task<T> GetByIdAsync(string entityId);
+
         #endregion
 
-        public abstract Task<T> GetByIdAsync(string entityId);
+       
     }
 }

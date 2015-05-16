@@ -4,6 +4,10 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.IO;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
@@ -18,11 +22,6 @@ namespace BwaniaProject.Web.Api.Controllers
     public class DocumentController
         : ApiControllerBase
     {
-        #region Fields
-        private readonly IDocumentEngine _documentEngine;
-        private readonly IDocumentReadRepository _documentReadRepository;
-        #endregion
-
         #region Constructor
 
         /// <summary>
@@ -44,8 +43,29 @@ namespace BwaniaProject.Web.Api.Controllers
 
         #endregion
 
+        #region Methods
+
+        public bool Infile(HttpPostedFile file)
+        {
+            return file != null && file.ContentLength > 0;
+        }
+
+        #endregion
+
+        #region Fields
+
+        private readonly IDocumentEngine _documentEngine;
+        private readonly IDocumentReadRepository _documentReadRepository;
+
+        #endregion
+
         #region Actions
 
+        /// <summary>
+        ///     Gets the ten documents from couchbase view.
+        /// </summary>
+        /// <param name="nbPage">The page number.</param>
+        /// <returns></returns>
         [HttpGet, Route(Constants.RouteNames.Document.GetTen)]
         public async Task<IHttpActionResult> GetTen(int nbPage)
         {
@@ -55,6 +75,11 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(documents);
         }
 
+        /// <summary>
+        ///     Gets the specified document by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
         [HttpGet, Route(Constants.RouteNames.Document.GetById)]
         public async Task<IHttpActionResult> GetById(string id)
         {
@@ -65,6 +90,10 @@ namespace BwaniaProject.Web.Api.Controllers
         }
 
 
+        /// <summary>
+        ///     Uploads directly document.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost, Route(Constants.RouteNames.Document.Upload)]
         public async Task<IHttpActionResult> Upload()
         {
@@ -84,7 +113,7 @@ namespace BwaniaProject.Web.Api.Controllers
 
                 fileStream.Read(fileRecord, 0, file.ContentLength);
 
-                document.Expiry = 3600000; //The document will expire in next 60 minutes
+                document.Expiry = 1800000; //The document will expire in next 30 minutes
                 document.Fichier = fileRecord;
             }
 
@@ -94,31 +123,62 @@ namespace BwaniaProject.Web.Api.Controllers
         }
 
 
+        /// <summary>
+        ///     Posts the document's data.
+        /// </summary>
+        /// <param name="document">The document.</param>
+        /// <returns></returns>
         [HttpPost, Route(Constants.RouteNames.Document.Insert)]
         public async Task<IHttpActionResult> Post(Document document)
         {
-          var result = await ExceptionService.Process( () =>
+            var result = await ExceptionService.Process(() =>
             {
-              return _documentReadRepository.GetByIdAsync(document.Id)
+                return _documentReadRepository.GetByIdAsync(document.Id)
                     .ContinueWith(t =>
                     {
                         document.Fichier = t.Result.Fichier;
                         document.Expiry = 0; //Disable the expiration
                         return _documentEngine.SaveAsync(document).Result;
                     });
-
             }).ConfigureAwait(false);
 
-          return Created(Constants.RouteNames.Document.Insert, result);
+            return Created(Constants.RouteNames.Document.Insert, result);
         }
 
-        #endregion
-
-        #region Methods
-
-        public bool Infile(HttpPostedFile file)
+        /// <summary>
+        /// Downloads the file from couchbase.
+        /// </summary>
+        /// <param name="id">The document identifier.</param>
+        /// <returns></returns>
+        [HttpGet, Route(Constants.RouteNames.Document.GetFileById)]
+        public async Task<HttpResponseMessage> DownloadFile(string id)
         {
-            return file != null && file.ContentLength > 0;
+            var response = Request.CreateResponse();
+            var result = await ExceptionService.Process(() =>
+            { 
+                return _documentReadRepository.GetFileAsync(id)
+                    .ContinueWith(file =>
+                    {
+                        if (file.Result == null)
+                        {
+                            response = Request.CreateResponse(HttpStatusCode.NotFound,
+                                "Document doesn't exist in database");
+                        }
+                        else
+                        {
+                            response.Headers.AcceptRanges.Add("bytes");
+                            response.StatusCode = HttpStatusCode.OK;
+                            response.Content = new StreamContent(new MemoryStream(file.Result["file"]));
+                            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                            response.Content.Headers.ContentDisposition.FileName = file.Result["fileName"];
+                            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                            response.Content.Headers.ContentLength = file.Result["file"].Length;
+                        }
+                        return response;
+                    });
+            });
+
+            return result;
         }
 
         #endregion

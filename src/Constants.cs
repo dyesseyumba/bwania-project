@@ -50,6 +50,7 @@ namespace BwaniaProject
                 public const string Delete = "document/delete";
                 public const string Upload = "document/upload";
                 public const string GetById = "document/" + IdSuffix;
+                public const string GetFileById = "document/download/" + IdSuffix + "/file";
             }
         }
 #endif

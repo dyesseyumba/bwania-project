@@ -46,6 +46,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', 'UserFactory', 'uuid2', '$cook
             locals.DateModification = new Date();
             locals.Description = document.Description;
             locals.Id = documentId;
+            locals.NomFichier = $scope.fileName;
 
             userFactory.docResource.save(locals, function () {
                 $scope.showMsgInfo = false;

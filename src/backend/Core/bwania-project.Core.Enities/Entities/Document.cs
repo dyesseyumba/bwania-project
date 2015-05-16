@@ -59,6 +59,14 @@ namespace BwaniaProject.Entities
         public byte[] Fichier { get; set; }
 
         /// <summary>
+        /// Gets or sets the nom fichier.
+        /// </summary>
+        /// <value>
+        /// The nom fichier.
+        /// </value>
+        public string NomFichier { get; set; }
+
+        /// <summary>
         ///     Gets or sets the date of publication.
         /// </summary>
         /// <value>
