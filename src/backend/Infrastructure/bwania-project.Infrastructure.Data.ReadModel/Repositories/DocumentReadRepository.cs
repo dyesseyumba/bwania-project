@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject.Data.Exceptions;
+using BwaniaProject.Domain.Entities.Common;
 using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
@@ -49,6 +50,28 @@ namespace BwaniaProject.Data.Repositories
                 .ConfigureAwait(false) ;
 
             if (results.Success) return results.Values;
+
+            var message = results.Error;
+            throw new ViewRequestException(message, results.StatusCode);
+        }
+
+        /// <summary>
+        /// Counts the the result of view document asynchronous.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<NbPage> CountGetTenDocumentAsync()
+        {
+            var query = Bucket.CreateQuery(Constants.DesignDocumentNameGet10Doc, Constants.ViewNameGet10Doc, true);
+
+            var results = await ExceptionService.ProcessAsync(() => Bucket.Query<Document>(query))
+                .ConfigureAwait(false);
+
+            var nbPage = new NbPage()
+            {
+                TotalDoc = (int) results.TotalRows
+            };
+
+            if (results.Success) return nbPage;
 
             var message = results.Error;
             throw new ViewRequestException(message, results.StatusCode);

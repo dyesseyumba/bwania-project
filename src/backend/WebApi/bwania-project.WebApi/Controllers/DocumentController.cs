@@ -43,15 +43,6 @@ namespace BwaniaProject.Web.Api.Controllers
 
         #endregion
 
-        #region Methods
-
-        public bool Infile(HttpPostedFile file)
-        {
-            return file != null && file.ContentLength > 0;
-        }
-
-        #endregion
-
         #region Fields
 
         private readonly IDocumentEngine _documentEngine;
@@ -179,6 +170,28 @@ namespace BwaniaProject.Web.Api.Controllers
             });
 
             return result;
+        }
+
+        /// <summary>
+        /// Counts total number of documents.
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet, Route(Constants.RouteNames.Document.CountTotalDoc)]
+        public async Task<IHttpActionResult> CountTotalDocument()
+        {
+            var result = await ExceptionService.Process(() =>
+                _documentReadRepository.CountGetTenDocumentAsync());
+
+            return Ok(result);
+        }
+
+        #endregion
+
+        #region Methods
+
+        public bool Infile(HttpPostedFile file)
+        {
+            return file != null && file.ContentLength > 0;
         }
 
         #endregion

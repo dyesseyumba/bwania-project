@@ -46,6 +46,7 @@
     <Compile Include="..\..\..\SolutionAssemblyInfo.cs">
       <Link>Properties\SolutionAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Common\NbPage.cs" />
     <Compile Include="Entities\Commentaire.cs" />
     <Compile Include="Entities\Document.cs" />
     <Compile Include="Entities\EntityBase.cs" />

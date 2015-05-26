@@ -26,10 +26,11 @@ namespace BwaniaProject
 #if WEBAPI
         public static class MediaTypeNames
         {
-            public const string AplicationJson = "application/json";
-            public const string AplicationXml = "application/xml";
+            public const string ApplicationJson = "application/json";
+            public const string ApplicationXml = "application/xml";
             public const string TextJson = "text/json";
             public const string TextXml = "text/xml";
+            public const string ApplicationOctetStram = "application/octet-stream";
         }
 
         public static class CommonRoutingDefinitions
@@ -44,13 +45,14 @@ namespace BwaniaProject
 
             public static class Document
             {
-                public const string GetTen = "documents/" + NbPageSuffix;
+                public const string GetTen = "documents/get_all/" + NbPageSuffix;
                 public const string Insert = "document/create";
                 public const string Update = "document/edit";
                 public const string Delete = "document/delete";
                 public const string Upload = "document/upload";
                 public const string GetById = "document/" + IdSuffix;
                 public const string GetFileById = "document/download/" + IdSuffix + "/file";
+                public const string CountTotalDoc = "documents/count_all";
             }
         }
 #endif

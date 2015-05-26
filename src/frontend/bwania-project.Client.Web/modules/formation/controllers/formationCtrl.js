@@ -241,9 +241,9 @@ app.controller("formationCtrl", [
          *Pagination
          */
         //Initialization de la pagination
-        var totalDoc = userFactory.nbTotalFilteredDocument.get(localFilter,
-            function() {
-                $scope.totalItems = totalDoc.pageIndex;
+        var totalDoc = userFactory.nbTotalDocument.get(null,
+            function () {
+                $scope.totalItems = totalDoc.totalDoc;
                 $scope.currentPage = 1;
                 $scope.maxSize = 10;
             });

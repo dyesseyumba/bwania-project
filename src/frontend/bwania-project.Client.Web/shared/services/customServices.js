@@ -115,7 +115,7 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
         /****************************consuming Controller Document*************************************/
 
         //Charger tous les documents
-        var docResourceGet = $resource(urlMain + 'documents/:pageIndex');
+        var docResourceGet = $resource(urlMain + 'documents/get_all/:pageIndex');
 
         //Uploadre les informations d'un documents
         var docResource = $resource(urlMain + 'document/create');
@@ -162,7 +162,7 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
 
 
         //Nombre total des documents
-        // var nbTotalDocument = $resource(urlMain + 'documents/numbreDesDoc');
+        var nbTotalDocument = $resource(urlMain + 'documents/count_all');
 
         //Nombre total publié par un utilisateur
         var nbTotalUserDoc = $resource(urlMain + 'documents/user/:utilisateurId');
@@ -337,7 +337,8 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
             getEnterprise: getEnterprise,
             addEtablissement: addEtablissement,
             addEntreprise: addEntreprise,
-            getOneEtablissement: getOneEtablissement
+            getOneEtablissement: getOneEtablissement,
+            nbTotalDocument: nbTotalDocument
         };
     }
 ]);

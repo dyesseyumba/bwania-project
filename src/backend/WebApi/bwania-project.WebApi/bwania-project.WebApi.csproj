@@ -127,6 +127,7 @@
     <Reference Include="LightInject.WebApi">
       <HintPath>..\..\..\..\lib\LightInject.WebApi.1.0.0.3\lib\net45\LightInject.WebApi.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Protocol.Extensions">
       <HintPath>..\..\..\..\lib\Microsoft.IdentityModel.Protocol.Extensions.1.0.0\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
     </Reference>
