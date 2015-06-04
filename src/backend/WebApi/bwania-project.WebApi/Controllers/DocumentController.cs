@@ -43,6 +43,15 @@ namespace BwaniaProject.Web.Api.Controllers
 
         #endregion
 
+        #region Methods
+
+        public bool Infile(HttpPostedFile file)
+        {
+            return file != null && file.ContentLength > 0;
+        }
+
+        #endregion
+
         #region Fields
 
         private readonly IDocumentEngine _documentEngine;
@@ -136,8 +145,29 @@ namespace BwaniaProject.Web.Api.Controllers
             return Created(Constants.RouteNames.Document.Insert, result);
         }
 
+
         /// <summary>
-        /// Downloads the file from couchbase.
+        ///     Posts the comment in a document.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut, Route(Constants.RouteNames.Document.InsertComment)]
+        public async Task<IHttpActionResult> PostComment(string id, Commentaire comment)
+        {
+            var result = await ExceptionService.Process(() =>
+            {
+                return _documentReadRepository.GetByIdAsync(id)
+                    .ContinueWith(t =>
+                    {
+                        t.Result.Commentaires.Add(comment);
+                        return _documentEngine.SaveAsync(t.Result).Result;
+                    });
+            }).ConfigureAwait(false);
+
+            return Created(Constants.RouteNames.Document.Insert, result);
+        }
+
+        /// <summary>
+        ///     Downloads the file from couchbase.
         /// </summary>
         /// <param name="id">The document identifier.</param>
         /// <returns></returns>
@@ -146,7 +176,7 @@ namespace BwaniaProject.Web.Api.Controllers
         {
             var response = Request.CreateResponse();
             var result = await ExceptionService.Process(() =>
-            { 
+            {
                 return _documentReadRepository.GetFileAsync(id)
                     .ContinueWith(file =>
                     {
@@ -173,7 +203,7 @@ namespace BwaniaProject.Web.Api.Controllers
         }
 
         /// <summary>
-        /// Counts total number of documents.
+        ///     Counts total number of documents.
         /// </summary>
         /// <returns></returns>
         [HttpGet, Route(Constants.RouteNames.Document.CountTotalDoc)]
@@ -183,15 +213,6 @@ namespace BwaniaProject.Web.Api.Controllers
                 _documentReadRepository.CountGetTenDocumentAsync());
 
             return Ok(result);
-        }
-
-        #endregion
-
-        #region Methods
-
-        public bool Infile(HttpPostedFile file)
-        {
-            return file != null && file.ContentLength > 0;
         }
 
         #endregion

@@ -47,7 +47,8 @@ namespace BwaniaProject
             {
                 public const string GetTen = "documents/get_all/" + NbPageSuffix;
                 public const string Insert = "document/create";
-                public const string Update = "document/edit";
+                public const string Update = "document/edit/" + IdSuffix;
+                public const string InsertComment = "document/edit/comment/" + IdSuffix;
                 public const string Delete = "document/delete";
                 public const string Upload = "document/upload";
                 public const string GetById = "document/" + IdSuffix;
