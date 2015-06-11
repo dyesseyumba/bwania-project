@@ -36,9 +36,10 @@ namespace BwaniaProject.Data.Repositories
         /// <summary>
         /// Gets the filtered document by domain or by niveau.
         /// </summary>
+        /// <param name="nbPage"></param>
         /// <param name="domains">The domains.</param>
         /// <param name="niveaux">The niveau.</param>
         /// <returns></returns>
-        Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(List<string> domains, List<string> niveaux);
+        Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(int nbPage, List<string> domains, List<string> niveaux);
     }
 }

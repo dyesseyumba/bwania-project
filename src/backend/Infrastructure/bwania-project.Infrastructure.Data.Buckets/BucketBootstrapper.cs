@@ -9,7 +9,6 @@ using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject;
 using Catel;
 using Couchbase;
-using Elasticsearch.Net;
 using LightInject;
 using Nest;
 
@@ -38,7 +37,7 @@ namespace bwaniaProject.Data.Buckets
             var node = new Uri(Constants.ElasticSearchUri);
             var settings = new ConnectionSettings(node, Constants.ElasticDefaultIndex);
 
-            serviceRegistry.RegisterInstance<IElasticsearchClient>(new ElasticsearchClient(settings));
+            serviceRegistry.RegisterInstance<IElasticClient>(new ElasticClient(settings));
         }
     }
 }

@@ -11,6 +11,8 @@ using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
 using Couchbase.Core;
+using Elasticsearch.Net;
+using Nest;
 
 namespace BwaniaProject.Data
 {
@@ -25,14 +27,19 @@ namespace BwaniaProject.Data
         ///     class.
         /// </summary>
         /// <param name="bucket">the couchbase Bucket.</param>
+        /// <param name="elasticClient">The elastic search client</param>
         /// <param name="exceptionService">The exception service</param>
         /// <exception cref="System.ArgumentNullException">The <paramref name="bucket" /> is <c>null</c>.</exception>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="elasticClient" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
-        public ReadRepositoryBase(IBucket bucket, IExceptionService exceptionService)
+        public ReadRepositoryBase(IBucket bucket, IElasticClient elasticClient, IExceptionService exceptionService)
         {
-            Argument.IsNotNull("indexName", bucket);
+            Argument.IsNotNull("bucket", bucket);
+            Argument.IsNotNull("elasticsearchClient", elasticClient);
+            Argument.IsNotNull("exceptionService", exceptionService);
 
             Bucket = bucket;
+            ElasticClient = elasticClient;
             ExceptionService = exceptionService;
         }
 
@@ -55,6 +62,14 @@ namespace BwaniaProject.Data
         ///     The exception service.
         /// </value>
         protected IExceptionService ExceptionService { get; private set; }
+
+        /// <summary>
+        /// Gets the elasticsearch client.
+        /// </summary>
+        /// <value>
+        /// The elasticsearch client.
+        /// </value>
+        protected IElasticClient ElasticClient { get; private set; }
 
         #endregion
 

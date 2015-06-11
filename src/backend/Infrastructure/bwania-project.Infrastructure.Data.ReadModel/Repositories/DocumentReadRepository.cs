@@ -6,14 +6,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Domain.Entities.Common;
 using BwaniaProject.Entities;
 using Catel;
 using Catel.ExceptionHandling;
-using Couchbase;
+using Couchbase.Core;
+using Nest;
 
 namespace BwaniaProject.Data.Repositories
 {
@@ -21,8 +22,18 @@ namespace BwaniaProject.Data.Repositories
     {
         #region Constructors
 
-        public DocumentReadRepository(IDocumentBucket documentBucket, IExceptionService exceptionService)
-            : base(documentBucket.Default, exceptionService)
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DocumentReadRepository" /> class.
+        /// </summary>
+        /// <param name="bucket">the couchbase Bucket.</param>
+        /// <param name="elasticClient">The elastic search client</param>
+        /// <param name="exceptionService">The exception service</param>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="bucket" /> is <c>null</c>.</exception>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="elasticClient" /> is <c>null</c>.</exception>
+        /// <exception cref="System.ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
+        public DocumentReadRepository(IBucket bucket, IElasticClient elasticClient,
+            IExceptionService exceptionService)
+            : base(bucket, elasticClient, exceptionService)
         {
         }
 
@@ -31,7 +42,7 @@ namespace BwaniaProject.Data.Repositories
         #region Methods
 
         /// <summary>
-        /// Gets ten document from Couchbase.
+        ///     Gets ten document from Couchbase.
         /// </summary>
         /// <param name="nbPage">The nb page.</param>
         /// <returns></returns>
@@ -47,7 +58,7 @@ namespace BwaniaProject.Data.Repositories
                 .Desc();
 
             var results = await ExceptionService.ProcessAsync(() => Bucket.Query<Document>(query))
-                .ConfigureAwait(false) ;
+                .ConfigureAwait(false);
 
             if (results.Success) return results.Values;
 
@@ -56,7 +67,7 @@ namespace BwaniaProject.Data.Repositories
         }
 
         /// <summary>
-        /// Counts the the result of view document asynchronous.
+        ///     Counts the the result of view document asynchronous.
         /// </summary>
         /// <returns></returns>
         public async Task<NbPage> CountGetTenDocumentAsync()
@@ -66,7 +77,7 @@ namespace BwaniaProject.Data.Repositories
             var results = await ExceptionService.ProcessAsync(() => Bucket.Query<Document>(query))
                 .ConfigureAwait(false);
 
-            var nbPage = new NbPage()
+            var nbPage = new NbPage
             {
                 TotalDoc = (int) results.TotalRows
             };
@@ -78,7 +89,7 @@ namespace BwaniaProject.Data.Repositories
         }
 
         /// <summary>
-        /// Gets the file asynchronous from couch base.
+        ///     Gets the file asynchronous from couch base.
         /// </summary>
         /// <param name="entityId">The entity identifier.</param>
         /// <exception cref="System.ArgumentNullException">The <paramref name="entityId" /> is <c>null</c>.</exception>
@@ -96,19 +107,40 @@ namespace BwaniaProject.Data.Repositories
         }
 
         /// <summary>
-        /// Gets the filtered document by domain or by niveau.
+        ///     Gets the filtered document by domain or by niveau.
         /// </summary>
+        /// <param name="nbPage"></param>
         /// <param name="domains">The domains.</param>
         /// <param name="niveaux">The niveau.</param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(List<string> domains, List<string> niveaux)
+        public async Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(int nbPage,
+            List<string> domains, List<string> niveaux)
         {
-            throw new NotImplementedException();
+            var elasticSearchDocments = new List<IElasticSearchIndex>();
+            var resultsDocuments = new List<IDocument>();
+            ;
+
+            foreach (var indexResult in from domain in domains
+                from niveau in niveaux
+                select ElasticClient.Search<ElasticSearchIndex>(s => s
+                    .Filter(f => f.Bool(b => b
+                        .Should(o => o.Term("domaine", domain),
+                            o => o.Term("niveau", niveau))))).Documents)
+            {
+                elasticSearchDocments.AddRange(indexResult);
+            }
+
+            foreach (var index in elasticSearchDocments.GetRange(nbPage*10, 10))
+            {
+                resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+            }
+
+            return resultsDocuments;
         }
 
         /// <summary>
-        /// Gets document by identifier asynchronous from Couchbase.
+        ///     Gets document by identifier asynchronous from Couchbase.
         /// </summary>
         /// <param name="entityId">The entity identifier.</param>
         /// <exception cref="System.ArgumentNullException">The <paramref name="entityId" /> is <c>null</c>.</exception>
