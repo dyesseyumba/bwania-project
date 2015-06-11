@@ -32,5 +32,13 @@ namespace BwaniaProject.Data.Repositories
         /// <param name="entityId">The entity identifier.</param>
         /// <returns></returns>
         Task<IDictionary<string, dynamic>> GetFileAsync(string entityId);
+
+        /// <summary>
+        /// Gets the filtered document by domain or by niveau.
+        /// </summary>
+        /// <param name="domains">The domains.</param>
+        /// <param name="niveaux">The niveau.</param>
+        /// <returns></returns>
+        Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(List<string> domains, List<string> niveaux);
     }
 }

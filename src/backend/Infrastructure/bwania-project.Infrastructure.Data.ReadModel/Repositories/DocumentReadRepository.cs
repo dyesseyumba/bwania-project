@@ -96,6 +96,18 @@ namespace BwaniaProject.Data.Repositories
         }
 
         /// <summary>
+        /// Gets the filtered document by domain or by niveau.
+        /// </summary>
+        /// <param name="domains">The domains.</param>
+        /// <param name="niveaux">The niveau.</param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        public Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(List<string> domains, List<string> niveaux)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Gets document by identifier asynchronous from Couchbase.
         /// </summary>
         /// <param name="entityId">The entity identifier.</param>

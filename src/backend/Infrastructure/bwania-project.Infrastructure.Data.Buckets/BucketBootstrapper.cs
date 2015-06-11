@@ -4,11 +4,14 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
 using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject;
 using Catel;
 using Couchbase;
+using Elasticsearch.Net;
 using LightInject;
+using Nest;
 
 namespace bwaniaProject.Data.Buckets
 {
@@ -19,6 +22,7 @@ namespace bwaniaProject.Data.Buckets
             Argument.IsNotNull("serviceRegistry", serviceRegistry);
 
             RegisterBuckets(serviceRegistry);
+            RegisterElasticSearchIndex(serviceRegistry);
         }
 
         protected virtual void RegisterBuckets(IServiceRegistry serviceRegistry)
@@ -27,6 +31,14 @@ namespace bwaniaProject.Data.Buckets
 
             var documentBucket = cluster.OpenBucket(Constants.DocumentBucketName);
             serviceRegistry.RegisterInstance<IDocumentBucket>(new DocumentBucket(documentBucket));
+        }
+
+        protected virtual void RegisterElasticSearchIndex(IServiceRegistry serviceRegistry)
+        {
+            var node = new Uri(Constants.ElasticSearchUri);
+            var settings = new ConnectionSettings(node, Constants.ElasticDefaultIndex);
+
+            serviceRegistry.RegisterInstance<IElasticsearchClient>(new ElasticsearchClient(settings));
         }
     }
 }

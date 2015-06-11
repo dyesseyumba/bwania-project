@@ -21,6 +21,8 @@ namespace BwaniaProject
 #endif
 
         public static string DocumentBucketName = ConfigurationManager.AppSettings.Get("DocumentBucketName");
+        public static string ElasticSearchUri = ConfigurationManager.AppSettings.Get("ElasticSearchUri");
+        public static string ElasticDefaultIndex = ConfigurationManager.AppSettings.Get("ElasticDefaultIndex");
         public const string ClusterConfig = "couchbaseClients/couchbase";
 
 #if WEBAPI
