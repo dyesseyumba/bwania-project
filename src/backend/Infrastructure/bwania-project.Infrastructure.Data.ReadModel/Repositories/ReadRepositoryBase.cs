@@ -5,6 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using System.Threading.Tasks;
+using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Data.Repositories;
 using BwaniaProject.Entities;
@@ -32,13 +33,13 @@ namespace BwaniaProject.Data
         /// <exception cref="System.ArgumentNullException">The <paramref name="bucket" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">The <paramref name="elasticClient" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
-        public ReadRepositoryBase(IBucket bucket, IElasticClient elasticClient, IExceptionService exceptionService)
+        public ReadRepositoryBase(IDocumentBucket bucket, IElasticClient elasticClient, IExceptionService exceptionService)
         {
             Argument.IsNotNull("bucket", bucket);
             Argument.IsNotNull("elasticsearchClient", elasticClient);
             Argument.IsNotNull("exceptionService", exceptionService);
 
-            Bucket = bucket;
+            Bucket = bucket.Default;
             ElasticClient = elasticClient;
             ExceptionService = exceptionService;
         }

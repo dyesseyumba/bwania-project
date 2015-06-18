@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject.Data.Exceptions;
 using BwaniaProject.Domain.Entities.Common;
 using BwaniaProject.Entities;
@@ -31,7 +32,7 @@ namespace BwaniaProject.Data.Repositories
         /// <exception cref="System.ArgumentNullException">The <paramref name="bucket" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">The <paramref name="elasticClient" /> is <c>null</c>.</exception>
         /// <exception cref="System.ArgumentNullException">The <paramref name="exceptionService" /> is <c>null</c>.</exception>
-        public DocumentReadRepository(IBucket bucket, IElasticClient elasticClient,
+        public DocumentReadRepository(IDocumentBucket bucket, IElasticClient elasticClient,
             IExceptionService exceptionService)
             : base(bucket, elasticClient, exceptionService)
         {
