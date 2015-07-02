@@ -113,7 +113,7 @@ app.controller("formationCtrl", [
             if (domaine === "") {
 
                 findAndRemoveInArray(filterParameter.domaines, domaine);
-                $scope.documents = userFactory.filterByDomaine.query(filterParameter);
+                $scope.documents = userFactory.filterByDomaine.save({ nbPage: 0 }, filterParameter);
 
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
@@ -121,7 +121,7 @@ app.controller("formationCtrl", [
             } else {
 
                 filterParameter.domaines.push(domaine);
-                $scope.documents = userFactory.filterByDomaine.query(filterParameter);
+                $scope.documents = userFactory.filterByDomaine.save({ nbPage: 0 }, filterParameter);
 
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
@@ -133,7 +133,7 @@ app.controller("formationCtrl", [
             if (domaine === "") {
 
                 findAndRemoveInArray(filterParameter.niveaux, niveau);
-                $scope.documents = userFactory.filterByDomaine.query(filterParameter);
+                $scope.documents = userFactory.filterByDomaine.save({nbPage:0}, filterParameter);
 
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
@@ -141,7 +141,7 @@ app.controller("formationCtrl", [
             } else {
 
                 filterParameter.niveaux.push(niveau);
-                $scope.documents = userFactory.filterByDomaine.query(filterParameter);
+                $scope.documents = userFactory.filterByDomaine.save({nbPage:0}, filterParameter);
 
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
