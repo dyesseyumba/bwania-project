@@ -5,7 +5,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace BwaniaProject.Entities
 {
-    public interface IElasticSearchIndex
+    public interface ICouchbaseDocument
     {
         Meta Meta { get; set; }
     }
