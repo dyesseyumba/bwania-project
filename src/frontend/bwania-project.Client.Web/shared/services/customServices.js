@@ -168,7 +168,12 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
         var nbTotalUserDoc = $resource(urlMain + 'documents/user/:utilisateurId');
 
         //Filtre par dommaine
-        var filterByDomaine = $resource(urlMain + 'documents/get_by_1st_filter/:nbPage');
+        var filterByDomaine = $resource(urlMain + 'documents/get_by_1st_filter/:nbPage', {}, {
+            filter: {
+                method: 'POST',
+                isArray: true
+            }
+        });
 
         //Nombre total des documents filtré
         var nbTotalFilteredDocument = $resource(urlMain + 'documents/countfiltered/:infoTech/:mathematiques/:medecine'
