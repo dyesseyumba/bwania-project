@@ -90,8 +90,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="BrockAllen.MembershipReboot">
-      <HintPath>..\..\..\..\lib\BrockAllen.MembershipReboot.8.3.0\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
+    <Reference Include="BrockAllen.MembershipReboot, Version=8.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\lib\BrockAllen.MembershipReboot.8.2.1\lib\net45\BrockAllen.MembershipReboot.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="BrockAllen.MembershipReboot.Ef">
       <HintPath>..\..\..\..\lib\BrockAllen.MembershipReboot.Ef.8.0.0\lib\net45\BrockAllen.MembershipReboot.Ef.dll</HintPath>
@@ -111,11 +112,13 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\..\..\lib\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="IdentityManager">
-      <HintPath>..\..\..\..\lib\IdentityManager.1.0.0-beta5\lib\net45\IdentityManager.dll</HintPath>
+    <Reference Include="IdentityManager, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\lib\IdentityManager.1.0.0-beta5-4\lib\net45\IdentityManager.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="IdentityManager.MembershipReboot">
+    <Reference Include="IdentityManager.MembershipReboot, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\lib\IdentityManager.MembershipReboot.1.0.0-beta5\lib\net45\IdentityManager.MembershipReboot.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="LightInject">
       <HintPath>..\..\..\..\lib\LightInject.3.0.2.6\lib\net45\LightInject.dll</HintPath>
