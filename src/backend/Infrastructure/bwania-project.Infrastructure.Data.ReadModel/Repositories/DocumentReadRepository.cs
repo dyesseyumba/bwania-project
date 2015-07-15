@@ -7,6 +7,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using bwaniaProject.Data.Buckets.Interfaces;
 using BwaniaProject.Data.Exceptions;
@@ -118,24 +119,65 @@ namespace BwaniaProject.Data.Repositories
         public async Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(int nbPage,
             List<string> domains, List<string> niveaux)
         {
-            var elasticSearchDocments = new List<IElasticSearchIndex>();
+            var elasticSearchDocments = new List<ICouchbaseDocument>();
             var resultsDocuments = new List<IDocument>();
-            ;
 
-            foreach (var indexResult in from domain in domains
-                from niveau in niveaux
-                select ElasticClient.Search<ElasticSearchIndex>(s => s
-                    .Filter(f => f.Bool(b => b
-                        .Should(o => o.Term("domaine", domain),
-                            o => o.Term("niveau", niveau))))).Documents)
+            if (domains.Count > 0 && niveaux.Count > 0)
             {
-                elasticSearchDocments.AddRange(indexResult);
+                foreach (var indexResult in from domain in domains
+                                            from niveau in niveaux
+                                            select ElasticClient.Search<CouchbaseDocument>(s => s
+                                                .Size(10)
+                                                .From(nbPage)
+                                                .Query(f => f.Bool(b => b
+                                                    .Should(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
+                                                        o => o.Match(n => n.OnField("niveau").Query(""))))))
+                                                        .Documents)
+                {
+                    elasticSearchDocments.AddRange(indexResult);
+                }
+
+                foreach (var index in elasticSearchDocments)
+                {
+                    resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+                }
+            }
+            else if (domains.Count > 0 && niveaux.Count <= 0)
+            {
+                foreach (var indexResult in from domain in domains
+                                            select ElasticClient.Search<CouchbaseDocument>(s => s
+                                                .Size(10)
+                                                .From(nbPage)
+                                                .Query(d => d.Match(m => m.OnField("domaine").Query(domain ?? ""))))
+                                                        .Documents)
+                {
+                    elasticSearchDocments.AddRange(indexResult);
+                }
+
+                foreach (var index in elasticSearchDocments)
+                {
+                    resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+                }
+            }
+            else if (domains.Count <= 0 && niveaux.Count > 0)
+            {
+                foreach (var indexResult in from niveau in niveaux
+                                            select ElasticClient.Search<CouchbaseDocument>(s => s
+                                                .Size(10)
+                                                .From(nbPage)
+                                                .Query(d => d.Match(m => m.OnField("niveau").Query(niveau ?? ""))))
+                                                        .Documents)
+                {
+                    elasticSearchDocments.AddRange(indexResult);
+                }
+
+                foreach (var index in elasticSearchDocments)
+                {
+                    resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+                }
             }
 
-            foreach (var index in elasticSearchDocments.GetRange(nbPage*10, 10))
-            {
-                resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
-            }
+            
 
             return resultsDocuments;
         }

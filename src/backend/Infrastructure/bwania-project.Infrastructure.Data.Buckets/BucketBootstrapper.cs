@@ -35,7 +35,8 @@ namespace bwaniaProject.Data.Buckets
         protected virtual void RegisterElasticSearchIndex(IServiceRegistry serviceRegistry)
         {
             var node = new Uri(Constants.ElasticSearchUri);
-            var settings = new ConnectionSettings(node, Constants.ElasticDefaultIndex);
+            var settings = new ConnectionSettings(node, Constants.ElasticDefaultIndex)
+                .SetDefaultTypeNameInferrer(t => "couchbaseDocument");
 
             serviceRegistry.RegisterInstance<IElasticClient>(new ElasticClient(settings));
         }

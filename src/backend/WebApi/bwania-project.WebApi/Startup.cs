@@ -33,7 +33,7 @@ namespace BwaniaProject.Web.Api
             LogProvider.SetCurrentLogProvider(new TraceSourceLogProvider());
 
             var customDatabase = new CustomDatabase(Constants.DatabaseConnectionName);
-            customDatabase.Database.CreateIfNotExists();
+            //customDatabase.Database.CreateIfNotExists();
 #endif
 
             this.RegisterApiControllers();
@@ -62,7 +62,8 @@ namespace BwaniaProject.Web.Api
 
                 builder.UseIdentityManager(new IdentityManagerOptions
                 {
-                    Factory = factory
+                    Factory = factory,
+                    SecurityConfiguration = new LocalhostSecurityConfiguration { RequireSsl = false }
                 });
             });
 

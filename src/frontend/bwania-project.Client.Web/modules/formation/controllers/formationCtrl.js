@@ -3,20 +3,20 @@
 app.controller("formationCtrl", [
     "$scope", "$cookieStore", "UserFactory", "$route", function($scope, $cookieStore, userFactory, $route) {
 
-        $scope.infoTech = "''";
-        $scope.mathematiques = "''";
-        $scope.medecine = "''";
-        $scope.physiqueChimie = "''";
-        $scope.banqueFinance = "''";
-        $scope.economieGestion = "''";
-        $scope.langues = "''";
-        $scope.philoLit = "''";
-        $scope.histGeogr = "''";
-        $scope.trucsEtAstuces = "''";
-        $scope.autre = "''";
-        $scope.college = "''";
-        $scope.lycee = "''";
-        $scope.univ = "''";
+        $scope.infoTech = "";
+        $scope.mathematiques = "";
+        $scope.medecine = "";
+        $scope.physiqueChimie = "";
+        $scope.banqueFinance = "";
+        $scope.economieGestion = "";
+        $scope.langues = "";
+        $scope.philoLit = "";
+        $scope.histGeogr = "";
+        $scope.trucsEtAstuces = "";
+        $scope.autre = "";
+        $scope.college = "";
+        $scope.lycee = "";
+        $scope.univ = "";
 
         var localFilter = {
             pageIndex: 0,
@@ -36,222 +36,56 @@ app.controller("formationCtrl", [
             univ: "Université"
         };
 
-
-        /*
+        var filterParameter = {
+            domaines: [],
+            niveaux: []
+        }; /*
          *Cas d'une redirection de la page home - Trillage des documents par domaines - Recherche d'un document.
          */
         //Trie par Informatique & Technologies
         //if ($route.current.params.titre) {
         //    $scope.documents = userFactory.getDocSearchResults.query({ pageIndex: 0, titre: $route.current.params.titre });
         //} else if ($route.current.params.infoTech === "Informatique & Technologies") {
-        //    applyFilter("Informatique & Technologies", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("Informatique & Technologies", "", "", "", "", "", "", "", "", "", "", "", "", "");
         //} else if ($route.current.params.mathematiques === "Mathématiques") {
         //    //localFilter{};
-        //    applyFilter("''", "Mathématiques", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "Mathématiques", "", "", "", "", "", "", "", "", "", "", "", "");
         //} else if ($route.current.params.medecine === "Médecine") {
-        //    applyFilter("''", "''", "Médecine", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "Médecine", "", "", "", "", "", "", "", "", "", "", "");
         //} else if ($route.current.params.physiqueChimie === "Physique & Chimie") {
-        //    applyFilter("''", "''", "''", "Physique & Chimie", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "Physique & Chimie", "", "", "", "", "", "", "", "", "", "");
         //} else if ($route.current.params.banqueFinance === "Banque & Finances") {
-        //    applyFilter("''", "''", "''", "''", "Banque & Finances", "''", "''", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "", "Banque & Finances", "", "", "", "", "", "", "", "", "");
         //} else if ($route.current.params.economieGestion === "Economie & Gestion") {
-        //    applyFilter("''", "''", "''", "''", "''", "Economie & Gestion", "''", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "", "", "Economie & Gestion", "", "", "", "", "", "", "", "");
         //} else if ($route.current.params.langues === "Langues") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "Langues", "''", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "", "", "", "Langues", "", "", "", "", "", "", "");
         //} else if ($route.current.params.philoLit === "Philosophie & Littérature") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "Philosophie & Littérature", "''", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "", "", "", "", "Philosophie & Littérature", "", "", "", "", "", "");
         //} else if ($route.current.params.histGeogr === "Histoire & Géographie") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "Histoire & Géographie", "''", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "", "", "", "", "", "Histoire & Géographie", "", "", "", "", "");
         //} else if ($route.current.params.trucsEtAstuces === "Trucs & Astuces") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "Trucs & Astuces", "''", "''", "''", "''");
+        //    applyFilter("", "", "", "", "", "", "", "", "", "Trucs & Astuces", "", "", "", "");
         //} else if ($route.current.params.autre === "Autre") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Autre", "''", "''", "''");
+        //    applyFilter("", "", "", "", "", "", "", "", "", "", "Autre", "", "", "");
         //} else if ($route.current.params.college === "Collège") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Collège", "''", "''");
+        //    applyFilter("", "", "", "", "", "", "", "", "", "", "", "Collège", "", "");
         //} else if ($route.current.params.lycee === "Lycée") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Lycée", "''");
+        //    applyFilter("", "", "", "", "", "", "", "", "", "", "", "", "Lycée", "");
         //} else if ($route.current.params.univ === "Université") {
-        //    applyFilter("''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "''", "Université");
+        //    applyFilter("", "", "", "", "", "", "", "", "", "", "", "", "", "Université");
         //} else {
-            //Consommation de la ressource de chargement des documents
-            //$scope.documents = userFactory.filterByDomaine.query(localFilter);
+        //Consommation de la ressource de chargement des documents
+        //$scope.documents = userFactory.filterByDomaine.query(localFilter);
         //}
         //Consommation de la ressource de chargement des documents
         $scope.documents = userFactory.docResourceGet.query({ pageIndex: 0 });
 
 
-         /*
+        /*
          *Activation des checks box pour filtrer
          **/
         //CHeckbox informatique & technologies
-        $scope.docInfoClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox mathématiques
-        $scope.docMathClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Médecine
-        $scope.docMedecineClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Physique & Chimie
-        $scope.docPhysiqueClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Banque & Finances
-        $scope.docBanqueClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Economie & Gestion
-        $scope.docEconomieClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Langues
-        $scope.docLangueClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Philosophie & Littérature
-        $scope.docPhiloClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Histoire & Géographie
-        $scope.docHistoireClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox Trucs & Astuces
-        $scope.docTrucClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox  Autre
-        $scope.docAutreClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox  Collège
-        $scope.docCollegeClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox  Etudiant
-        $scope.docLyceeClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-        //CHeckbox  Entreprise
-        $scope.docUnivClick = function(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-            langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance, economieGestion,
-                langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ);
-        };
-
-
-        /*
-         * 
-         *Filtrage des documents*/
-        function applyFilter(infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,
-            economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre, college, lycee, univ) {
-
-            if (infoTech === "''" && mathematiques === "''" && medecine === "''" && physiqueChimie === "''"
-                && banqueFinance === "''" && economieGestion === "''" && langues === "''" && philoLit === "''"
-                && histGeogr === "''" && trucsEtAstuces === "''" && autre === "''" && college === "''"
-                && lycee === "''" && univ === "''") {
-
-                $scope.documents = userFactory.filterByDomaine.query(localFilter);
-
-                // Appel de la méthode de compatage des des documents
-                pagination(localFilter);
-
-            } else {
-                var watchedLocalFilter = {
-                    pageIndex: 0,
-                    infoTech: infoTech,
-                    mathematiques: mathematiques,
-                    medecine: medecine,
-                    physiqueChimie: physiqueChimie,
-                    banqueFinance: banqueFinance,
-                    economieGestion: economieGestion,
-                    langues: langues,
-                    philoLit: philoLit,
-                    histGeogr: histGeogr,
-                    trucsEtAstuces: trucsEtAstuces,
-                    autre: autre,
-                    college: college,
-                    lycee: lycee,
-                    univ: univ
-                };
-                $scope.documents = userFactory.filterByDomaine.query(watchedLocalFilter);
-
-                // Appel de la méthode de compatage des des documents
-                pagination(watchedLocalFilter);
-            }
-        }
-
-        /*
-         *Pagination
-         */
-        //Initialization de la pagination
-        var totalDoc = userFactory.nbTotalDocument.get(null,
-            function () {
-                $scope.totalItems = totalDoc.totalDoc;
-                $scope.currentPage = 1;
-                $scope.maxSize = 10;
-            });
-        $scope.selectedPage = function(index) {
-            localFilter.pageIndex = index - 1;
-            $scope.documents = userFactory.filterByDomaine.query(localFilter);
-        };
-
         function pagination(filter) {
             var totalDoc = userFactory.nbTotalFilteredDocument.get(filter,
                 function() {
@@ -265,16 +99,150 @@ app.controller("formationCtrl", [
             };
         }
 
+        function findAndRemoveInArray(array, value) {
+            $.each(array, function(index, result) {
+                if (result === value) {
+                    //Remove from array
+                    array.splice(index, 1);
+                }
+            });
+        }
+
+        function applyFilterDomaine(domaine) {
+
+            if (domaine === "") {
+
+                findAndRemoveInArray(filterParameter.domaines, domaine);
+                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
+
+                // Appel de la méthode de compatage des des documents
+                pagination(filterParameter);
+
+            } else {
+
+                filterParameter.domaines.push(domaine);
+                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
+
+                // Appel de la méthode de compatage des des documents
+                pagination(filterParameter);
+            }
+        }
+
+        function applyFilterNiveau(niveau) {
+
+            if (domaine === "") {
+
+                findAndRemoveInArray(filterParameter.niveaux, niveau);
+                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
+
+                // Appel de la méthode de compatage des des documents
+                pagination(filterParameter);
+
+            } else {
+
+                filterParameter.niveaux.push(niveau);
+                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
+
+                // Appel de la méthode de compatage des des documents
+                pagination(filterParameter);
+            }
+        }
+
+        //CHeckbox Informatique
+        $scope.docInfoClick = function(infoTech) {
+            applyFilterDomaine(infoTech);
+        };
+
+        //CHeckbox mathématiques
+        $scope.docMathClick = function(mathematiques) {
+            applyFilterDomaine(mathematiques);
+        };
+
+        //CHeckbox Médecine
+        $scope.docMedecineClick = function(medecine) {
+            applyFilterDomaine(medecine);
+        };
+
+        //CHeckbox Physique & Chimie
+        $scope.docPhysiqueClick = function(physiqueChimie) {
+            applyFilterDomaine(physiqueChimie);
+        };
+
+        //CHeckbox Banque & Finances
+        $scope.docBanqueClick = function(banqueFinance) {
+            applyFilterDomaine(banqueFinance);
+        };
+
+        //CHeckbox Economie & Gestion
+        $scope.docEconomieClick = function(economieGestion) {
+            applyFilterDomaine(economieGestion);
+        };
+
+        //CHeckbox Langues
+        $scope.docLangueClick = function(langues) {
+            applyFilterDomaine(langues);
+        };
+
+        //CHeckbox Philosophie & Littérature
+        $scope.docPhiloClick = function(philoLit) {
+            applyFilterDomaine(philoLit);
+        };
+
+        //CHeckbox Histoire & Géographie
+        $scope.docHistoireClick = function(histGeogr) {
+            applyFilterDomaine(histGeogr);
+        };
+
+        //CHeckbox Trucs & Astuces
+        $scope.docTrucClick = function(trucsEtAstuces) {
+            applyFilterDomaine(trucsEtAstuces);
+        };
+
+        //CHeckbox  Autre
+        $scope.docAutreClick = function(autre) {
+            applyFilterDomaine(autre);
+        };
+
+        //CHeckbox  Collège
+        $scope.docCollegeClick = function(college) {
+            applyFilterNiveau(college);
+        };
+
+        //CHeckbox  Etudiant
+        $scope.docLyceeClick = function(lycee) {
+            applyFilterNiveau(lycee);
+        };
+
+        //CHeckbox  Entreprise
+        $scope.docUnivClick = function(univ) {
+            applyFilterNiveau(univ);
+        };
+
 
         /*
+         * 
+         *Filtrage des documents*/ /*
+         *Pagination
+         */
+        //Initialization de la pagination
+        var totalDoc = userFactory.nbTotalDocument.get(null,
+            function() {
+                $scope.totalItems = totalDoc.totalDoc;
+                $scope.currentPage = 1;
+                $scope.maxSize = 10;
+            });
+        $scope.selectedPage = function(index) {
+            localFilter.pageIndex = index - 1;
+            $scope.documents = userFactory.filterByDomaine.query(localFilter);
+        }; /*
          * Recherches
          */
         $scope.clickedBtnSearch = function(titre, infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,
             economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre) {
 
-            if (infoTech === "''" && mathematiques === "''" && medecine === "''" && physiqueChimie === "''"
-                && banqueFinance === "''" && economieGestion === "''" && langues === "''" && philoLit === "''"
-                && histGeogr === "''" && trucsEtAstuces === "''" && autre === "''") {
+            if (infoTech === "" && mathematiques === "" && medecine === "" && physiqueChimie === ""
+                && banqueFinance === "" && economieGestion === "" && langues === "" && philoLit === ""
+                && histGeogr === "" && trucsEtAstuces === "" && autre === "") {
 
                 $scope.documents = userFactory.getDocSearchResults.query({ pageIndex: 0, titre: titre });
 

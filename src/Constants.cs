@@ -42,12 +42,13 @@ namespace BwaniaProject
 
         public static class RouteNames
         {
-            public const string NbPageSuffix = "{nbPage:int}";
+            public const string NbPageSuffix = "{nbPage}";
             public const string IdSuffix = "{id}";
 
             public static class Document
             {
                 public const string GetTen = "documents/get_all/" + NbPageSuffix;
+                public const string GetFiltered1St = "documents/get_by_1st_filter/" + NbPageSuffix;
                 public const string Insert = "document/create";
                 public const string Update = "document/edit/" + IdSuffix;
                 public const string InsertComment = "document/edit/comment/" + IdSuffix;

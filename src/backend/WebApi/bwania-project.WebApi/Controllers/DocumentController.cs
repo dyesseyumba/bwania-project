@@ -4,6 +4,7 @@
 //  </copyright>  
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -14,6 +15,7 @@ using System.Web.Http;
 using BwaniaProject.Data.Repositories;
 using BwaniaProject.Domain.Engines;
 using BwaniaProject.Entities;
+using BwaniaProject.Web.Api.Models;
 using Catel;
 using Catel.ExceptionHandling;
 
@@ -22,6 +24,13 @@ namespace BwaniaProject.Web.Api.Controllers
     public class DocumentController
         : ApiControllerBase
     {
+        #region Fields
+
+        private readonly IDocumentEngine _documentEngine;
+        private readonly IDocumentReadRepository _documentReadRepository;
+
+        #endregion
+
         #region Constructor
 
         /// <summary>
@@ -43,22 +52,6 @@ namespace BwaniaProject.Web.Api.Controllers
 
         #endregion
 
-        #region Methods
-
-        public bool Infile(HttpPostedFile file)
-        {
-            return file != null && file.ContentLength > 0;
-        }
-
-        #endregion
-
-        #region Fields
-
-        private readonly IDocumentEngine _documentEngine;
-        private readonly IDocumentReadRepository _documentReadRepository;
-
-        #endregion
-
         #region Actions
 
         /// <summary>
@@ -71,6 +64,22 @@ namespace BwaniaProject.Web.Api.Controllers
         {
             var documents = await ExceptionService.Process(()
                 => _documentReadRepository.GetTenDocumentAsync(nbPage));
+
+            return Ok(documents);
+        }
+
+        /// <summary>
+        /// Gets the ten documents from couchbase view.
+        /// </summary>
+        /// <param name="nbPage">The page number.</param>
+        /// <param name="filterParameter">The filter parameter.</param>
+        /// <returns></returns>
+        [HttpPost, Route(Constants.RouteNames.Document.GetFiltered1St)]
+        public async Task<IHttpActionResult> GetFilteredByDomainOrByNiveau(int nbPage, DocumentFilterParameter filterParameter)
+        {
+            var documents = await ExceptionService.Process(()
+                => _documentReadRepository.GetFilteredDocumentByDomainOrByNiveau(nbPage, filterParameter.Domaines, 
+                filterParameter.Niveaux));
 
             return Ok(documents);
         }
@@ -213,6 +222,15 @@ namespace BwaniaProject.Web.Api.Controllers
                 _documentReadRepository.CountGetTenDocumentAsync());
 
             return Ok(result);
+        }
+
+        #endregion
+
+        #region Methods
+
+        public bool Infile(HttpPostedFile file)
+        {
+            return file != null && file.ContentLength > 0;
         }
 
         #endregion

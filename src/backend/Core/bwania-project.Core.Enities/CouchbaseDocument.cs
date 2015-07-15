@@ -6,7 +6,7 @@
 
 namespace BwaniaProject.Entities
 {
-    public class ElasticSearchIndex : IElasticSearchIndex
+    public class CouchbaseDocument : ICouchbaseDocument
     {
         public Meta Meta { get; set; }
     }
