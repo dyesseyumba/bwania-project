@@ -109,17 +109,15 @@ app.controller("formationCtrl", [
         }
 
         function applyFilterDomaine(domaine) {
-
             if (domaine === "") {
 
                 findAndRemoveInArray(filterParameter.domaines, domaine);
                 $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
-
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
 
             } else {
-
+                findAndRemoveInArray(filterParameter.domaines, domaine);
                 filterParameter.domaines.push(domaine);
                 $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
 
