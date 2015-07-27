@@ -42,8 +42,8 @@ namespace BwaniaProject
 
         public static class RouteNames
         {
-            public const string NbPageSuffix = "{nbPage}";
-            public const string IdSuffix = "{id}";
+            public const string NbPageSuffix = "{nbPage:int}";
+            public const string IdSuffix = "{id:int}";
 
             public static class Document
             {

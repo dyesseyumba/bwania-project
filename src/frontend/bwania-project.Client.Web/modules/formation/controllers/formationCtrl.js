@@ -147,7 +147,9 @@ app.controller("formationCtrl", [
         }
 
         //CHeckbox Informatique
-        $scope.docInfoClick = function(infoTech) {
+        $scope.docInfoClick = function (infoTech) {
+            if (infoTech === "") findAndRemoveInArray(filterParameter.domaines, "Informatique & Technologies");
+            
             applyFilterDomaine(infoTech);
         };
 
