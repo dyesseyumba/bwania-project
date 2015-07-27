@@ -12,7 +12,8 @@ app.controller('ajoutertDocumentCtrl', ['$scope', 'UserFactory', 'uuid2', '$cook
             Titre: $scope.Titre,
             Domaine: $scope.Domaine,
             Discipline: $scope.Discipline,
-            Diveau: $scope.Niveau,
+            Niveau: $scope.Niveau,
+            NiveauDifficulte: $scope.NiveauDifficulte,
             MotCle: $scope.MotCle,
             DateDePublication: $scope.DateDePublication,
             Description: $scope.Description
@@ -25,7 +26,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', 'UserFactory', 'uuid2', '$cook
         //        Titre: $scope.titre,
         //        Domaine: $scope.domaine,
         //        Discipline: $scope.discipline,
-        //        Diveau: $scope.niveau,
+        //        Niveau: $scope.niveau,
         //        MotCle: $scope.motCle,
         //        DateDePublication: $scope.dateDePublication,
         //        Description: $scope.description
@@ -41,6 +42,7 @@ app.controller('ajoutertDocumentCtrl', ['$scope', 'UserFactory', 'uuid2', '$cook
             locals.Domaine = document.Domaine;
             locals.Discipline = document.Discipline;
             locals.Niveau = document.Niveau;
+            locals.NiveauDifficulte = document.NiveauDifficulte;
             locals.MotCle = document.MotCle;
             locals.DateDePublication = document.DateDePublication;
             locals.DateModification = new Date();

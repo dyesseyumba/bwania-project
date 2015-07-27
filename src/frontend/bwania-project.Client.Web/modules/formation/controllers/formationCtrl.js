@@ -203,17 +203,22 @@ app.controller("formationCtrl", [
 
         //CHeckbox  Collège
         $scope.docCollegeClick = function (college) {
+            if (college === "") findAndRemoveInArray(filterParameter.domaines, "Collège");
 
             applyFilterNiveau(college);
         };
 
         //CHeckbox  Etudiant
-        $scope.docLyceeClick = function(lycee) {
+        $scope.docLyceeClick = function (lycee) {
+            if (lycee === "") findAndRemoveInArray(filterParameter.domaines, "Lycée");
+
             applyFilterNiveau(lycee);
         };
 
         //CHeckbox  Entreprise
-        $scope.docUnivClick = function(univ) {
+        $scope.docUnivClick = function (univ) {
+            if (univ === "") findAndRemoveInArray(filterParameter.domaines, "Université");
+
             applyFilterNiveau(univ);
         };
 
