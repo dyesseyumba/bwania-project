@@ -109,41 +109,19 @@ app.controller("formationCtrl", [
         }
 
         function applyFilterDomaine(domaine) {
-            if (domaine === "") {
-
-                findAndRemoveInArray(filterParameter.domaines, domaine);
-                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
-                // Appel de la méthode de compatage des des documents
-                pagination(filterParameter);
-
-            } else {
-                findAndRemoveInArray(filterParameter.domaines, domaine);
                 filterParameter.domaines.push(domaine);
                 $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
 
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
-            }
         }
 
         function applyFilterNiveau(niveau) {
-
-            if (domaine === "") {
-
-                findAndRemoveInArray(filterParameter.niveaux, niveau);
-                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
-
-                // Appel de la méthode de compatage des des documents
-                pagination(filterParameter);
-
-            } else {
-
                 filterParameter.niveaux.push(niveau);
                 $scope.documents = userFactory.filterByDomaine.filter({ nbPage: 0 }, filterParameter);
 
                 // Appel de la méthode de compatage des des documents
                 pagination(filterParameter);
-            }
         }
 
         //CHeckbox Informatique
@@ -154,57 +132,78 @@ app.controller("formationCtrl", [
         };
 
         //CHeckbox mathématiques
-        $scope.docMathClick = function(mathematiques) {
+        $scope.docMathClick = function (mathematiques) {
+            if (mathematiques === "") findAndRemoveInArray(filterParameter.domaines, "Mathématiques");
+
             applyFilterDomaine(mathematiques);
         };
 
         //CHeckbox Médecine
-        $scope.docMedecineClick = function(medecine) {
+        $scope.docMedecineClick = function (medecine) {
+            if (medecine === "") findAndRemoveInArray(filterParameter.domaines, "Médecine");
+
             applyFilterDomaine(medecine);
         };
 
         //CHeckbox Physique & Chimie
-        $scope.docPhysiqueClick = function(physiqueChimie) {
+        $scope.docPhysiqueClick = function (physiqueChimie) {
+            if (physiqueChimie === "") findAndRemoveInArray(filterParameter.domaines, "Physique & Chimie");
+
             applyFilterDomaine(physiqueChimie);
         };
 
         //CHeckbox Banque & Finances
-        $scope.docBanqueClick = function(banqueFinance) {
+        $scope.docBanqueClick = function (banqueFinance) {
+            if (banqueFinance === "") findAndRemoveInArray(filterParameter.domaines, "Banque & Finances");
+
             applyFilterDomaine(banqueFinance);
         };
 
         //CHeckbox Economie & Gestion
-        $scope.docEconomieClick = function(economieGestion) {
+        $scope.docEconomieClick = function (economieGestion) {
+            if (economieGestion === "") findAndRemoveInArray(filterParameter.domaines, "Economie & Gestion");
+
             applyFilterDomaine(economieGestion);
         };
 
         //CHeckbox Langues
-        $scope.docLangueClick = function(langues) {
+        $scope.docLangueClick = function (langues) {
+            if (langues === "") findAndRemoveInArray(filterParameter.domaines, "Langues");
+
             applyFilterDomaine(langues);
         };
 
         //CHeckbox Philosophie & Littérature
-        $scope.docPhiloClick = function(philoLit) {
+        $scope.docPhiloClick = function (philoLit) {
+            if (philoLit === "") findAndRemoveInArray(filterParameter.domaines, "Philosophie & Littérature");
+
             applyFilterDomaine(philoLit);
         };
 
         //CHeckbox Histoire & Géographie
-        $scope.docHistoireClick = function(histGeogr) {
+        $scope.docHistoireClick = function (histGeogr) {
+            if (histGeogr === "") findAndRemoveInArray(filterParameter.domaines, "Histoire & Géographie");
+
             applyFilterDomaine(histGeogr);
         };
 
         //CHeckbox Trucs & Astuces
-        $scope.docTrucClick = function(trucsEtAstuces) {
+        $scope.docTrucClick = function (trucsEtAstuces) {
+            if (trucsEtAstuces === "") findAndRemoveInArray(filterParameter.domaines, "Trucs & Astuces");
+
             applyFilterDomaine(trucsEtAstuces);
         };
 
         //CHeckbox  Autre
-        $scope.docAutreClick = function(autre) {
+        $scope.docAutreClick = function (autre) {
+            if (autre === "") findAndRemoveInArray(filterParameter.domaines, "Autre");
+
             applyFilterDomaine(autre);
         };
 
         //CHeckbox  Collège
-        $scope.docCollegeClick = function(college) {
+        $scope.docCollegeClick = function (college) {
+
             applyFilterNiveau(college);
         };
 
