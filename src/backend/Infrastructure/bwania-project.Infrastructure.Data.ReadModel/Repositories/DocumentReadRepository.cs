@@ -130,8 +130,8 @@ namespace BwaniaProject.Data.Repositories
                                                 .Size(10)
                                                 .From(nbPage)
                                                 .Query(f => f.Bool(b => b
-                                                    .Should(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
-                                                        o => o.Match(n => n.OnField("niveauDifficulte").Query(""))))))
+                                                    .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
+                                                        o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))))
                                                         .Documents)
                 {
                     elasticSearchDocments.AddRange(indexResult);
