@@ -176,6 +176,11 @@ namespace BwaniaProject.Data.Repositories
                     resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
                 }
             }
+            else if (domains.Count <= 0 && niveaux.Count <= 0)
+            {
+                resultsDocuments.Clear();
+                resultsDocuments.AddRange(await GetTenDocumentAsync(nbPage));
+            }
 
             
 
