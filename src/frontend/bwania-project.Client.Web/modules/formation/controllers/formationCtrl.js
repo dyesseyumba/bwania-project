@@ -1,7 +1,7 @@
 "use strict";
 
 app.controller("formationCtrl", [
-    "$scope", "$cookieStore", "UserFactory", "$route", function($scope, $cookieStore, userFactory, $route) {
+    "$scope", "$cookieStore", "UserFactory", "$route", "$location", function($scope, $cookieStore, userFactory, $route, $location) {
 
         $scope.infoTech = "";
         $scope.mathematiques = "";
@@ -39,7 +39,10 @@ app.controller("formationCtrl", [
         var filterParameter = {
             domaines: [],
             niveaux: []
-        }; /*
+        };
+
+        var currentPg = parseInt($route.current.params.nbPage);
+        /*
          *Cas d'une redirection de la page home - Trillage des documents par domaines - Recherche d'un document.
          */
         //Trie par Informatique & Technologies
@@ -79,13 +82,12 @@ app.controller("formationCtrl", [
         //$scope.documents = userFactory.filterByDomaine.query(localFilter);
         //}
         //Consommation de la ressource de chargement des documents
-        $scope.documents = userFactory.docResourceGet.query({ pageIndex: 0 });
+        $scope.documents = userFactory.docResourceGet.query({ pageIndex: currentPg - 1});
 
 
         /*
          *Activation des checks box pour filtrer
          **/
-        //CHeckbox informatique & technologies
         function pagination(filter) {
             var totalDoc = userFactory.nbTotalFilteredDocument.get(filter,
                 function() {
@@ -93,10 +95,10 @@ app.controller("formationCtrl", [
                     $scope.currentPage = 1;
                     $scope.maxSize = 10;
                 });
-            $scope.selectedPage = function(index) {
-                filter.pageIndex = index - 1;
-                $scope.documents = userFactory.filterByDomaine.query(filter);
-            };
+            //$scope.selectedPage = function(index) {
+            //    filter.pageIndex = index - 1;
+            //    $scope.documents = userFactory.filterByDomaine.query(filter);
+            //};
         }
 
         function findAndRemoveInArray(array, value) {
@@ -126,7 +128,7 @@ app.controller("formationCtrl", [
             pagination(filterParameter);
         }
 
-        //CHeckbox Informatique
+        //CHeckbox informatique & technologies
         $scope.docInfoClick = function(infoTech) {
             if (infoTech === "") {
                 findAndRemoveInArray(filterParameter.domaines, "Informatique & Technologies");
@@ -263,13 +265,17 @@ app.controller("formationCtrl", [
         var totalDoc = userFactory.nbTotalDocument.get(null,
             function() {
                 $scope.totalItems = totalDoc.totalDoc;
-                $scope.currentPage = 1;
+                $scope.totalItems = 150;
+                $scope.currentPage = parseInt(currentPg);
                 $scope.maxSize = 10;
             });
         $scope.selectedPage = function(index) {
             localFilter.pageIndex = index - 1;
-            $scope.documents = userFactory.filterByDomaine.query(localFilter);
-        }; /*
+            var pg = index ;
+            $scope.documents = $location.path("/formation/" + pg);
+        };
+
+        /*
          * Recherches
          */
         $scope.clickedBtnSearch = function(titre, infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,

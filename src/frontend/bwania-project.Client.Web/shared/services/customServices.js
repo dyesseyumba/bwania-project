@@ -138,15 +138,18 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
 
         //Modification des informations d'un documents
         var editDoc = $resource(urlMain + 'documents/bwaniaAuthReq', {}, {
-            edit: {method: 'PUT', interceptor: {
+            edit: {
+                method: 'PUT',
+                interceptor: {
                     response: function (data) {
                         console.log('response in interceptor', data);
                     },
                     responseError: function (data) {
                         console.log('error in interceptor', data);
                     }
-                }}
-        })
+                }
+            }
+        });
 
         //Suppression d'un documents
         var removeDocument = $resource(urlMain + 'documents/bwaniaAuthReq/:documentId', {}, {

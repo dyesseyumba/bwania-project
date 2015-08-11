@@ -8,7 +8,7 @@ var app = angular.module("bwania", [
         "$routeProvider", "$httpProvider", "FacebookProvider", "$authProvider",
         function($routeProvider, $httpProvider, facebookProvider, $authProvider) {
             $routeProvider.when("/home", { templateUrl: "modules/home/views/homeView.html", controller: "homeCtrl" });
-            $routeProvider.when("/formation", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            $routeProvider.when("/formation/:nbPage", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
             $routeProvider.when("/formation/:titre", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
             $routeProvider.when("/formation/infoTech/:infoTech", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
             $routeProvider.when("/formation/mathematiques/:mathematiques", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });

@@ -55,7 +55,7 @@ namespace BwaniaProject.Data.Repositories
             Argument.IsNotNull("nbPage", nbPage);
 
             var query = Bucket.CreateQuery(Constants.DesignDocumentNameGet10Doc, Constants.ViewNameGet10Doc, true)
-                .Skip(nbPage)
+                .Skip(nbPage*10)
                 .Limit(10)
                 .Desc();
 
