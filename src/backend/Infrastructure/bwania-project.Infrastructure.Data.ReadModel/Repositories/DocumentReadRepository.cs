@@ -125,14 +125,8 @@ namespace BwaniaProject.Data.Repositories
             if (domains.Count > 0 && niveaux.Count > 0)
             {
                 foreach (var indexResult in from domain in domains
-                                            from niveau in niveaux
-                                            select ElasticClient.Search<CouchbaseDocument>(s => s
-                                                .Size(10)
-                                                .From(nbPage)
-                                                .Query(f => f.Bool(b => b
-                                                    .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
-                                                        o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))))
-                                                        .Documents)
+                    from niveau in niveaux
+                    select FilterTenByNivauxAndDomains(nbPage, domain, niveau).Documents)
                 {
                     elasticSearchDocments.AddRange(indexResult);
                 }
@@ -145,11 +139,7 @@ namespace BwaniaProject.Data.Repositories
             else if (domains.Count > 0 && niveaux.Count <= 0)
             {
                 foreach (var indexResult in from domain in domains
-                                            select ElasticClient.Search<CouchbaseDocument>(s => s
-                                                .Size(10)
-                                                .From(nbPage)
-                                                .Query(d => d.Match(m => m.OnField("domaine").Query(domain ?? ""))))
-                                                        .Documents)
+                                            select FilterTenByNivauxOrDomain(nbPage, domain, "domaine").Documents)
                 {
                     elasticSearchDocments.AddRange(indexResult);
                 }
@@ -162,11 +152,7 @@ namespace BwaniaProject.Data.Repositories
             else if (domains.Count <= 0 && niveaux.Count > 0)
             {
                 foreach (var indexResult in from niveau in niveaux
-                                            select ElasticClient.Search<CouchbaseDocument>(s => s
-                                                .Size(10)
-                                                .From(nbPage)
-                                                .Query(d => d.Match(m => m.OnField("niveau").Query(niveau ?? ""))))
-                                                        .Documents)
+                                            select FilterTenByNivauxOrDomain(nbPage, niveau, "niveau").Documents)
                 {
                     elasticSearchDocments.AddRange(indexResult);
                 }
@@ -181,10 +167,47 @@ namespace BwaniaProject.Data.Repositories
                 resultsDocuments.Clear();
                 resultsDocuments.AddRange(await GetTenDocumentAsync(nbPage));
             }
-
-            
-
             return resultsDocuments;
+        }
+
+        public async Task<NbPage> CountFilteredDocumentByDomainOrByNiveau(int nbPage,
+            List<string> domains, List<string> niveaux)
+        {
+            long totalDocments = 0;
+
+            if (domains.Count > 0 && niveaux.Count > 0)
+            {
+                foreach (var indexResult in from domain in domains
+                                            from niveau in niveaux
+                                            select FilterAllByNivauxAndDomains(nbPage, domain, niveau).Total)
+                {
+                    totalDocments += indexResult;
+                }
+                return new NbPage { TotalDoc = (int)totalDocments };
+            }
+            else if (domains.Count > 0 && niveaux.Count <= 0)
+            {
+                foreach (var indexResult in from domain in domains
+                                            select FilterAllByNivauxOrDomain(nbPage, domain, "domaine").Total)
+                {
+                    totalDocments += indexResult;
+                }
+                return new NbPage { TotalDoc = (int)totalDocments };
+            }
+            else if (domains.Count <= 0 && niveaux.Count > 0)
+            {
+                foreach (var indexResult in from niveau in niveaux
+                                            select FilterAllByNivauxOrDomain(nbPage, niveau, "niveau").Total)
+                {
+                    totalDocments += indexResult;
+                }
+                return new NbPage { TotalDoc = (int)totalDocments };
+            }
+            else if (domains.Count <= 0 && niveaux.Count <= 0)
+            {
+                return await CountGetTenDocumentAsync();
+            }
+            return new NbPage { TotalDoc = 0 };
         }
 
         /// <summary>
@@ -199,6 +222,63 @@ namespace BwaniaProject.Data.Repositories
 
             return await GetByIdAsync<Document>(entityId).ConfigureAwait(false);
         }
+
+        #region Customs filter
+        /// <summary>
+        /// Filters the by nivaux and domains.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="domain">The domain.</param>
+        /// <param name="niveau">The niveau.</param>
+        /// <returns></returns>
+        private ISearchResponse<CouchbaseDocument> FilterTenByNivauxAndDomains(int nbPage, string domain, string niveau)
+        {
+            return ElasticClient.Search<CouchbaseDocument>(s => s
+                .Size(10)
+                .From(nbPage)
+                .Query(f => f.Bool(b => b
+                    .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
+                        o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
+        }
+
+        /// <summary>
+        /// Filters the by nivaux or domain.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="queredValue">The quered value.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns></returns>
+        private ISearchResponse<CouchbaseDocument> FilterTenByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
+        {
+            return ElasticClient.Search<CouchbaseDocument>(s => s
+                .Size(10)
+                .From(nbPage)
+                .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
+        }
+
+        private ISearchResponse<CouchbaseDocument> FilterAllByNivauxAndDomains(int nbPage, string domain, string niveau)
+        {
+            return ElasticClient.Search<CouchbaseDocument>(s => s
+                .From(nbPage)
+                .Query(f => f.Bool(b => b
+                    .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
+                        o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
+        }
+
+        /// <summary>
+        /// Filters the by nivaux or domain.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="queredValue">The quered value.</param>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <returns></returns>
+        private ISearchResponse<CouchbaseDocument> FilterAllByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
+        {
+            return ElasticClient.Search<CouchbaseDocument>(s => s
+                .From(nbPage)
+                .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
+        }
+        #endregion
 
         #endregion
     }
