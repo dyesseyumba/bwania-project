@@ -224,6 +224,16 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet, Route(Constants.RouteNames.Document.CountTotalFilteredDoc)]
+        public async Task<IHttpActionResult> CountTotalFilterdDocumentint(int nbPage, DocumentFilterParameter filterParameter)
+        {
+            var nbpage = await ExceptionService.Process(()
+                => _documentReadRepository.CountFilteredDocumentByDomainOrByNiveau(nbPage, filterParameter.Domaines, 
+                filterParameter.Niveaux));
+
+            return Ok(nbpage);
+        }
+
         #endregion
 
         #region Methods

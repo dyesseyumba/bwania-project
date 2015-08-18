@@ -57,6 +57,7 @@ namespace BwaniaProject
                 public const string GetById = "document/" + IdSuffix;
                 public const string GetFileById = "document/download/" + IdSuffix + "/file";
                 public const string CountTotalDoc = "documents/count_all";
+                public const string CountTotalFilteredDoc = "documents/count_all_filtered";
             }
         }
 #endif

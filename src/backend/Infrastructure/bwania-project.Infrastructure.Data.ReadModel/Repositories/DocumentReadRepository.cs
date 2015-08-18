@@ -170,6 +170,13 @@ namespace BwaniaProject.Data.Repositories
             return resultsDocuments;
         }
 
+        /// <summary>
+        /// Counts the filtered document by domain or by niveau.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="domains">The domains.</param>
+        /// <param name="niveaux">The niveaux.</param>
+        /// <returns></returns>
         public async Task<NbPage> CountFilteredDocumentByDomainOrByNiveau(int nbPage,
             List<string> domains, List<string> niveaux)
         {
