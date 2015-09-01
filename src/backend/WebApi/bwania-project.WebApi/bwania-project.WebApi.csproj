@@ -15,11 +15,12 @@
     <AssemblyName>bwania-project.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>27573</IISExpressSSLPort>
+    <IISExpressSSLPort>44302</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <NuGetPackageImportStamp>eaac3d4a</NuGetPackageImportStamp>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,8 +50,14 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Models\DocumentFilterParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\IdentityManager\CustomIdentityManagerService.cs" />
     <Compile Include="Security\IdentityManager\MembershipRebootIdentityManagerServiceExtensions.cs" />
+    <Compile Include="Security\IdentityServer\Certificate.cs" />
     <Compile Include="Security\IdentityServer\Clients.cs" />
     <Compile Include="Security\IdentityServer\CustomUserService.cs" />
     <Compile Include="Security\IdentityServer\Factory.cs" />
@@ -62,7 +69,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Security\IdentityServer\idsrv3test.pfx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -70,7 +80,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\bwania-project.Core.Data\bwania-project.Core.Data.csproj">
       <Project>{be52223f-79a3-42fa-8e1c-ff60b4da8e62}</Project>
@@ -210,8 +225,10 @@
     <Reference Include="Thinktecture.IdentityModel.Core">
       <HintPath>..\..\..\..\lib\Thinktecture.IdentityModel.Core.1.4.0\lib\net45\Thinktecture.IdentityModel.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Thinktecture.IdentityServer3">
-      <HintPath>..\..\..\..\lib\Thinktecture.IdentityServer3.1.5.0\lib\net45\Thinktecture.IdentityServer3.dll</HintPath>
+    <Reference Include="Thinktecture.IdentityServer3, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Thinktecture.IdentityServer3.1.6.2\lib\net45\Thinktecture.IdentityServer3.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Thinktecture.IdentityServer3.MembershipReboot">
       <HintPath>..\..\..\..\lib\Thinktecture.IdentityServer3.MembershipReboot.1.0.0\lib\net45\Thinktecture.IdentityServer3.MembershipReboot.dll</HintPath>

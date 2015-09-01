@@ -224,7 +224,7 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet, Route(Constants.RouteNames.Document.CountTotalFilteredDoc)]
+        [HttpPost, Route(Constants.RouteNames.Document.CountTotalFilteredDoc)]
         public async Task<IHttpActionResult> CountTotalFilterdDocumentint(int nbPage, DocumentFilterParameter filterParameter)
         {
             var nbpage = await ExceptionService.Process(()

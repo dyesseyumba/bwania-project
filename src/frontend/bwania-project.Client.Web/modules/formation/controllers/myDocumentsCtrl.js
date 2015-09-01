@@ -264,8 +264,7 @@ app.controller('myDocumentsCtrl', ['$scope', 'UserFactory', '$cookieStore', func
             }
             else {
                 $scope.otherDescripeion = false;
-            }
-            ;
+            };
         };
 
         //Suppression d'un document
@@ -283,5 +282,4 @@ app.controller('myDocumentsCtrl', ['$scope', 'UserFactory', '$cookieStore', func
                 $scope.deleteFaild = true;
             });
         };
-
     }]);

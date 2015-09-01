@@ -102,18 +102,18 @@ app.controller("formationCtrl", [
         }
 
         //Initialization de la pagination
-        var totalDoc = userFactory.nbTotalDocument.get(null,
-            function () {
-                $scope.totalItems = totalDoc.totalDoc;
-                $scope.totalItems = 150;
-                $scope.currentPage = parseInt(currentPg);
-                $scope.maxSize = 10;
-            });
-        $scope.selectedPage = function (index) {
-            localFilter.pageIndex = index - 1;
-            var pg = index;
-            $scope.documents = $location.path("/formation/" + pg);
-        };
+        //var totalDoc = userFactory.nbTotalDocument.get(null,
+        //    function () {
+        //        $scope.totalItems = totalDoc.totalDoc;
+        //        $scope.totalItems = 150;
+        //        $scope.currentPage = parseInt(currentPg);
+        //        $scope.maxSize = 10;
+        //    });
+        //$scope.selectedPage = function (index) {
+        //    localFilter.pageIndex = index - 1;
+        //    var pg = index;
+        //    $scope.documents = $location.path("/formation/" + pg);
+        //};
 
         function findAndRemoveInArray(array, value) {
             $.each(array, function(index, result) {
