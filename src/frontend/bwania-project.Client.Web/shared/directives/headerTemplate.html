@@ -30,7 +30,7 @@
     </ul> 
     <div class="col-md-3">
         <div class="btn">
-            <a ng-class="{active : isCurrentMenu('/login')}" class="btn btn-default animate-hide" ng-hide="loggedOut" href="#/login">Se connecter</a>
+            <a ng-class="{active : isCurrentMenu('/login')}" class="btn btn-default animate-hide" ng-hide="loggedOut" href="https:/localhost:44302/identity/connect/authorize?client_id=implicitclient&scope=read&redirect_uri=http://localhost:20623&response_type=token/login">Se connecter</a>
             <a class="btn btn-default ng-hide" ng-click="logout()" ng-show="loggedOut">Se déconnecter</a>
             <a ng-class="{active : isCurrentMenu('/signup')}" class="btn btn-default" ng-hide="loggedOut" href="#/signup">S'inscrire</a>
             <a class="ng-hide" ng-hide="loggedOut" ng-click="fbLogin()"><img src="images/facebook3.png" alt="facebook" ></a>
