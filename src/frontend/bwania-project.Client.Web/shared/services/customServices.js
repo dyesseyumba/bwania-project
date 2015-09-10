@@ -167,6 +167,12 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
         //Nombre total des documents
         var nbTotalDocument = $resource(urlMain + 'documents/count_all');
 
+        var nbFilteredTotalDocument = $resource(urlMain + 'documents/count_all_filtered/:nbPage', {}, {
+            filter: {
+                method: 'POST'
+            }
+        });
+
         //Nombre total publié par un utilisateur
         var nbTotalUserDoc = $resource(urlMain + 'documents/user/:utilisateurId');
 
@@ -344,7 +350,8 @@ customServices.factory('UserFactory', ['$resource', '$location', '$cookieStore',
             addEtablissement: addEtablissement,
             addEntreprise: addEntreprise,
             getOneEtablissement: getOneEtablissement,
-            nbTotalDocument: nbTotalDocument
+            nbTotalDocument: nbTotalDocument,
+            nbFilteredTotalDocument: nbFilteredTotalDocument
         };
     }
 ]);

@@ -81,39 +81,47 @@ app.controller("formationCtrl", [
         //Consommation de la ressource de chargement des documents
         //$scope.documents = userFactory.filterByDomaine.query(localFilter);
         //}
-        //Consommation de la ressource de chargement des documents
+
+
+        /*
+        *Initial load
+        */
         $scope.documents = userFactory.docResourceGet.query({ pageIndex: currentPg - 1});
 
 
         /*
          *Activation des checks box pour filtrer
          **/
-        function pagination(filter) {
-            var totalDoc = userFactory.nbTotalFilteredDocument.get(filter,
-                function() {
-                    $scope.totalItems = totalDoc.pageIndex;
-                    $scope.currentPage = 1;
-                    $scope.maxSize = 10;
-                });
+        //function pagination(filter) {
+        //    var totalDoc = userFactory.nbTotalFilteredDocument.get(filter,
+        //        function() {
+        //            $scope.totalItems = totalDoc.pageIndex;
+        //            $scope.currentPage = 1;
+        //            $scope.maxSize = 10;
+        //        });
             //$scope.selectedPage = function(index) {
             //    filter.pageIndex = index - 1;
             //    $scope.documents = userFactory.filterByDomaine.query(filter);
             //};
-        }
+        //}
 
-        //Initialization de la pagination
-        //var totalDoc = userFactory.nbTotalDocument.get(null,
-        //    function () {
-        //        $scope.totalItems = totalDoc.totalDoc;
-        //        $scope.totalItems = 150;
-        //        $scope.currentPage = parseInt(currentPg);
-        //        $scope.maxSize = 10;
-        //    });
-        //$scope.selectedPage = function (index) {
-        //    localFilter.pageIndex = index - 1;
-        //    var pg = index;
-        //    $scope.documents = $location.path("/formation/" + pg);
-        //};
+/***********/        //Initialization de la pagination
+        function pagination(filterParameter) {
+            //var totalFilteredDoc = 
+            userFactory.nbFilteredTotalDocument.filter({ nbPage: 0 }, filterParameter,
+            function () {
+                //$scope.totalItems = totalFilteredDoc.totalDoc;
+                $scope.totalItems = 150;
+                $scope.currentPage = parseInt(currentPg);
+                $scope.maxSize = 10;
+            });
+            //$scope.selectedPage = function (index) {
+            //    localFilter.pageIndex = index - 1;
+            //    var pg = index;
+            //    $scope.documents = $location.path("/formation/" + pg);
+            //};
+        }
+        
 
         function findAndRemoveInArray(array, value) {
             $.each(array, function(index, result) {
@@ -276,17 +284,17 @@ app.controller("formationCtrl", [
          *Pagination
          */
         //Initialization de la pagination
-        var totalDoc = userFactory.nbTotalDocument.get(null,
-            function() {
-                $scope.totalItems = totalDoc.totalDoc;
-                $scope.currentPage = parseInt(currentPg);
-                $scope.maxSize = 10;
-            });
-        $scope.selectedPage = function(index) {
-            localFilter.pageIndex = index - 1;
-            var pg = index ;
-            $scope.documents = $location.path("/formation/" + pg);
-        };
+        //var totalDoc = userFactory.nbTotalDocument.get(null,
+        //    function() {
+        //        $scope.totalItems = totalDoc.totalDoc;
+        //        $scope.currentPage = parseInt(currentPg);
+        //        $scope.maxSize = 10;
+        //    });
+        //$scope.selectedPage = function(index) {
+        //    localFilter.pageIndex = index - 1;
+        //    var pg = index ;
+        //    $scope.documents = $location.path("/formation/" + pg);
+        //};
 
         /*
          * Recherches
