@@ -266,7 +266,7 @@ namespace BwaniaProject.Data.Repositories
         private ISearchResponse<CouchbaseDocument> CountFilterAllByNivauxAndDomains(int nbPage, string domain, string niveau)
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
-                //.From(nbPage)
+                .From(nbPage*10)
                 .Query(f => f.Bool(b => b
                     .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
                         o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
@@ -282,7 +282,7 @@ namespace BwaniaProject.Data.Repositories
         private ISearchResponse<CouchbaseDocument> CountFilterAllByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
-                //.From(nbPage)
+                .From(nbPage*10)
                 .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
         }
         #endregion
