@@ -74,17 +74,17 @@ namespace BwaniaProject.Web.Api
 
                 var options = new IdentityServerOptions
                 {
-                    IssuerUri = "http://idsrv3.com/embedded",
+                    IssuerUri = "https://idsrv3.com/embedded",
                     SiteName = "Bwania IdentityServer",
 
-                    //SigningCertificate = Certificate.Get(),
+                    SigningCertificate = Certificate.Get(),
                     Factory = idSvrFactory,
                     CorsPolicy = CorsPolicy.AllowAll,
-                    AuthenticationOptions = new AuthenticationOptions
-                    {
-                        IdentityProviders = ConfigureAdditionalIdentityProviders
-                    },
-                    RequireSsl = false
+                    AuthenticationOptions = new AuthenticationOptions(),
+                    //{
+                    //    IdentityProviders = ConfigureAdditionalIdentityProviders
+                    //},
+                    //RequireSsl = true
                 };
 
                 builder.UseIdentityServer(options);

@@ -42,78 +42,44 @@ app.controller("formationCtrl", [
         };
 
         var currentPg = parseInt($route.current.params.nbPage);
+        
+
         /*
-         *Cas d'une redirection de la page home - Trillage des documents par domaines - Recherche d'un document.
-         */
-        //Trie par Informatique & Technologies
-        //if ($route.current.params.titre) {
-        //    $scope.documents = userFactory.getDocSearchResults.query({ pageIndex: 0, titre: $route.current.params.titre });
-        //} else if ($route.current.params.infoTech === "Informatique & Technologies") {
-        //    applyFilter("Informatique & Technologies", "", "", "", "", "", "", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.mathematiques === "Mathématiques") {
-        //    //localFilter{};
-        //    applyFilter("", "Mathématiques", "", "", "", "", "", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.medecine === "Médecine") {
-        //    applyFilter("", "", "Médecine", "", "", "", "", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.physiqueChimie === "Physique & Chimie") {
-        //    applyFilter("", "", "", "Physique & Chimie", "", "", "", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.banqueFinance === "Banque & Finances") {
-        //    applyFilter("", "", "", "", "Banque & Finances", "", "", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.economieGestion === "Economie & Gestion") {
-        //    applyFilter("", "", "", "", "", "Economie & Gestion", "", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.langues === "Langues") {
-        //    applyFilter("", "", "", "", "", "", "Langues", "", "", "", "", "", "", "");
-        //} else if ($route.current.params.philoLit === "Philosophie & Littérature") {
-        //    applyFilter("", "", "", "", "", "", "", "Philosophie & Littérature", "", "", "", "", "", "");
-        //} else if ($route.current.params.histGeogr === "Histoire & Géographie") {
-        //    applyFilter("", "", "", "", "", "", "", "", "Histoire & Géographie", "", "", "", "", "");
-        //} else if ($route.current.params.trucsEtAstuces === "Trucs & Astuces") {
-        //    applyFilter("", "", "", "", "", "", "", "", "", "Trucs & Astuces", "", "", "", "");
-        //} else if ($route.current.params.autre === "Autre") {
-        //    applyFilter("", "", "", "", "", "", "", "", "", "", "Autre", "", "", "");
-        //} else if ($route.current.params.college === "Collège") {
-        //    applyFilter("", "", "", "", "", "", "", "", "", "", "", "Collège", "", "");
-        //} else if ($route.current.params.lycee === "Lycée") {
-        //    applyFilter("", "", "", "", "", "", "", "", "", "", "", "", "Lycée", "");
-        //} else if ($route.current.params.univ === "Université") {
-        //    applyFilter("", "", "", "", "", "", "", "", "", "", "", "", "", "Université");
-        //} else {
-        //Consommation de la ressource de chargement des documents
-        //$scope.documents = userFactory.filterByDomaine.query(localFilter);
-        //}
-        //Consommation de la ressource de chargement des documents
+        *Initial load
+        */
         $scope.documents = userFactory.docResourceGet.query({ pageIndex: currentPg - 1});
 
 
         /*
          *Activation des checks box pour filtrer
          **/
-        function pagination(filter) {
-            var totalDoc = userFactory.nbTotalFilteredDocument.get(filter,
-                function() {
-                    $scope.totalItems = totalDoc.pageIndex;
-                    $scope.currentPage = 1;
-                    $scope.maxSize = 10;
-                });
+        //function pagination(filter) {
+        //    var totalDoc = userFactory.nbTotalFilteredDocument.get(filter,
+        //        function() {
+        //            $scope.totalItems = totalDoc.pageIndex;
+        //            $scope.currentPage = 1;
+        //            $scope.maxSize = 10;
+        //        });
             //$scope.selectedPage = function(index) {
             //    filter.pageIndex = index - 1;
             //    $scope.documents = userFactory.filterByDomaine.query(filter);
             //};
-        }
+        //}
 
-        //Initialization de la pagination
-        var totalDoc = userFactory.nbTotalDocument.get(null,
+/***********/        //Initialization de la pagination
+        function pagination(filterParameter) {
+            var totalFilteredDoc = userFactory.nbFilteredTotalDocument.filter({ nbPage: 0 }, filterParameter,
             function () {
-                $scope.totalItems = totalDoc.totalDoc;
-                $scope.totalItems = 150;
+                $scope.totalItems = totalFilteredDoc.totalDoc;
                 $scope.currentPage = parseInt(currentPg);
                 $scope.maxSize = 10;
             });
-        $scope.selectedPage = function (index) {
-            localFilter.pageIndex = index - 1;
-            var pg = index;
-            $scope.documents = $location.path("/formation/" + pg);
-        };
+            $scope.selectedPage = function (index) {
+                var pg = index-1;
+                $scope.documents = userFactory.filterByDomaine.filter({ nbPage: pg }, filterParameter);
+            };
+        }
+        
 
         function findAndRemoveInArray(array, value) {
             $.each(array, function(index, result) {
@@ -277,15 +243,15 @@ app.controller("formationCtrl", [
          */
         //Initialization de la pagination
         var totalDoc = userFactory.nbTotalDocument.get(null,
-            function() {
-                $scope.totalItems = totalDoc.totalDoc;
-                $scope.currentPage = parseInt(currentPg);
-                $scope.maxSize = 10;
-            });
+           function() {
+               $scope.totalItems = totalDoc.totalDoc;
+               $scope.currentPage = parseInt(currentPg);
+               $scope.maxSize = 10;
+           });
         $scope.selectedPage = function(index) {
-            localFilter.pageIndex = index - 1;
-            var pg = index ;
-            $scope.documents = $location.path("/formation/" + pg);
+           localFilter.pageIndex = index - 1;
+           var pg = index ;
+           $scope.documents = $location.path("/formation/" + pg);
         };
 
         /*

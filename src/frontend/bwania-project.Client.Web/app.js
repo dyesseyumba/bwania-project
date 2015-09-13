@@ -9,21 +9,22 @@ var app = angular.module("bwania", [
         function($routeProvider, $httpProvider, facebookProvider, $authProvider) {
             $routeProvider.when("/home", { templateUrl: "modules/home/views/homeView.html", controller: "homeCtrl" });
             $routeProvider.when("/formation/:nbPage", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/:titre", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/infoTech/:infoTech", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/mathematiques/:mathematiques", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/medecine/:medecine", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/physiqueChimie/:physiqueChimie", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/banqueFinance/:banqueFinance", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/economieGestion/:economieGestion", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/langues/:langues", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/histGeogr/:histGeogr", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/philoLit/:philoLit", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/trucsEtAstuces/:trucsEtAstuces", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/autre/:autre", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/college/:college", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/lycee/:lycee", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
-            $routeProvider.when("/formation/univ/:univ", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            $routeProvider.when("/formation/:nbFiltredPage", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/:titre", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/infoTech/:infoTech", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/mathematiques/:mathematiques", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/medecine/:medecine", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/physiqueChimie/:physiqueChimie", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/banqueFinance/:banqueFinance", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/economieGestion/:economieGestion", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/langues/:langues", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/histGeogr/:histGeogr", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/philoLit/:philoLit", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/trucsEtAstuces/:trucsEtAstuces", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/autre/:autre", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/college/:college", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/lycee/:lycee", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
+            //$routeProvider.when("/formation/univ/:univ", { templateUrl: "modules/formation/views/formationView.html", controller: "formationCtrl" });
             $routeProvider.when("/ajouterundocument", { templateUrl: "modules/formation/views/ajoutertDocumentView.html", controller: "ajoutertDocumentCtrl" });
             $routeProvider.when("/modifierundocument/:documentId",
             { templateUrl: "modules/formation/views/ModifierDocumentView.html", controller: "ModifierDocumentCtrl" });

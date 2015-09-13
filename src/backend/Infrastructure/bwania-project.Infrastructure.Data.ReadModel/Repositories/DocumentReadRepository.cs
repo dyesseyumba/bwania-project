@@ -170,6 +170,13 @@ namespace BwaniaProject.Data.Repositories
             return resultsDocuments;
         }
 
+        /// <summary>
+        /// Counts the filtered document by domain or by niveau.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="domains">The domains.</param>
+        /// <param name="niveaux">The niveaux.</param>
+        /// <returns></returns>
         public async Task<NbPage> CountFilteredDocumentByDomainOrByNiveau(int nbPage,
             List<string> domains, List<string> niveaux)
         {
@@ -179,7 +186,7 @@ namespace BwaniaProject.Data.Repositories
             {
                 foreach (var indexResult in from domain in domains
                                             from niveau in niveaux
-                                            select FilterAllByNivauxAndDomains(nbPage, domain, niveau).Total)
+                                            select CountFilterAllByNivauxAndDomains(nbPage, domain, niveau).Total)
                 {
                     totalDocments += indexResult;
                 }
@@ -188,7 +195,7 @@ namespace BwaniaProject.Data.Repositories
             else if (domains.Count > 0 && niveaux.Count <= 0)
             {
                 foreach (var indexResult in from domain in domains
-                                            select FilterAllByNivauxOrDomain(nbPage, domain, "domaine").Total)
+                                            select CountFilterAllByNivauxOrDomain(nbPage, domain, "domaine").Total)
                 {
                     totalDocments += indexResult;
                 }
@@ -197,7 +204,7 @@ namespace BwaniaProject.Data.Repositories
             else if (domains.Count <= 0 && niveaux.Count > 0)
             {
                 foreach (var indexResult in from niveau in niveaux
-                                            select FilterAllByNivauxOrDomain(nbPage, niveau, "niveau").Total)
+                                            select CountFilterAllByNivauxOrDomain(nbPage, niveau, "niveau").Total)
                 {
                     totalDocments += indexResult;
                 }
@@ -235,7 +242,7 @@ namespace BwaniaProject.Data.Repositories
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
                 .Size(10)
-                .From(nbPage)
+                .From(nbPage*10)
                 .Query(f => f.Bool(b => b
                     .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
                         o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
@@ -252,14 +259,14 @@ namespace BwaniaProject.Data.Repositories
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
                 .Size(10)
-                .From(nbPage)
+                .From(nbPage*10)
                 .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
         }
 
-        private ISearchResponse<CouchbaseDocument> FilterAllByNivauxAndDomains(int nbPage, string domain, string niveau)
+        private ISearchResponse<CouchbaseDocument> CountFilterAllByNivauxAndDomains(int nbPage, string domain, string niveau)
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
-                .From(nbPage)
+                .From(nbPage*10)
                 .Query(f => f.Bool(b => b
                     .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
                         o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
@@ -272,10 +279,10 @@ namespace BwaniaProject.Data.Repositories
         /// <param name="queredValue">The quered value.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <returns></returns>
-        private ISearchResponse<CouchbaseDocument> FilterAllByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
+        private ISearchResponse<CouchbaseDocument> CountFilterAllByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
-                .From(nbPage)
+                .From(nbPage*10)
                 .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
         }
         #endregion
