@@ -18,6 +18,7 @@ namespace BwaniaProject.Data
         protected void RegisterRepositories(IServiceRegistry serviceRegistry)
         {
             serviceRegistry.Register<IDocumentReadRepository, DocumentReadRepository>();
+            serviceRegistry.Register<IDocumentCountRepository, DocumentCountRepository>();
         }
 
         #endregion

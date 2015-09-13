@@ -68,27 +68,7 @@ namespace BwaniaProject.Data.Repositories
             throw new ViewRequestException(message, results.StatusCode);
         }
 
-        /// <summary>
-        ///     Counts the the result of view document asynchronous.
-        /// </summary>
-        /// <returns></returns>
-        public async Task<NbPage> CountGetTenDocumentAsync()
-        {
-            var query = Bucket.CreateQuery(Constants.DesignDocumentNameGet10Doc, Constants.ViewNameGet10Doc, true);
-
-            var results = await ExceptionService.ProcessAsync(() => Bucket.Query<Document>(query))
-                .ConfigureAwait(false);
-
-            var nbPage = new NbPage
-            {
-                TotalDoc = (int) results.TotalRows
-            };
-
-            if (results.Success) return nbPage;
-
-            var message = results.Error;
-            throw new ViewRequestException(message, results.StatusCode);
-        }
+       
 
         /// <summary>
         ///     Gets the file asynchronous from couch base.
@@ -171,53 +151,6 @@ namespace BwaniaProject.Data.Repositories
         }
 
         /// <summary>
-        /// Counts the filtered document by domain or by niveau.
-        /// </summary>
-        /// <param name="nbPage">The nb page.</param>
-        /// <param name="domains">The domains.</param>
-        /// <param name="niveaux">The niveaux.</param>
-        /// <returns></returns>
-        public async Task<NbPage> CountFilteredDocumentByDomainOrByNiveau(int nbPage,
-            List<string> domains, List<string> niveaux)
-        {
-            long totalDocments = 0;
-
-            if (domains.Count > 0 && niveaux.Count > 0)
-            {
-                foreach (var indexResult in from domain in domains
-                                            from niveau in niveaux
-                                            select CountFilterAllByNivauxAndDomains(nbPage, domain, niveau).Total)
-                {
-                    totalDocments += indexResult;
-                }
-                return new NbPage { TotalDoc = (int)totalDocments };
-            }
-            else if (domains.Count > 0 && niveaux.Count <= 0)
-            {
-                foreach (var indexResult in from domain in domains
-                                            select CountFilterAllByNivauxOrDomain(nbPage, domain, "domaine").Total)
-                {
-                    totalDocments += indexResult;
-                }
-                return new NbPage { TotalDoc = (int)totalDocments };
-            }
-            else if (domains.Count <= 0 && niveaux.Count > 0)
-            {
-                foreach (var indexResult in from niveau in niveaux
-                                            select CountFilterAllByNivauxOrDomain(nbPage, niveau, "niveau").Total)
-                {
-                    totalDocments += indexResult;
-                }
-                return new NbPage { TotalDoc = (int)totalDocments };
-            }
-            else if (domains.Count <= 0 && niveaux.Count <= 0)
-            {
-                return await CountGetTenDocumentAsync();
-            }
-            return new NbPage { TotalDoc = 0 };
-        }
-
-        /// <summary>
         ///     Gets document by identifier asynchronous from Couchbase.
         /// </summary>
         /// <param name="entityId">The entity identifier.</param>
@@ -263,28 +196,7 @@ namespace BwaniaProject.Data.Repositories
                 .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
         }
 
-        private ISearchResponse<CouchbaseDocument> CountFilterAllByNivauxAndDomains(int nbPage, string domain, string niveau)
-        {
-            return ElasticClient.Search<CouchbaseDocument>(s => s
-                .From(nbPage*10)
-                .Query(f => f.Bool(b => b
-                    .Must(o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
-                        o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
-        }
-
-        /// <summary>
-        /// Filters the by nivaux or domain.
-        /// </summary>
-        /// <param name="nbPage">The nb page.</param>
-        /// <param name="queredValue">The quered value.</param>
-        /// <param name="fieldName">Name of the field.</param>
-        /// <returns></returns>
-        private ISearchResponse<CouchbaseDocument> CountFilterAllByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
-        {
-            return ElasticClient.Search<CouchbaseDocument>(s => s
-                .From(nbPage*10)
-                .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
-        }
+       
         #endregion
 
         #endregion
