@@ -24,10 +24,11 @@ namespace BwaniaProject.Web.Api.Controllers
     public class DocumentController
         : ApiControllerBase
     {
-        #region Fields
+       #region Fields
 
         private readonly IDocumentEngine _documentEngine;
         private readonly IDocumentReadRepository _documentReadRepository;
+        private readonly IDocumentCountRepository _documentCountRepository;
 
         #endregion
 
@@ -37,16 +38,18 @@ namespace BwaniaProject.Web.Api.Controllers
         ///     Initializes a new instance of the <see cref="DocumentController" /> class.
         /// </summary>
         /// <param name="repositoryProvider"></param>
+        /// <param name="documentCountRepository">The document coune repository</param>
         /// <param name="exceptionService">The exception service.</param>
         /// <param name="engineProvider"></param>
-        public DocumentController(IEngineProvider engineProvider, IRepositoryProvider repositoryProvider,
-            IExceptionService exceptionService)
+        public DocumentController(IEngineProvider engineProvider, IRepositoryProvider repositoryProvider, 
+            IDocumentCountRepository documentCountRepository, IExceptionService exceptionService)
             : base(exceptionService)
         {
             Argument.IsNotNull(() => engineProvider);
             Argument.IsNotNull(() => repositoryProvider);
 
             _documentEngine = engineProvider.GetEngine<IDocumentEngine>();
+            _documentCountRepository = repositoryProvider.GetRepository<IDocumentCountRepository>(); ;
             _documentReadRepository = repositoryProvider.GetRepository<IDocumentReadRepository>();
         }
 
@@ -219,7 +222,7 @@ namespace BwaniaProject.Web.Api.Controllers
         public async Task<IHttpActionResult> CountTotalDocument()
         {
             var result = await ExceptionService.Process(() =>
-                _documentReadRepository.CountGetTenDocumentAsync());
+                _documentCountRepository.CountGetTenDocumentAsync());
 
             return Ok(result);
         }
@@ -228,7 +231,7 @@ namespace BwaniaProject.Web.Api.Controllers
         public async Task<IHttpActionResult> CountTotalFilterdDocument(int nbPage, DocumentFilterParameter filterParameter)
         {
             var nbpage = await ExceptionService.Process(()
-                => _documentReadRepository.CountFilteredDocumentByDomainOrByNiveau(nbPage, filterParameter.Domaines, 
+                => _documentCountRepository.CountFilteredDocumentByDomainOrByNiveau(nbPage, filterParameter.Domaines, 
                 filterParameter.Niveaux));
 
             return Ok(nbpage);

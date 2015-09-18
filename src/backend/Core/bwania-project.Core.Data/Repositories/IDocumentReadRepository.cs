@@ -21,12 +21,6 @@ namespace BwaniaProject.Data.Repositories
         Task<IEnumerable<IDocument>> GetTenDocumentAsync(int nbPage);
 
         /// <summary>
-        /// Counts the the result of view document asynchronous.
-        /// </summary>
-        /// <returns></returns>
-        Task<NbPage> CountGetTenDocumentAsync();
-
-        /// <summary>
         /// Gets the file asynchronous from couch base.
         /// </summary>
         /// <param name="entityId">The entity identifier.</param>
@@ -43,12 +37,22 @@ namespace BwaniaProject.Data.Repositories
         Task<IEnumerable<IDocument>> GetFilteredDocumentByDomainOrByNiveau(int nbPage, List<string> domains, List<string> niveaux);
 
         /// <summary>
-        /// Counts the filtered document by domain or by niveau.
+        /// Searches the document by title.
         /// </summary>
         /// <param name="nbPage">The nb page.</param>
+        /// <param name="title">The title.</param>
+        /// <returns></returns>
+        Task<IEnumerable<IDocument>> SearchDocumentByTitle(int nbPage, string title);
+
+        /// <summary>
+        /// Filters the document search result by domain or niveau.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="title">The title.</param>
         /// <param name="domains">The domains.</param>
         /// <param name="niveaux">The niveaux.</param>
         /// <returns></returns>
-        Task<NbPage> CountFilteredDocumentByDomainOrByNiveau(int nbPage,List<string> domains, List<string> niveaux);
+        Task<IEnumerable<IDocument>> FilterDocumentSearchResultByDomainOrNiveau(int nbPage, string title, 
+            List<string> domains, List<string> niveaux);
     }
 }
