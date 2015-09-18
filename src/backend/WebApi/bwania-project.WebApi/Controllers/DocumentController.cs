@@ -237,6 +237,39 @@ namespace BwaniaProject.Web.Api.Controllers
             return Ok(nbpage);
         }
 
+        /// <summary>
+        /// Gets the searched document by title.
+        /// </summary>
+        /// <param name="nbPage">The nb page.</param>
+        /// <param name="title">The filter parameter.</param>
+        /// <returns></returns>
+       [HttpGet, Route(Constants.RouteNames.Document.GetSearchedDocumentByTitle)]
+        public async Task<IHttpActionResult> GetSearchedDocumentByTitle(int nbPage, string title)
+        {
+            var documents = await ExceptionService.Process(()
+                => _documentReadRepository.SearchDocumentByTitle(nbPage, title));
+
+            return Ok(documents);
+        }
+
+       /// <summary>
+       /// Gets the s search filterd document by domain or niveau.
+       /// </summary>
+       /// <param name="nbPage">The nb page.</param>
+       /// <param name="title">The title.</param>
+       /// <param name="filterParameter">The filter parameter.</param>
+       /// <returns></returns>
+       [HttpPost, Route(Constants.RouteNames.Document.GetSearchedFilterdDocumentByTitle)]
+       public async Task<IHttpActionResult> GetSSearchFilterdDocumentByDomainOrNiveau(int nbPage, string title, 
+           DocumentFilterParameter filterParameter)
+       {
+           var documents = await ExceptionService.Process(()
+                => _documentReadRepository.SearchFilterdDocumentByDomainOrNiveau(nbPage, title, filterParameter.Domaines,
+                filterParameter.Niveaux));
+
+           return Ok(documents);
+       }
+
         #endregion
 
         #region Methods

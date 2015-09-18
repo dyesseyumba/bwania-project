@@ -52,7 +52,7 @@ namespace BwaniaProject.Data.Repositories
         /// <param name="domains">The domains.</param>
         /// <param name="niveaux">The niveaux.</param>
         /// <returns></returns>
-        Task<IEnumerable<IDocument>> FilterDocumentSearchResultByDomainOrNiveau(int nbPage, string title, 
+        Task<IEnumerable<IDocument>> SearchFilterdDocumentByDomainOrNiveau(int nbPage, string title, 
             List<string> domains, List<string> niveaux);
     }
 }

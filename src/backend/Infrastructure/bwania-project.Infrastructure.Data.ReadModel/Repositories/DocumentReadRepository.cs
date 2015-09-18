@@ -168,8 +168,6 @@ namespace BwaniaProject.Data.Repositories
             var elasticSearchDocments = FilterTenByfield(nbPage, title, "titre").Documents.ToList();
             var resultsDocuments = new List<IDocument>();
 
-            //elasticSearchDocments = FilterTenByfield(nbPage, title, "titre").Documents.ToList();
-
             elasticSearchDocments.ForEach(async d => 
             {
                 resultsDocuments.Add(await GetByIdAsync(d.Meta.Id));
@@ -178,7 +176,7 @@ namespace BwaniaProject.Data.Repositories
             return resultsDocuments;
         }
 
-        public async Task<IEnumerable<IDocument>> FilterDocumentSearchResultByDomainOrNiveau(int nbPage, string title, List<string> domains, List<string> niveaux)
+        public async Task<IEnumerable<IDocument>> SearchFilterdDocumentByDomainOrNiveau(int nbPage, string title, List<string> domains, List<string> niveaux)
         {
             var elasticSearchDocments = new List<ICouchbaseDocument>();
             var resultsDocuments = new List<IDocument>();

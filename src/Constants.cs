@@ -58,6 +58,10 @@ namespace BwaniaProject
                 public const string GetFileById = "document/download/" + IdSuffix + "/file";
                 public const string CountTotalDoc = "documents/count_all";
                 public const string CountTotalFilteredDoc = "documents/count_all_filtered/" + NbPageSuffix;
+                public const string GetSearchedDocumentByTitle = "documents/get_by_title/" + NbPageSuffix +
+                    "/{title}";
+                public const string GetSearchedFilterdDocumentByTitle = "documents/get_filtered_by_title/" + 
+                    NbPageSuffix + "/{title}";
             }
         }
 #endif
