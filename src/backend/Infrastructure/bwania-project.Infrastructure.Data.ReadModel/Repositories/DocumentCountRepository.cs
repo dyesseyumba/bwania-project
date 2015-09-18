@@ -66,6 +66,16 @@ namespace BwaniaProject.Data.Repositories
             throw new ViewRequestException(message, results.StatusCode);
         }
 
+        public Task<IEnumerable<IDocument>> CountSearchedDocumentByTitle(string title)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<IDocument>> CountFilterrdDocumentSearchResultByDomainOrNiveau(string title, List<string> domains, List<string> niveaux)
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// Counts the filtered document by domain or by niveau.
         /// </summary>

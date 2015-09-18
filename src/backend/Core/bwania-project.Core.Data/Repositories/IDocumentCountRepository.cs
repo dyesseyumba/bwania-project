@@ -27,5 +27,22 @@ namespace BwaniaProject.Data.Repositories
         /// <param name="niveaux">The niveaux.</param>
         /// <returns></returns>
         Task<NbPage> CountFilteredDocumentByDomainOrByNiveau(int nbPage, List<string> domains, List<string> niveaux);
+
+        /// <summary>
+        /// Counts the search document by title.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <returns></returns>
+        Task<IEnumerable<IDocument>> CountSearchedDocumentByTitle(string title);
+
+        /// <summary>
+        /// Counts the filterrd document search result by domain or niveau.
+        /// </summary>
+        /// <param name="title">The title.</param>
+        /// <param name="domains">The domains.</param>
+        /// <param name="niveaux">The niveaux.</param>
+        /// <returns></returns>
+        Task<IEnumerable<IDocument>> CountFilterrdDocumentSearchResultByDomainOrNiveau(string title,
+            List<string> domains, List<string> niveaux);
     }
 }

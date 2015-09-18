@@ -119,7 +119,7 @@ namespace BwaniaProject.Data.Repositories
             else if (domains.Count > 0 && niveaux.Count <= 0)
             {
                 foreach (var indexResult in from domain in domains
-                                            select FilterTenByNivauxOrDomain(nbPage, domain, "domaine").Documents)
+                                            select FilterTenByfield(nbPage, domain, "domaine").Documents)
                 {
                     elasticSearchDocments.AddRange(indexResult);
                 }
@@ -132,7 +132,7 @@ namespace BwaniaProject.Data.Repositories
             else if (domains.Count <= 0 && niveaux.Count > 0)
             {
                 foreach (var indexResult in from niveau in niveaux
-                                            select FilterTenByNivauxOrDomain(nbPage, niveau, "niveau").Documents)
+                                            select FilterTenByfield(nbPage, niveau, "niveau").Documents)
                 {
                     elasticSearchDocments.AddRange(indexResult);
                 }
@@ -163,6 +163,74 @@ namespace BwaniaProject.Data.Repositories
             return await GetByIdAsync<Document>(entityId).ConfigureAwait(false);
         }
 
+        public async Task<IEnumerable<IDocument>> SearchDocumentByTitle(int nbPage, string title)
+        {
+            var elasticSearchDocments = FilterTenByfield(nbPage, title, "titre").Documents.ToList();
+            var resultsDocuments = new List<IDocument>();
+
+            //elasticSearchDocments = FilterTenByfield(nbPage, title, "titre").Documents.ToList();
+
+            elasticSearchDocments.ForEach(async d => 
+            {
+                resultsDocuments.Add(await GetByIdAsync(d.Meta.Id));
+            });
+            
+            return resultsDocuments;
+        }
+
+        public async Task<IEnumerable<IDocument>> FilterDocumentSearchResultByDomainOrNiveau(int nbPage, string title, List<string> domains, List<string> niveaux)
+        {
+            var elasticSearchDocments = new List<ICouchbaseDocument>();
+            var resultsDocuments = new List<IDocument>();
+
+            if (domains.Count > 0 && niveaux.Count > 0)
+            {
+                foreach (var indexResult in from domain in domains
+                                            from niveau in niveaux
+                                            select FilterTenByNivauxAndDomainsAndTitle(nbPage, title, domain, niveau).Documents)
+                {
+                    elasticSearchDocments.AddRange(indexResult);
+                }
+
+                foreach (var index in elasticSearchDocments)
+                {
+                    resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+                }
+            }
+            else if (domains.Count > 0 && niveaux.Count <= 0)
+            {
+                foreach (var indexResult in from domain in domains
+                                            select FilterTenByfieldAndTitle(nbPage, title, domain, "domaine").Documents)
+                {
+                    elasticSearchDocments.AddRange(indexResult);
+                }
+
+                foreach (var index in elasticSearchDocments)
+                {
+                    resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+                }
+            }
+            else if (domains.Count <= 0 && niveaux.Count > 0)
+            {
+                foreach (var indexResult in from niveau in niveaux
+                                            select FilterTenByfieldAndTitle(nbPage, title, niveau, "niveau").Documents)
+                {
+                    elasticSearchDocments.AddRange(indexResult);
+                }
+
+                foreach (var index in elasticSearchDocments)
+                {
+                    resultsDocuments.Add(await GetByIdAsync(index.Meta.Id));
+                }
+            }
+            else if (domains.Count <= 0 && niveaux.Count <= 0)
+            {
+                resultsDocuments.Clear();
+                resultsDocuments.AddRange(await GetTenDocumentAsync(nbPage));
+            }
+            return resultsDocuments;
+        }
+
         #region Customs filter
         /// <summary>
         /// Filters the by nivaux and domains.
@@ -181,6 +249,18 @@ namespace BwaniaProject.Data.Repositories
                         o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
         }
 
+        private ISearchResponse<CouchbaseDocument> FilterTenByNivauxAndDomainsAndTitle
+            (int nbPage, string titre, string domain, string niveau)
+        {
+            return ElasticClient.Search<CouchbaseDocument>(s => s
+                .Size(10)
+                .From(nbPage * 10)
+                .Query(f => f.Bool(b => b
+                    .Must(o => o.Match(n => n.OnField("titre").Query(titre ?? "")), 
+                           o => o.Match(d => d.OnField("domaine").Query(domain ?? "")),
+                           o => o.Match(n => n.OnField("niveau").Query(niveau ?? ""))))));
+        }
+
         /// <summary>
         /// Filters the by nivaux or domain.
         /// </summary>
@@ -188,7 +268,7 @@ namespace BwaniaProject.Data.Repositories
         /// <param name="queredValue">The quered value.</param>
         /// <param name="fieldName">Name of the field.</param>
         /// <returns></returns>
-        private ISearchResponse<CouchbaseDocument> FilterTenByNivauxOrDomain(int nbPage, string queredValue, string fieldName)
+        private ISearchResponse<CouchbaseDocument> FilterTenByfield(int nbPage, string queredValue, string fieldName)
         {
             return ElasticClient.Search<CouchbaseDocument>(s => s
                 .Size(10)
@@ -196,7 +276,16 @@ namespace BwaniaProject.Data.Repositories
                 .Query(d => d.Match(m => m.OnField(fieldName).Query(queredValue ?? ""))));
         }
 
-       
+        private ISearchResponse<CouchbaseDocument> FilterTenByfieldAndTitle(int nbPage, string titre, 
+            string queredValue, string fieldName)
+        {
+            return ElasticClient.Search<CouchbaseDocument>(s => s
+                .Size(10)
+                .From(nbPage * 10)
+                .Query(f => f.Bool(b => b
+                    .Must(o => o.Match(d => d.OnField("titre").Query(titre ?? "")),
+                        o => o.Match(n => n.OnField(fieldName).Query(queredValue ?? ""))))));
+        }
         #endregion
 
         #endregion
