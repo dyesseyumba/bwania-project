@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="text-center">Liste des documents</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-8" >                   
+                    <div class="documents" >
+                        <div ng-repeat="document in documents" class="thumbnail document-listing">
+                            <a href="#/docDetails/{{document.id}}" class="thumb"><img class="documents" src="images/pdf_icon.png">
+                                <rating ng-model="document.moyenneNote" max="5" readonly="true"></rating>
+                            </a>
+
+                            <a href="#/docDetails/{{document.id}}" class="text-primary"><b>{{document.titre}}</b></a>
+                            <p><b>Auteur</b> : {{document.utilisateur.prenom}} {{document.utilisateur.nom}}<br>
+                                <b>Domaine</b> : {{document.domaine}}, <b>Discipline</b> : {{document.discipline}}<br>
+                                <a class="pull-right btn btn-default btn-md" href="#/docDetails/{{document.id}}" ><span class="glyphicon glyphicon-plus"></span> Détails
+                                </a>
+                                <b>Niveau</b> : {{document.niveau}}, <b>Date</b> : {{document.dateDePublication}}<br>
+                            </p>                            
+                        </div>
+                        <div>
+                            <pagination boundary-links="true" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" rotate="flase" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" num-pages="numPages" ng-change="selectedPage(currentPage)"></pagination>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="row">
+                        <form class="input-group" ng-submit="clickedBtnSearch(resultSearch, infoTech, mathematiques, medecine, physiqueChimie, banqueFinance,economieGestion, langues, philoLit, histGeogr, trucsEtAstuces, autre)">
+                            <input type="text" class="form-control" placeholder="Cours, tuto, Exercices corigés ..." ng-model="resultSearch">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ><i class="glyphicon glyphicon-search" ></i></button>
+                            </span>
+                        </form>
+                        <br>
+                        <form class="thumbnail">
+                            <h4 class="text-left">Domaines</h4>
+                            <input type="checkbox" ng-model="infoTech" ng-true-value="Informatique & Technologies" ng-false-value="" ng-change="docInfoClick(infoTech)"> Informatique & Technologies<br>
+                            <input type="checkbox" ng-model="mathematiques" ng-true-value="Mathématiques" ng-false-value="" ng-change="docMathClick(mathematiques)"> Mathématiques<br>
+                            <input type="checkbox" ng-model="medecine" ng-true-value="Médecine" ng-false-value="" ng-change="docMedecineClick(medecine)"> Médecine<br>
+                            <input type="checkbox" ng-model="physiqueChimie" ng-true-value="Physique & Chimie" ng-false-value="" ng-change="docPhysiqueClick(physiqueChimie)"> Physique & Chimie<br>
+                            <input type="checkbox" ng-model="banqueFinance" ng-true-value="Banque & Finances" ng-false-value="" ng-change="docBanqueClick(banqueFinance)"> Banque & Finances<br>
+                            <input type="checkbox" ng-model="economieGestion" ng-true-value="Economie & Gestion" ng-false-value="" ng-change="docEconomieClick(economieGestion)"> Economie & Gestion<br>
+                            <input type="checkbox" ng-model="langues" ng-true-value="Langues" ng-false-value="" ng-change="docLangueClick(langues)"> Langues<br>
+                            <input type="checkbox" ng-model="philoLit" ng-true-value="Philosophie & Littérature" ng-false-value="" ng-change="docPhiloClick(philoLit)"> Philosophie & Littérature<br>
+                            <input type="checkbox" ng-model="histGeogr" ng-true-value="Histoire & Géographie" ng-false-value="" ng-change="docHistoireClick(histGeogr)"> Histoire & Géographie<br>
+                            <input type="checkbox" ng-model="trucsEtAstuces" ng-true-value="Trucs & Astuces" ng-false-value="" ng-change="docTrucClick(trucsEtAstuces)"> Trucs & Astuces<br>
+                            <input type="checkbox" ng-model="autre" ng-true-value="Autre" ng-false-value="" ng-change="docAutreClick(autre)"> Autre<br>
+
+                        </form>
+                        <br>
+                        <form class="thumbnail">
+                            <h4 class="text-left">Niveau</h4>
+                            <input type="checkbox" ng-model="college" ng-true-value="Collège" ng-false-value="" ng-change="docCollegeClick(college)"> Collège<br>
+                            <input type="checkbox" ng-model="lycee" ng-true-value="Lycée" ng-false-value="" ng-change="docLyceeClick(lycee)"> Lycée<br>
+                            <input type="checkbox" ng-model="univ" ng-true-value="Université" ng-false-value="" ng-change="docUnivClick(univ)"> Université
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

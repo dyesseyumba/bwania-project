@@ -1,0 +1,131 @@
+html, body {
+  margin: 0px;
+}
+
+body {
+    background-color: #ff6d0b;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    padding-top: 57px;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.logo-warid {
+    background: url('../images/logoBwania3.png') no-repeat;
+    height: 54px;
+  
+    
+}
+
+#Br{
+    
+    background-color:#014866;
+    height: 390px;
+}
+
+#Carousel{
+     
+     height: 370px;
+    margin-top: 5px;
+    padding-top: 10px; 
+     
+    
+}
+
+#textP{
+    color: #fafafa;
+        font-size: 14px;
+       
+        margin-top: 5px;
+}
+
+#textP h3{
+    
+    color: #ff6d0b;
+}
+#ImgCervo{
+    background: url('../images/imgOrange.png') no-repeat;
+     height: 135px;
+     
+         
+}
+
+#icoDomain i{
+    color: #ff6d0b; 
+    width: 20px; 
+    height: 20px
+}
+
+.animate-hide {
+  -webkit-transition:all linear 0.5s;
+  -moz-transition: all linear 0.5s;
+  -o-transition: all linear 0.5s;
+  transition:all linear 0.5s;
+
+}
+ 
+.animate-hide.ng-hide-add,
+.animate-hide.ng-hide-remove {
+  display:block!important;  
+}
+ 
+.animate-hide.ng-hide {
+  line-height:0;
+  opacity:0;
+  padding:0 10px;
+}
+
+#fter{
+    color: #ff6d0b;
+    background: #eee;
+   border-top:3px solid #014866;
+}
+
+#fter h4{
+    border-bottom: 1px solid #014866;
+}
+
+.documents div {
+  margin-bottom: 20px;
+  clear: both;
+  min-height: 100px;
+  padding-top: 15px;
+}
+
+.documents2 div { 
+  margin-bottom: 20px;  
+  min-height: 100px;  
+}
+
+.documents img {
+  float: left;
+  margin-right: 3em;
+  
+  background-color: white;
+  height: 85px;
+  width: 80px;
+}
+
+.thumb {
+   float: left;
+  margin: -1em 1em 1.5em 0em;
+  padding-bottom: 1em;
+  height: 100px;
+  width: 100px;
+}

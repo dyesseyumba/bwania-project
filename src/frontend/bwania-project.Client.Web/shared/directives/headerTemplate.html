@@ -1,0 +1,44 @@
+<div class="collapse navbar-collapse navbar-ex1-collapse navbar-header navbar-right" ng-controller="menuCtrl">
+
+    <ul class="nav navbar-nav ">
+        <li ng-class="{active : isCurrentMenu('/home')}"><a href="#/home"><span class="glyphicon glyphicon-home"></span> Accueil</a></li>
+        <li ng-class="{active : isCurrentMenu('/formation/1')}"><a href="#/formation/1">Formation</a></li>
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="">Participez<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li ng-class="{active : isCurrentMenu('/ajouterundocument')}"><a href="#/ajouterundocument">Ajouter un document</a></li>
+                <!-- <li><a href="#/add_entreprise">Créer un Espace Entreprise</a></li> -->
+                <li><a href="#/add_etablissement">Créer un Espace Etablissement</a></li>
+                <li ng-class="{active : isCurrentMenu('/help')}"><a href="#/help">Aide</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="" ><span class="glyphicon glyphicon-th-large"></span>Plus<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <!-- <li><a href="#/entreprise">Espace Entreprise</a></li> -->
+                <li><a href="#/etablissements">Espace Etablissement</a></li>
+            </ul>
+        </li>
+
+        <li classe="ng-hide" ng-show="loggedOut" ng-class="{active : isCurrentMenu('/userhome')}">
+            <a href="#/userhome" ><span class="glyphicon glyphicon-user"></span> <span ng-bind="MonCompte"></span></a>
+        </li>
+
+
+    </ul> 
+    <div class="col-md-3">
+        <div class="btn">
+            <a ng-class="{active : isCurrentMenu('/login')}" class="btn btn-default animate-hide" ng-hide="loggedOut" href="https:/localhost:44302/identity/connect/authorize?client_id=implicitclient&scope=read&redirect_uri=http://localhost:20623&response_type=token/login">Se connecter</a>
+            <a class="btn btn-default ng-hide" ng-click="logout()" ng-show="loggedOut">Se déconnecter</a>
+            <a ng-class="{active : isCurrentMenu('/signup')}" class="btn btn-default" ng-hide="loggedOut" href="#/signup">S'inscrire</a>
+            <a class="ng-hide" ng-hide="loggedOut" ng-click="fbLogin()"><img src="images/facebook3.png" alt="facebook" ></a>
+            <!-- <fb:login-button scope="email" onlogin="checkLoginState();" auto_logout_link
+                             ="true">
+            </fb:login-button> -->
+        </div>
+               
+    </div>
+
+</div>

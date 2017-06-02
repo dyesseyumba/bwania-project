@@ -97,3 +97,6 @@ TestResults
 *.msi
 *.exe
 *.7z
+/src/frontend/bwania-project.Client.Web/HTML5Application/nbproject/private
+/src/frontend/nbproject/private/
+/src/.vs/config/applicationhost.config
